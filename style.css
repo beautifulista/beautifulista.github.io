@@ -70,7 +70,7 @@ a   { color: inherit; text-decoration: none; }
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--dark-green);
     margin-bottom: 16px;
 }
 
@@ -265,7 +265,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--dark-green);
     margin-bottom: 28px;
 }
 
@@ -283,7 +283,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 17px;
-    color: var(--sage);
+    color: var(--dark-green);
     letter-spacing: 0.02em;
     margin-bottom: 28px;
     text-transform: lowercase;
@@ -401,73 +401,42 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     margin-bottom: 56px;
 }
 
-.treatments__grid {
+/* Treatment Panels */
+.treatment-panel {
+    border-top: 1px solid var(--border);
+    padding: 72px 0;
+}
+
+.treatment-panel__inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    background: var(--border);
+    grid-template-columns: 1fr 360px;
+    gap: 72px;
+    align-items: start;
 }
 
-.treatment-card {
-    background: var(--white);
-    padding: 52px 44px;
-    transition: background var(--transition), color var(--transition);
-}
-
-.treatment-card:hover { background: var(--anthrazit); }
-
-.treatment-card:hover .treatment-card__icon { color: var(--gold); }
-.treatment-card:hover h3 { color: var(--ivory); }
-.treatment-card:hover p { color: rgba(250, 247, 240, 0.65); }
-.treatment-card:hover .treatment-card__by { color: var(--sage) !important; }
-.treatment-card:hover .btn--outline {
-    border-color: rgba(250, 247, 240, 0.2);
-    color: var(--ivory);
-}
-.treatment-card:hover .btn--outline:hover {
-    background: var(--ivory);
-    color: var(--anthrazit);
-}
-
-.treatment-card__icon {
+.treatment-panel__icon {
     font-size: 18px;
     color: var(--gold);
     margin-bottom: 20px;
     display: block;
 }
 
-.treatment-card h3 {
-    margin-bottom: 6px;
+.treatment-panel h3 {
     color: var(--anthrazit);
+    margin-bottom: 10px;
 }
 
-.treatment-card__by {
+.treatment-panel__by {
     display: block;
-    font-size: 11px !important;
+    font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--sage) !important;
-    margin-bottom: 18px;
+    color: var(--dark-green);
+    margin-bottom: 14px;
 }
 
-.treatment-card > p {
-    font-size: 15px;
-    line-height: 1.75;
-    margin-bottom: 24px;
-}
-
-/* Circadia — volle Breite */
-.treatment-card--circadia {
-    grid-column: span 2;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.treatment-card__badge {
-    position: absolute;
-    top: 52px;
-    right: 44px;
+.treatment-panel__badge {
+    display: inline-block;
     font-family: var(--font-sans);
     font-size: 10px;
     font-weight: 500;
@@ -475,20 +444,73 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     text-transform: uppercase;
     color: var(--gold);
     border: 1px solid rgba(212, 175, 55, 0.4);
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 2px;
+    margin-bottom: 16px;
 }
 
-.treatment-card--circadia > p {
-    max-width: 560px;
+.treatment-panel__tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--anthrazit);
+    line-height: 1.5;
+    margin-bottom: 28px;
 }
 
-@media (max-width: 960px) {
-    .treatment-card--circadia { grid-column: span 1; }
-    .treatment-card__badge { top: 40px; right: 28px; }
+.treatment-panel__body p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-muted);
+    margin-bottom: 20px;
 }
-@media (max-width: 600px) {
-    .treatment-card__badge { top: 28px; right: 20px; }
+
+.treatment-panel__body p:last-child { margin-bottom: 0; }
+
+.treatment-panel__benefits {
+    list-style: none;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.treatment-panel__benefits li {
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.treatment-panel__benefits li::before {
+    content: '→';
+    color: var(--dark-green);
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+.treatment-panel__pricing {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    border-radius: var(--radius);
+    position: sticky;
+    top: 92px;
+}
+
+.treatment-panel__pricing .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.treatment-panel__inquiry {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
 }
 
 /* Preisliste in Behandlungskarte */
@@ -627,7 +649,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     font-size: 13px;
 }
 .testimonials__link a {
-    color: var(--sage);
+    color: var(--dark-green);
     letter-spacing: 0.05em;
 }
 
@@ -789,6 +811,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     letter-spacing: 0.03em;
 }
 
+
 /* ===========================
    Kontakt
    =========================== */
@@ -820,7 +843,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--dark-green);
     margin-bottom: 10px;
 }
 
@@ -1004,12 +1027,21 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     .about__image { position: static; }
     .photo-placeholder { aspect-ratio: 16/9; max-height: 300px; }
 
-    .treatments__grid { grid-template-columns: 1fr; }
+    .treatment-panel__inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .treatment-panel__pricing { position: static; }
 
     .contact__grid {
-        grid-template-columns: 1fr;
-        gap: 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
     }
+    .contact__col-left { display: contents; }
+    .contact__intro { order: 1; }
+    .contact__cta-block { order: 2; margin-bottom: 48px; }
+    .contact__items { order: 3; }
 }
 
 /* ===========================
@@ -1025,7 +1057,8 @@ p strong { color: var(--anthrazit); font-weight: 500; }
 
     .hero__cta { flex-direction: column; align-items: flex-start; }
 
-    .treatment-card { padding: 40px 28px; }
+    .treatment-panel { padding: 52px 0; }
+    .treatment-panel__pricing { padding: 28px 24px; }
 
     .laser__promise { padding: 28px 24px; }
     .laser__promise p { font-size: 17px; }
