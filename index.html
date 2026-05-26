@@ -751,6 +751,153 @@
         color: rgba(255,255,255,0.5);
     }
 
+    /* --- Quiz same-height overlay --- */
+    .quiz__panels-wrap {
+        display: grid;
+        min-height: 440px;
+        position: relative;
+    }
+
+    .quiz__panel {
+        grid-area: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+    }
+
+    .quiz__panel.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .quiz__result {
+        grid-area: 1 / 1;
+        transition: opacity 0.35s ease;
+    }
+
+    .quiz__result.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    /* Quiz Options mit Titel + Beschreibung */
+    .quiz__opt-title {
+        display: block;
+        font-weight: 500;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 3px;
+        font-size: 15px;
+    }
+
+    .quiz__opt-desc {
+        display: block;
+        font-size: 13px;
+        color: rgba(255,255,255,0.4);
+        line-height: 1.4;
+    }
+
+    /* Glowing gold CTA button */
+    .btn--gold-glow {
+        display: inline-block;
+        text-align: center;
+        background: var(--gold);
+        color: var(--anthrazit);
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        padding: 20px 48px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0 32px rgba(212,175,55,0.6), 0 0 64px rgba(212,175,55,0.25);
+        animation: gold-pulse 2.5s ease-in-out infinite;
+        transition: transform 0.2s;
+    }
+
+    @keyframes gold-pulse {
+        0%,100% { box-shadow: 0 0 24px rgba(212,175,55,0.5), 0 0 48px rgba(212,175,55,0.2); }
+        50%      { box-shadow: 0 0 44px rgba(212,175,55,0.9), 0 0 88px rgba(212,175,55,0.4); }
+    }
+
+    .btn--gold-glow:hover { transform: translateY(-2px); }
+
+    /* Quote Section (ersetzt About) */
+    .quote-section {
+        background: var(--ivory);
+        padding: var(--section-padding) 0;
+    }
+
+    .quote-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .quote-mark {
+        font-family: var(--font-serif);
+        font-size: 100px;
+        line-height: 0.6;
+        color: var(--gold);
+        opacity: 0.25;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .quote-text {
+        font-family: var(--font-serif);
+        font-size: clamp(22px, 2.8vw, 34px);
+        font-weight: 300;
+        line-height: 1.45;
+        color: var(--anthrazit);
+        font-style: italic;
+        margin-bottom: 24px;
+    }
+
+    .quote-text strong {
+        font-style: normal;
+        font-weight: 600;
+        color: var(--anthrazit) !important;
+    }
+
+    .quote-attribution {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+        display: block;
+    }
+
+    .quote-link {
+        font-family: var(--font-sans);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--dark-green);
+        border-bottom: 1px solid var(--sage);
+        padding-bottom: 2px;
+        transition: color var(--transition);
+        display: inline-block;
+    }
+
+    .quote-link:hover { color: var(--anthrazit); }
+
+    @media (max-width: 900px) {
+        .quote-layout { grid-template-columns: 1fr; gap: 48px; }
+        .quote-mark { font-size: 70px; }
+    }
+
     /* --- Misc --- */
     .flipcards-cta {
         text-align: center;
@@ -1098,12 +1245,12 @@
         <div class="quiz__wrapper">
 
             <div class="quiz__header">
-                <p class="section__eyebrow" style="text-align:center">Kostenloser Behandlungstest</p>
+                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Kostenloser Behandlungstest</p>
                 <h2 id="quiz-heading">Welche Behandlung<br>passt zu <em>dir?</em></h2>
-                <p>3 Fragen. 60 Sekunden. Deine persönliche Empfehlung.</p>
+                <p>4 Fragen. 60 Sekunden. Deine persönliche Empfehlung.</p>
             </div>
 
-            <!-- Progress -->
+            <!-- Progress: 4 Fragen + Email = 5 Dots -->
             <div class="quiz__progress" id="quiz-progress">
                 <div class="quiz__dot active" data-step="1"></div>
                 <div class="quiz__line"></div>
@@ -1112,71 +1259,132 @@
                 <div class="quiz__dot" data-step="3"></div>
                 <div class="quiz__line"></div>
                 <div class="quiz__dot" data-step="4"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="5"></div>
             </div>
 
-            <!-- Step 1 -->
-            <div class="quiz__panel active" id="quiz-step-1">
-                <p class="quiz__question">Was beschäftigt dich am meisten?</p>
-                <div class="quiz__options">
-                    <button class="quiz__option" data-q="1" data-v="unreine">Unreine Haut, verstopfte Poren, unebener Teint</button>
-                    <button class="quiz__option" data-q="1" data-v="muede">Müde, fahle Haut — ich sehe erschöpft aus</button>
-                    <button class="quiz__option" data-q="1" data-v="straff">Ich möchte Straffung und intensive Regeneration</button>
-                    <button class="quiz__option" data-q="1" data-v="augen">Meine Augen und Brauen wirken ausdruckslos</button>
-                    <button class="quiz__option" data-q="1" data-v="haare">Unerwünschter Haarwuchs — dauerhaft</button>
+            <!-- Panels — alle in einem Grid, gleiche Höhe, kein Springen -->
+            <div class="quiz__panels-wrap">
+
+                <!-- Step 1 -->
+                <div class="quiz__panel active" id="quiz-step-1">
+                    <p class="quiz__question">Was siehst du, wenn du morgens in den Spiegel schaust?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="1" data-v="unreine">
+                            <span class="quiz__opt-title">Müde, unebene Haut</span>
+                            <span class="quiz__opt-desc">Poren, Unreinheiten, fahler Teint — egal wie viel Schlaf du hattest</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="muede">
+                            <span class="quiz__opt-title">Erschöpfung im Gesicht</span>
+                            <span class="quiz__opt-desc">Du siehst aus, wie du dich manchmal fühlst — und das willst du ändern</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="straff">
+                            <span class="quiz__opt-title">Verlust von Frische und Straffheit</span>
+                            <span class="quiz__opt-desc">Die Konturen weicher, die Haut weniger vital — du willst das zurück</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="augen">
+                            <span class="quiz__opt-title">Ausdruckslose Augen und Brauen</span>
+                            <span class="quiz__opt-desc">Du willst, dass deine Augen sprechen — ohne Stunden vor dem Spiegel</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="haare">
+                            <span class="quiz__opt-title">Etwas, das du täglich überwinden musst</span>
+                            <span class="quiz__opt-desc">Haarwuchs, der dich täglich Überwindung kostet — Zeit, Energie, manchmal Würde</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Step 2 -->
-            <div class="quiz__panel" id="quiz-step-2">
-                <p class="quiz__question">Was ist dir wichtiger?</p>
-                <div class="quiz__options">
-                    <button class="quiz__option" data-q="2" data-v="sofort">Sofortiges, sichtbares Ergebnis — ich habe einen Termin</button>
-                    <button class="quiz__option" data-q="2" data-v="langzeit">Ich investiere in nachhaltige, langfristige Verbesserung</button>
+                <!-- Step 2 -->
+                <div class="quiz__panel" id="quiz-step-2">
+                    <p class="quiz__question">Wie lange begleitet dich das schon?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="2" data-v="kurz">
+                            <span class="quiz__opt-title">Erst seit kurzem</span>
+                            <span class="quiz__opt-desc">Ich möchte früh gegensteuern, bevor es sich festigt</span>
+                        </button>
+                        <button class="quiz__option" data-q="2" data-v="mittel">
+                            <span class="quiz__opt-title">Ein paar Jahre</span>
+                            <span class="quiz__opt-desc">Ich habe einiges versucht — nichts hat wirklich nachhaltig geholfen</span>
+                        </button>
+                        <button class="quiz__option" data-q="2" data-v="lang">
+                            <span class="quiz__opt-title">Sehr lange</span>
+                            <span class="quiz__opt-desc">Es ist Teil meines Alltags geworden — aber ich will, dass das aufhört</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Step 3 -->
-            <div class="quiz__panel" id="quiz-step-3">
-                <p class="quiz__question">Wie viel Zeit nimmst du dir?</p>
-                <div class="quiz__options">
-                    <button class="quiz__option" data-q="3" data-v="kurz">45 Minuten — kompakt und effektiv</button>
-                    <button class="quiz__option" data-q="3" data-v="mittel">1 Stunde — ich gönne mir das</button>
-                    <button class="quiz__option" data-q="3" data-v="lang">1,5 Stunden oder mehr — das volle Programm</button>
+                <!-- Step 3 -->
+                <div class="quiz__panel" id="quiz-step-3">
+                    <p class="quiz__question">Was wünschst du dir vor allem?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="3" data-v="sofort">
+                            <span class="quiz__opt-title">Ein sofortiges, sichtbares Ergebnis</span>
+                            <span class="quiz__opt-desc">Ich habe einen Anlass — oder will es einfach jetzt sehen</span>
+                        </button>
+                        <button class="quiz__option" data-q="3" data-v="langzeit">
+                            <span class="quiz__opt-title">Nachhaltige, tiefe Veränderung</span>
+                            <span class="quiz__opt-desc">Ich investiere in mich — und möchte langfristig etwas spüren</span>
+                        </button>
+                        <button class="quiz__option" data-q="3" data-v="beides">
+                            <span class="quiz__opt-title">Beides — ich gönn mir das Beste</span>
+                            <span class="quiz__opt-desc">Sofort UND nachhaltig. Ich bin bereit dafür</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Step 4: Email -->
-            <div class="quiz__panel quiz__email-step" id="quiz-step-4">
-                <p class="quiz__question">Deine Empfehlung ist fertig.</p>
-                <p class="quiz__email-sub">Gib deine E-Mail ein — du siehst dein Ergebnis sofort und erhältst es auch per Mail.</p>
-                <form class="quiz__email-form" id="quiz-email-form">
-                    <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
-                    <button type="submit" class="btn btn--primary">Mein Ergebnis anzeigen</button>
-                </form>
-                <p class="quiz__privacy">Kein Newsletter. Nur dein Ergebnis — und gelegentlich etwas Sinnvolles von mir.</p>
-            </div>
-
-            <!-- Result -->
-            <div class="quiz__result" id="quiz-result" hidden>
-                <div class="quiz__result-badge">Deine Empfehlung</div>
-                <h3 id="quiz-result-title"></h3>
-                <p class="quiz__result-desc" id="quiz-result-desc"></p>
-                <div class="quiz__result-actions">
-                    <a id="quiz-result-cta" href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna"
-                       class="btn btn--primary" target="_blank" rel="noopener">Jetzt Termin buchen</a>
-                    <button class="quiz__restart" id="quiz-restart">Test wiederholen</button>
+                <!-- Step 4 -->
+                <div class="quiz__panel" id="quiz-step-4">
+                    <p class="quiz__question">Wie viel Zeit nimmst du dir für eine Behandlung?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="4" data-v="kurz">
+                            <span class="quiz__opt-title">45 Minuten</span>
+                            <span class="quiz__opt-desc">Kompakt, effektiv, direkt wieder im Alltag</span>
+                        </button>
+                        <button class="quiz__option" data-q="4" data-v="mittel">
+                            <span class="quiz__opt-title">1 Stunde</span>
+                            <span class="quiz__opt-desc">Ich gönne mir das — und das ist gut so</span>
+                        </button>
+                        <button class="quiz__option" data-q="4" data-v="lang">
+                            <span class="quiz__opt-title">1,5 Stunden oder mehr</span>
+                            <span class="quiz__opt-desc">Das volle Programm. Ich bin dabei</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Step 5: Email -->
+                <div class="quiz__panel quiz__email-step" id="quiz-step-5">
+                    <p class="quiz__question">Deine Empfehlung ist fertig.</p>
+                    <p class="quiz__email-sub">Gib deine E-Mail ein — du siehst das Ergebnis sofort<br>und erhältst es auch direkt per Mail.</p>
+                    <form class="quiz__email-form" id="quiz-email-form">
+                        <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+                        <button type="submit" class="btn btn--primary">Mein Ergebnis anzeigen</button>
+                    </form>
+                    <p class="quiz__privacy">Kein Newsletter. Nur dein Ergebnis — und gelegentlich etwas Sinnvolles von mir.</p>
+                </div>
+
+                <!-- Result -->
+                <div class="quiz__result" id="quiz-result" style="display:none; opacity:0; visibility:hidden; pointer-events:none; text-align:center;">
+                    <div class="quiz__result-badge" id="quiz-result-tag">Gefunden.</div>
+                    <h3 id="quiz-result-title"></h3>
+                    <p class="quiz__result-desc" id="quiz-result-desc"></p>
+                    <div class="quiz__result-actions">
+                        <a id="quiz-result-cta"
+                           href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna"
+                           class="btn--gold-glow" target="_blank" rel="noopener">Jetzt Termin buchen</a>
+                        <button class="quiz__restart" id="quiz-restart">Test wiederholen</button>
+                    </div>
+                </div>
+
+            </div><!-- /quiz__panels-wrap -->
 
         </div>
     </div>
 </section>
 
 
-<!-- ===================== Über mich / Story ===================== -->
-<section class="section about" id="ueber-mich" aria-labelledby="about-heading">
+<!-- ===================== Zitat / Quote ===================== -->
+<section class="quote-section" id="ueber-mich" aria-labelledby="quote-heading">
     <div class="container">
-        <div class="about__grid">
+        <div class="quote-layout">
 
             <div class="about__image">
                 <div class="gold-frame-wrap">
@@ -1186,55 +1394,18 @@
                 </div>
             </div>
 
-            <div class="about__text">
-                <p class="section__eyebrow">Meine Geschichte</p>
-                <h2 id="about-heading">
-                    Ich bin Sarah —<br>
-                    und ich habe selbst<br>
-                    darunter gelitten.
-                </h2>
-
-                <div class="story">
-                    <p>
-                        Ich bin die Tochter einer deutschen Mutter und eines neapolitanischen Vaters.
-                        Die Gene meines Vaters haben mir etwas mitgegeben, das mich als junges Mädchen
-                        jahrelang in tiefer Scham gefangen hielt: starken, dunklen, unbändigen Haarwuchs.
-                    </p>
-
-                    <p>
-                        Mit Beginn der Pubertät wuchsen meine Beinhaare so stark wie die eines Mannes.
-                        Bikinizone, innerer Oberschenkel, Kinn. Meine Mutter gab mir ihre helle, helle Haut.
-                        Mein Vater seine neapolitanische Haardichte. Haare so dunkel wie die Nacht, auf Haut
-                        so hell wie Elfenbein. Ich konnte mich morgens rasieren und hatte abends bereits
-                        wieder sichtbare Stoppeln.
-                    </p>
-
-                    <p>
-                        Mit 17 bekam ich die Pille Diane 35 verschrieben. Nach sechs Monaten
-                        hatte ich 20 Kilo zugenommen. Und kein einziges Haar weniger.
-                    </p>
-
-                    <p class="story__highlight">
-                        Der Wendepunkt war der Moment, als ich nicht mehr wollte,
-                        dass meine eigenen Kinder mit ihren Händchen in mein Gesicht fassen —
-                        weil ich mich für meinen Bart geschämt habe.
-                    </p>
-
-                    <p>
-                        Ich machte mich selbstständig. Startete mit einem IPL-Gerät, wechselte auf
-                        einen Diodenlaser. Und behandelte seitdem unzählige Frauen, die denselben
-                        Leidensdruck kennen.
-                    </p>
-
-                    <p>
-                        <strong>Ich habe nicht aufgehört, diese Frauen zu behandeln.
-                        Ich habe angefangen, ihnen zuzuhören.</strong>
-                    </p>
-
-                    <p>
-                        Das ist beautifulista. Ehrlichkeit. Empathie. Echte Ergebnisse.
-                    </p>
-                </div>
+            <div class="quote-content">
+                <span class="quote-mark">"</span>
+                <blockquote class="quote-text">
+                    Du hast dich lange genug<br>
+                    für das geschämt,<br>
+                    das du dir nicht ausgesucht hast.<br><br>
+                    <strong>Ich auch.</strong><br>
+                    Und genau deshalb weiß ich,<br>
+                    was du wirklich brauchst.
+                </blockquote>
+                <span class="quote-attribution">Sarah Rabe · Inhaberin beautifulista</span>
+                <a href="ueber-mich.html" class="quote-link">Meine Geschichte lesen →</a>
             </div>
 
         </div>
@@ -1497,56 +1668,55 @@ document.querySelectorAll('.results__video-wrap').forEach(wrap => {
 
 
 /* --- Quiz Logic --- */
-const quizData = { 1: null, 2: null, 3: null, email: null };
+const quizData = { 1: null, 2: null, 3: null, 4: null, email: null };
 
 const results = {
     hydrafacial_sig: {
+        tag:   'Gefunden.',
         title: 'HydraFacial Signature',
-        desc:  'Dein Ergebnis: Tiefenreinigung, Peeling und Wirkstoffe in 45 Minuten — sofort sichtbar, kein Ruhezeitraum. Die ideale Behandlung für deinen Hauttyp und dein Zeitfenster.',
+        desc:  'In 45 Minuten passiert etwas, das du spürst: Deine Haut wird tiefengereinigt, sanft gepeelt, von innen heraus versorgt. Du gehst rein mit dem Gefühl von Schwere. Du kommst raus mit einem Strahlen, das kein Filter erreicht. Kein Ruhezeitraum. Kein Kompromiss. Nur du — sichtbar, frisch, du selbst.',
         link:  'https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna'
     },
     hydrafacial_deluxe: {
+        tag:   'Genau richtig für dich.',
         title: 'HydraFacial Deluxe',
-        desc:  'Dein Ergebnis: Mehr Zeit, mehr Tiefe, mehr Wirkung. HydraFacial Deluxe gibt deiner Haut die vollständige Aufmerksamkeit, die sie verdient.',
+        desc:  'Du gibst dir selbst eine Stunde. Das ist nicht selbstverständlich — und genau deshalb verdient diese Stunde das Beste. HydraFacial Deluxe reinigt tiefer, wirkt länger, lässt dich frischer rausgehen als du reingekommen bist. Mit einem Gesicht, das du zeigen willst. Weil du es kannst.',
         link:  'https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna'
     },
     infuzion: {
+        tag:   'Das ist deine Behandlung.',
         title: 'Infuzion Systems',
-        desc:  'Dein Ergebnis: Hochkonzentrierte Wirkstoffe direkt in die Tiefe — für Straffung, Regeneration und nachhaltige Verbesserung. Ohne Nadeln, ohne Schmerzen.',
+        desc:  'Du willst keine Lösung für die Oberfläche. Du willst echte Veränderung — und genau das bekommst du. Infuzion bringt hochkonzentrierte Wirkstoffe dorthin, wo Cremes nie ankommen: tief in die Haut, ohne Nadeln, ohne Schmerzen. Straffung und Regeneration, die du nicht nur siehst. Sondern fühlst.',
         link:  'https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna'
     },
     kombo: {
+        tag:   'Das volle Programm — für dich.',
         title: 'Skin Kombo',
-        desc:  'Dein Ergebnis: Das Beste aus beiden Welten — HydraFacial bereitet die Haut vor, Infuzion Systems vertieft die Wirkung. Für maximales Ergebnis in einer Session.',
+        desc:  'Du gibst dir das Beste. Und das Beste ist: HydraFacial öffnet deine Haut, bereitet sie vor, macht sie empfänglich. Dann kommt Infuzion — und bringt die Wirkstoffe an einen Ort, den keine Creme je erreicht. Ein Termin. Zwei Behandlungen. Ein Ergebnis, das du nicht mehr verstecken willst.',
         link:  'https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna'
     },
     lash: {
+        tag:   'Dein Blick. Dein Auftritt.',
         title: 'Lash & Brow Lifting',
-        desc:  'Dein Ergebnis: Ausdrucksstarke Augen und definierte Brauen — bis zu 8 Wochen, ohne Makeup. Von Emilia, der Spezialistin im Haus.',
+        desc:  'Augen sind das erste, was Menschen an dir sehen — und das erste, was du siehst, wenn du in den Spiegel schaust. Definierte Brauen, geschwungene Wimpern, ein Blick, der für sich selbst spricht. Bis zu 8 Wochen. Kein Makeup nötig. Einfach du — wach, präsent, selbstbewusst.',
         link:  'https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna'
     },
     laser: {
+        tag:   'Endlich eine echte Lösung.',
         title: 'Primelase Diodenlaser',
-        desc:  'Dein Ergebnis: Dauerhafte Haarentfernung mit dem Primelase-Laser. Ich bringe das Gerät bald nach Unna — trag dich jetzt auf die Warteliste ein.',
+        desc:  'Du hast lange genug jeden Tag damit gekämpft. Ich weiß das — ich habe es selbst zwanzig Jahre gelebt. Der Primelase-Laser kommt bald nach Unna. Ich bringe nicht nur ein Gerät. Ich bringe tiefes Fachwissen und ein Versprechen: Ich werde dir nie eine falsche Hoffnung machen. Nur die Wahrheit. Und die reicht.',
         link:  '#kontakt'
     }
 };
 
 function getResult() {
-    const q1 = quizData[1], q2 = quizData[2], q3 = quizData[3];
+    const q1 = quizData[1], q3 = quizData[3], q4 = quizData[4];
     if (q1 === 'haare') return results.laser;
     if (q1 === 'augen') return results.lash;
-    if (q1 === 'unreine') {
-        if (q3 === 'kurz')  return results.hydrafacial_sig;
-        return results.hydrafacial_deluxe;
-    }
-    if (q1 === 'muede') {
-        if (q2 === 'sofort') return results.hydrafacial_deluxe;
-        if (q3 === 'lang')   return results.infuzion;
-        return results.hydrafacial_deluxe;
-    }
+    if (q1 === 'unreine') return (q4 === 'kurz') ? results.hydrafacial_sig : results.hydrafacial_deluxe;
+    if (q1 === 'muede')   return (q3 === 'sofort') ? results.hydrafacial_deluxe : results.infuzion;
     if (q1 === 'straff') {
-        if (q3 === 'lang') return q2 === 'sofort' ? results.kombo : results.infuzion;
+        if (q3 === 'beides' || q4 === 'lang') return results.kombo;
         return results.infuzion;
     }
     return results.hydrafacial_deluxe;
@@ -1570,33 +1740,42 @@ function showStep(n) {
     updateProgress(n);
 }
 
+function showResult(res) {
+    document.querySelectorAll('.quiz__panel').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('quiz-result');
+    el.style.display = 'block';
+    el.style.opacity = '1';
+    el.style.visibility = 'visible';
+    el.style.pointerEvents = 'auto';
+    el.classList.add('active');
+    document.getElementById('quiz-result-tag').textContent   = res.tag;
+    document.getElementById('quiz-result-title').textContent = res.title;
+    document.getElementById('quiz-result-desc').textContent  = res.desc;
+    document.getElementById('quiz-result-cta').href          = res.link;
+    updateProgress(6);
+}
+
 document.querySelectorAll('.quiz__option').forEach(btn => {
     btn.addEventListener('click', () => {
         const q = +btn.dataset.q;
         quizData[q] = btn.dataset.v;
         btn.closest('.quiz__options').querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
-        setTimeout(() => showStep(q + 1), 280);
+        setTimeout(() => showStep(q + 1), 300);
     });
 });
 
 document.getElementById('quiz-email-form').addEventListener('submit', e => {
     e.preventDefault();
     quizData.email = e.target.email.value;
-    const res = getResult();
-    document.getElementById('quiz-step-4').classList.remove('active');
-    const resultEl = document.getElementById('quiz-result');
-    resultEl.removeAttribute('hidden');
-    document.getElementById('quiz-result-title').textContent = res.title;
-    document.getElementById('quiz-result-desc').textContent = res.desc;
-    document.getElementById('quiz-result-cta').href = res.link;
-    updateProgress(5);
-    // Hier: Brevo/Formspree-Integration möglich — Email + Empfehlung senden
+    showResult(getResult());
 });
 
 document.getElementById('quiz-restart').addEventListener('click', () => {
-    quizData[1] = quizData[2] = quizData[3] = quizData.email = null;
-    document.getElementById('quiz-result').setAttribute('hidden', '');
+    quizData[1] = quizData[2] = quizData[3] = quizData[4] = quizData.email = null;
+    const el = document.getElementById('quiz-result');
+    el.style.display = 'none'; el.style.opacity = '0';
+    el.style.visibility = 'hidden'; el.classList.remove('active');
     document.querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
     showStep(1);
 });
