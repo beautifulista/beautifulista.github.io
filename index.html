@@ -240,7 +240,7 @@
     @media (max-width: 560px)  { .flipcards-grid { grid-template-columns: 1fr; } }
 
     .flip-card {
-        height: 420px;
+        height: 480px;
         perspective: 1200px;
         cursor: pointer;
     }
@@ -458,6 +458,31 @@
         width: fit-content;
     }
     .flip-card--dark .flip-card__back { background: linear-gradient(135deg, #1c1c1c, #2c2510); }
+
+    /* --- Karten mit Bild --- */
+    .flip-card__front--img {
+        padding: 0 0 22px;
+    }
+    .flip-card__image {
+        width: 100%;
+        height: 175px;
+        overflow: hidden;
+        border-radius: 14px 14px 0 0;
+        flex-shrink: 0;
+    }
+    .flip-card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    .flip-card:hover .flip-card__image img { transform: scale(1.04); }
+    .flip-card__content {
+        padding: 18px 24px 0;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
 
     /* --- Quiz Section --- */
     .quiz-section {
@@ -1005,19 +1030,17 @@
         <div class="flipcards-grid">
 
             <!-- HydraFacial -->
-            <div class="flip-card" role="button" tabindex="0" aria-label="HydraFacial — Details">
+            <div class="flip-card" role="button" tabindex="0" aria-label="HydraFacial Details">
                 <div class="flip-card__inner">
-                    <div class="flip-card__front">
-                        <div class="flip-card__icon">
-                            <!-- Wassertropfen / Hydration -->
-                            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 6 C22 6 11 19 11 27 a11 11 0 0 0 22 0 C33 19 22 6 22 6z"/>
-                                <path d="M16 29 Q22 34 28 29" stroke-width="1.2" opacity="0.6"/>
-                            </svg>
+                    <div class="flip-card__front flip-card__front--img">
+                        <div class="flip-card__image">
+                            <img src="Hydrafacial.jpg" alt="HydraFacial Serum-Flaschen" loading="lazy" style="object-position: 50% 55%">
                         </div>
-                        <h3>HydraFacial</h3>
-                        <p class="flip-card__tagline">Tiefenreinigung, Peeling und Wirkstoff­infusion in einem Schritt. Sofort sichtbar — kein Ruhezeitraum, kein Kompromiss.</p>
-                        <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        <div class="flip-card__content">
+                            <h3>HydraFacial</h3>
+                            <p class="flip-card__tagline">Tiefenreinigung, Peeling und Wirkstoff­infusion in einem Schritt. Sofort sichtbar, kein Ruhezeitraum, kein Kompromiss.</p>
+                            <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        </div>
                     </div>
                     <div class="flip-card__back">
                         <div>
@@ -1041,20 +1064,17 @@
             </div>
 
             <!-- Infuzion Systems -->
-            <div class="flip-card" role="button" tabindex="0" aria-label="Infuzion Systems — Details">
+            <div class="flip-card" role="button" tabindex="0" aria-label="Infuzion Systems Details">
                 <div class="flip-card__inner">
-                    <div class="flip-card__front">
-                        <div class="flip-card__icon">
-                            <!-- Energie / Blitz -->
-                            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M26 5 L16 23 H23 L18 39 L34 19 H26 L26 5z"/>
-                                <circle cx="10" cy="14" r="2" opacity="0.4"/>
-                                <circle cx="8"  cy="30" r="1.5" opacity="0.3"/>
-                            </svg>
+                    <div class="flip-card__front flip-card__front--img">
+                        <div class="flip-card__image">
+                            <img src="Infuzion Exozomes Power and Solution.jpg" alt="Infuzion Exozom Wirkstoffe" loading="lazy" style="object-position: 50% 50%">
                         </div>
-                        <h3>Infuzion Systems</h3>
-                        <p class="flip-card__tagline">Hochkonzentrierte Wirkstoffe direkt in die Haut — ohne Nadeln, ohne Schmerzen. Elektrophoretische Technologie auf klinischem Niveau.</p>
-                        <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        <div class="flip-card__content">
+                            <h3>Infuzion Systems</h3>
+                            <p class="flip-card__tagline">Hochkonzentrierte Wirkstoffe direkt in die Haut, ohne Nadeln, ohne Schmerzen. Elektrophoretische Technologie auf klinischem Niveau.</p>
+                            <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        </div>
                     </div>
                     <div class="flip-card__back">
                         <div>
@@ -1078,23 +1098,17 @@
             </div>
 
             <!-- Lash & Brow -->
-            <div class="flip-card" role="button" tabindex="0" aria-label="Lash & Brow — Details">
+            <div class="flip-card" role="button" tabindex="0" aria-label="Lash and Brow Details">
                 <div class="flip-card__inner">
-                    <div class="flip-card__front">
-                        <div class="flip-card__icon">
-                            <!-- Auge -->
-                            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 22 C10 12 34 12 39 22 C34 32 10 32 5 22z"/>
-                                <circle cx="22" cy="22" r="5"/>
-                                <circle cx="22" cy="22" r="2" fill="currentColor" stroke="none" opacity="0.4"/>
-                                <path d="M13 13 Q16 8 19 8" stroke-width="1.1"/>
-                                <path d="M22 7 Q25 7 27 8" stroke-width="1.1"/>
-                                <path d="M29 10 Q32 11 34 13" stroke-width="1.1"/>
-                            </svg>
+                    <div class="flip-card__front flip-card__front--img">
+                        <div class="flip-card__image">
+                            <img src="Emilia Lashlifting ohne Zoom.jpeg" alt="Emilia beim Lash Lifting" loading="lazy" style="object-position: 50% 55%">
                         </div>
-                        <h3>Lash &amp; Brow</h3>
-                        <p class="flip-card__tagline">Definierte Brauen und ausdrucksstarke Wimpern — bis zu 8 Wochen ohne Nachbesserung. Von Emilia, der Spezialistin im Haus.</p>
-                        <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        <div class="flip-card__content">
+                            <h3>Lash &amp; Brow</h3>
+                            <p class="flip-card__tagline">Definierte Brauen und ausdrucksstarke Wimpern, bis zu 8 Wochen ohne Nachbesserung. Von Emilia, der Spezialistin im Haus.</p>
+                            <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        </div>
                     </div>
                     <div class="flip-card__back">
                         <div>
@@ -1118,21 +1132,18 @@
             </div>
 
             <!-- Circadia -->
-            <div class="flip-card" role="button" tabindex="0" aria-label="Circadia — Details">
+            <div class="flip-card" role="button" tabindex="0" aria-label="Circadia Details">
                 <div class="flip-card__inner">
-                    <div class="flip-card__front">
-                        <div class="flip-card__icon">
-                            <!-- Mond / Chronobiologie -->
-                            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M27 10 A13 13 0 1 0 27 34 A17 17 0 0 1 27 10z"/>
-                                <circle cx="32" cy="12" r="2" opacity="0.5"/>
-                                <circle cx="36" cy="20" r="1.2" opacity="0.35"/>
-                            </svg>
+                    <div class="flip-card__front flip-card__front--img">
+                        <div class="flip-card__image">
+                            <img src="Circadia firmingpeptide.jpg" alt="Circadia Firming Peptide Produkt" loading="lazy">
                         </div>
-                        <span class="flip-card__badge">Neu</span>
-                        <h3>Circadia</h3>
-                        <p class="flip-card__tagline">Hautpflege im Rhythmus deines Körpers. Chronobiologisch abgestimmt — für Haut, die nicht nur gut aussieht, sondern in Balance ist.</p>
-                        <span class="flip-card__hint">Mehr erfahren →</span>
+                        <div class="flip-card__content">
+                            <span class="flip-card__badge">Neu</span>
+                            <h3>Circadia</h3>
+                            <p class="flip-card__tagline">Hautpflege im Rhythmus deines Körpers. Chronobiologisch abgestimmt, für Haut, die nicht nur gut aussieht, sondern in Balance ist.</p>
+                            <span class="flip-card__hint">Mehr erfahren →</span>
+                        </div>
                     </div>
                     <div class="flip-card__back">
                         <div>
@@ -1153,19 +1164,17 @@
             </div>
 
             <!-- Skin Kombos -->
-            <div class="flip-card" role="button" tabindex="0" aria-label="Skin Kombos — Details">
+            <div class="flip-card" role="button" tabindex="0" aria-label="Skin Kombos Details">
                 <div class="flip-card__inner">
-                    <div class="flip-card__front">
-                        <div class="flip-card__icon">
-                            <!-- Überlappende Schichten -->
-                            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="8" y="8" width="20" height="20" rx="4"/>
-                                <rect x="16" y="16" width="20" height="20" rx="4" opacity="0.55"/>
-                            </svg>
+                    <div class="flip-card__front flip-card__front--img">
+                        <div class="flip-card__image">
+                            <img src="Sarah Hydrafacial Behandlung.PNG" alt="Sarah bei der HydraFacial Behandlung" loading="lazy" style="object-position: 50% 25%">
                         </div>
-                        <h3>Skin Kombos</h3>
-                        <p class="flip-card__tagline">Zwei Behandlungen, eine Session, maximale Wirkung. HydraFacial trifft Infuzion — und du sparst bis zu 80 €.</p>
-                        <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        <div class="flip-card__content">
+                            <h3>Skin Kombos</h3>
+                            <p class="flip-card__tagline">Zwei Behandlungen, eine Session, maximale Wirkung. HydraFacial trifft Infuzion, du sparst bis zu 80 €.</p>
+                            <span class="flip-card__hint">Preise &amp; Details anzeigen →</span>
+                        </div>
                     </div>
                     <div class="flip-card__back">
                         <div>
@@ -1191,25 +1200,16 @@
             <!-- Primelase Laser — Coming Soon -->
             <div class="flip-card flip-card--dark" role="button" tabindex="0" aria-label="Primelase Diodenlaser — bald verfügbar">
                 <div class="flip-card__inner">
-                    <div class="flip-card__front">
-                        <div class="flip-card__icon" style="color:var(--gold)">
-                            <!-- Laser / Strahlen -->
-                            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="22" cy="22" r="4"/>
-                                <line x1="22" y1="5"  x2="22" y2="13"/>
-                                <line x1="22" y1="31" x2="22" y2="39"/>
-                                <line x1="5"  y1="22" x2="13" y2="22"/>
-                                <line x1="31" y1="22" x2="39" y2="22"/>
-                                <line x1="10" y1="10" x2="16" y2="16"/>
-                                <line x1="28" y1="28" x2="34" y2="34"/>
-                                <line x1="34" y1="10" x2="28" y2="16"/>
-                                <line x1="16" y1="28" x2="10" y2="34"/>
-                            </svg>
+                    <div class="flip-card__front flip-card__front--img">
+                        <div class="flip-card__image">
+                            <img src="Sarah beim lasern.jpeg" alt="Sarah bei der Laserbehandlung" loading="lazy" style="object-position: 50% 30%">
                         </div>
-                        <span class="flip-card__badge-coming">Bald verfügbar</span>
-                        <h3>Primelase Laser</h3>
-                        <p class="flip-card__tagline">Dauerhafte Haarentfernung in Unna — von der Frau, die selbst zwanzig Jahre damit gelebt hat. Jetzt auf die Warteliste.</p>
-                        <span class="flip-card__hint">Warteliste eintragen →</span>
+                        <div class="flip-card__content">
+                            <span class="flip-card__badge-coming">Bald verfügbar</span>
+                            <h3>Primelase Laser</h3>
+                            <p class="flip-card__tagline">Dauerhafte Haarentfernung in Unna, von der Frau, die selbst zwanzig Jahre damit gelebt hat. Jetzt auf die Warteliste.</p>
+                            <span class="flip-card__hint">Warteliste eintragen →</span>
+                        </div>
                     </div>
                     <div class="flip-card__back" style="background:linear-gradient(135deg,#1c1c1c,#2a2510)">
                         <div>
@@ -1218,8 +1218,8 @@
                         </div>
                         <ul class="flip-card__benefits">
                             <li>Diodenlaser der neusten Generation</li>
-                            <li>Für alle Hauttypen — auch sensible Haut</li>
-                            <li>Radikale Ehrlichkeit über Ergebnis &amp; Verlauf</li>
+                            <li>Für alle Hauttypen, auch sensible Haut</li>
+                            <li>Radikale Ehrlichkeit über Ergebnis und Verlauf</li>
                             <li>Inhaberin behandelt seit 2017 mit Diodenlaser</li>
                         </ul>
                         <p class="flip-card__price-note">Preise folgen beim Launch</p>
@@ -1577,9 +1577,9 @@
         <div class="footer__grid">
             <div class="footer__brand">
                 <p class="footer__logo">
-                    <span class="logo__brand">beautifulista</span><span class="logo__sub footer__logo__sub"> · more than beauty 🤍</span>
+                    <span class="logo__brand">beautifulista</span><span class="logo__sub footer__logo__sub"> · more than beauty</span>
                 </p>
-                <p class="footer__claim">because beauty needs trust ✨</p>
+                <p class="footer__claim">because beauty needs trust</p>
                 <p class="footer__location">Kosmetikinstitut · Ostring 37 · 59423 Unna</p>
             </div>
             <nav class="footer__links" aria-label="Footer-Navigation">

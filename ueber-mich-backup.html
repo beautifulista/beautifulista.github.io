@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über mich · Sarah Rabe | beautifulista Kosmetikinstitut Unna</title>
+    <meta name="description" content="Die Geschichte hinter beautifulista. Sarah Rabe über Scham, Veränderung und warum sie Frauen behandelt, die wissen, wie es sich anfühlt, sich zu verstecken.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+    /* =========================================================
+       Über mich · Standalone Page
+       ========================================================= */
+
+    /* --- Hero: dunkel, cineastisch --- */
+    .om-hero {
+        min-height: 100vh;
+        background: var(--anthrazit);
+        display: flex;
+        align-items: flex-end;
+        padding: 0 64px 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .om-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 70% 40%, rgba(212,175,55,0.06) 0%, transparent 60%),
+                    linear-gradient(to bottom, transparent 40%, rgba(28,28,28,0.85) 100%);
+        z-index: 1;
+    }
+
+    .om-hero__image {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    .om-hero__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 25%;
+        opacity: 0.5;
+        filter: grayscale(20%);
+    }
+
+    .om-hero__content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+    }
+
+    .om-hero__eyebrow {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        display: block;
+    }
+
+    .om-hero__title {
+        font-family: var(--font-serif);
+        font-size: clamp(44px, 7vw, 88px);
+        font-weight: 300;
+        line-height: 1.05;
+        color: #fff;
+        margin-bottom: 32px;
+        letter-spacing: -0.02em;
+    }
+
+    .om-hero__title em {
+        font-style: italic;
+        color: var(--gold);
+    }
+
+    .om-hero__sub {
+        font-family: var(--font-sans);
+        font-size: 16px;
+        color: rgba(255,255,255,0.55) !important;
+        max-width: 520px;
+        line-height: 1.7;
+        margin-bottom: 40px;
+    }
+
+    .om-hero__scroll {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.35);
+    }
+
+    .om-hero__scroll::before {
+        content: '';
+        display: block;
+        width: 32px;
+        height: 1px;
+        background: rgba(255,255,255,0.25);
+    }
+
+    @media (max-width: 768px) {
+        .om-hero { padding: 0 24px 72px; }
+        .om-hero__title { font-size: clamp(36px, 9vw, 60px); }
+    }
+
+    /* --- Section Basis --- */
+    .om-section {
+        padding: 100px 0;
+    }
+
+    .om-section--ivory { background: var(--ivory); }
+    .om-section--white { background: #fff; }
+    .om-section--dark  { background: var(--anthrazit); }
+    .om-section--sage  {
+        background: var(--sage);
+    }
+
+    .om-container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    .om-container--wide {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    /* --- Du kennst das · Einstieg --- */
+    .om-opener {
+        text-align: center;
+    }
+
+    .om-opener__kicker {
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dark-green);
+        margin-bottom: 24px;
+        display: block;
+    }
+
+    .om-opener__lead {
+        font-family: var(--font-serif);
+        font-size: clamp(28px, 4vw, 48px);
+        font-weight: 300;
+        line-height: 1.3;
+        color: var(--anthrazit);
+        margin-bottom: 48px;
+    }
+
+    .om-opener__lead em {
+        font-style: italic;
+        color: var(--dark-green);
+    }
+
+    .om-opener__body p {
+        font-size: clamp(16px, 2vw, 19px) !important;
+        line-height: 1.85;
+        color: var(--text-muted) !important;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .om-opener__body p strong {
+        color: var(--anthrazit) !important;
+    }
+
+    /* --- Story Spalten --- */
+    .om-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
+
+    .om-split--reversed .om-split__image { order: 2; }
+    .om-split--reversed .om-split__text  { order: 1; }
+
+    @media (max-width: 860px) {
+        .om-split { grid-template-columns: 1fr; gap: 48px; }
+        .om-split--reversed .om-split__image { order: 0; }
+        .om-split--reversed .om-split__text  { order: 0; }
+    }
+
+    /* Gold Frame für Bilder */
+    .om-gold-frame {
+        position: relative;
+        padding: 20px 0 0 20px;
+    }
+
+    .om-gold-frame::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        border: 2px solid var(--gold);
+        border-radius: 20px;
+        z-index: 0;
+    }
+
+    .om-gold-frame img {
+        display: block;
+        position: relative;
+        z-index: 1;
+        border-radius: 14px;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: top center;
+        box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+
+    /* Text Blöcke */
+    .om-kicker {
+        font-family: var(--font-sans);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dark-green);
+        margin-bottom: 16px;
+        display: block;
+    }
+
+    .om-kicker--gold { color: var(--gold); }
+    .om-kicker--light { color: rgba(255,255,255,0.45); }
+
+    .om-heading {
+        font-family: var(--font-serif);
+        font-size: clamp(30px, 4vw, 48px);
+        font-weight: 300;
+        line-height: 1.15;
+        color: var(--anthrazit);
+        margin-bottom: 28px;
+    }
+
+    .om-heading--light { color: #fff; }
+    .om-heading--gold  { color: var(--gold); }
+
+    .om-text {
+        font-size: clamp(15px, 1.8vw, 18px) !important;
+        line-height: 1.85;
+        color: var(--text-muted) !important;
+    }
+
+    .om-text--light { color: rgba(255,255,255,0.65) !important; }
+
+    .om-text p { margin-bottom: 20px; }
+    .om-text p:last-child { margin-bottom: 0; }
+
+    .om-text strong { color: var(--anthrazit) !important; font-weight: 600; }
+    .om-text--light strong { color: #fff !important; }
+
+    /* --- Pullquote --- */
+    .om-pullquote {
+        border-left: 3px solid var(--gold);
+        padding: 8px 0 8px 28px;
+        margin: 36px 0;
+    }
+
+    .om-pullquote p {
+        font-family: var(--font-serif);
+        font-size: clamp(20px, 2.5vw, 28px) !important;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.45;
+        color: var(--anthrazit) !important;
+    }
+
+    /* --- Wendepunkt: volle Breite, dunkel --- */
+    .om-turning-point {
+        text-align: center;
+    }
+
+    .om-turning-point .om-heading {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+    }
+
+    .om-turning-point .om-text {
+        max-width: 620px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    /* --- Werte Grid --- */
+    .om-values {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-top: 64px;
+    }
+
+    @media (max-width: 768px) { .om-values { grid-template-columns: 1fr; } }
+
+    .om-value {
+        padding: 36px 28px;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.03);
+    }
+
+    .om-value__number {
+        font-family: var(--font-serif);
+        font-size: 48px;
+        font-weight: 300;
+        color: var(--gold);
+        opacity: 0.4;
+        line-height: 1;
+        margin-bottom: 16px;
+    }
+
+    .om-value__title {
+        font-family: var(--font-serif);
+        font-size: 22px;
+        font-weight: 400;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+
+    .om-value__desc {
+        font-family: var(--font-sans);
+        font-size: 14px;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.5) !important;
+    }
+
+    /* --- CTA Section --- */
+    .om-cta {
+        text-align: center;
+    }
+
+    .om-cta__title {
+        font-family: var(--font-serif);
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 300;
+        color: var(--anthrazit);
+        margin-bottom: 20px;
+        line-height: 1.15;
+    }
+
+    .om-cta__title em { font-style: italic; color: var(--dark-green); }
+
+    .om-cta__sub {
+        font-size: 17px !important;
+        color: var(--text-muted) !important;
+        max-width: 480px;
+        margin: 0 auto 40px;
+        line-height: 1.7;
+    }
+
+    .om-cta__actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* --- Back Link --- */
+    .om-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        transition: color 0.2s;
+        margin-bottom: 48px;
+    }
+
+    .om-back:hover { color: rgba(255,255,255,0.7); }
+
+    .om-back::before {
+        content: '←';
+        font-size: 14px;
+    }
+
+    /* --- Signatur --- */
+    .om-signature {
+        font-family: var(--font-brand, var(--font-serif));
+        font-size: 36px;
+        color: var(--gold);
+        opacity: 0.7;
+        margin-top: 32px;
+        display: block;
+    }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav__container">
+        <a href="index.html" class="nav__logo" aria-label="beautifulista Startseite">
+            <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
+        </a>
+        <div class="nav__links" id="nav-links">
+            <a href="index.html#behandlungen">Behandlungen</a>
+            <a href="ueber-mich.html" aria-current="page">Über mich</a>
+            <a href="index.html#bewertungen">Bewertungen</a>
+            <a href="index.html#kontakt">Kontakt</a>
+        </div>
+        <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna"
+           class="btn btn--nav" target="_blank" rel="noopener">Termin buchen</a>
+        <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+
+<!-- =====================
+     Hero
+     ===================== -->
+<section class="om-hero" aria-label="Über mich">
+
+    <div class="om-hero__image">
+        <img src="sarah.jpg"
+             alt="Sarah Rabe, Inhaberin beautifulista, Kosmetikinstitut Unna"
+             loading="eager">
+    </div>
+
+    <div class="om-hero__content">
+        <a href="index.html" class="om-back">Zurück zur Startseite</a>
+        <span class="om-hero__eyebrow">beautifulista · mehr als Kosmetik</span>
+        <h1 class="om-hero__title">
+            Es gibt Dinge,<br>
+            für die man sich<br>
+            nicht schämen <em>sollte.</em>
+        </h1>
+        <p class="om-hero__sub">
+            Und trotzdem tun es so viele von uns.<br>
+            Im Stillen. Alleine.
+        </p>
+        <span class="om-hero__scroll">Mehr erfahren</span>
+    </div>
+
+</section>
+
+
+<!-- =====================
+     Einstieg · Du kennst das
+     ===================== -->
+<section class="om-section om-section--ivory">
+    <div class="om-container">
+        <div class="om-opener">
+
+            <span class="om-opener__kicker">Du bist nicht allein</span>
+            <h2 class="om-opener__lead">
+                Jeden Tag dasselbe Ritual:<br>
+                verstecken, kaschieren, <em>funktionieren.</em>
+            </h2>
+
+            <div class="om-opener__body">
+                <p>
+                    Mit einer Fingerkuppe übers Kinn fahren. In jedem Moment, wo man kurz
+                    unbeobachtet ist. Im Büro, wenn der Kollege das Zimmer verlässt.
+                    Im Café, während man auf die Bestellung wartet. Im Aufzug, wenn die Türen zugehen.
+                </p>
+                <p>
+                    Und in den Momenten, die die schönsten sein sollten: wenn man verliebt ist,
+                    wenn jemand nah ist. Man ist mit dem Körper da und gleichzeitig ganz woanders.
+                    Im Kopf läuft die ganze Zeit nur ein Gedanke: Spürt er etwas? Sieht er etwas?
+                    Ausgerechnet dort, wo bei Frauen eigentlich nichts sein sollte?
+                </p>
+                <p>
+                    Immer dieselbe Berührung. Immer dieselbe Angst.
+                </p>
+                <p>
+                    Und dann, manchmal, das Schlimmste: nicht nur Stoppeln, sondern dieses eine Haar.
+                    Das irgendwann übersehen wurde und seitdem einfach weitergewachsen ist.
+                    Man spürt es unter der Fingerkuppe, und in diesem Moment dreht sich alles
+                    nur noch um dieses eine: Hat das jemand gesehen?
+                </p>
+                <p>
+                    Im Sommerurlaub die Frage, die jeden Morgen da war, bevor der Tag überhaupt
+                    angefangen hatte: Rasierst du dich jetzt, gehst dann an den Strand, ins Meer,
+                    und hast danach Schmerzen, Rötungen, Pusteln, die tagelang bleiben?
+                    Oder abends rasieren, und morgen früh Stoppeln haben?
+                </p>
+                <p>
+                    <strong>Es gab keine Wahl zwischen gut und schlecht.
+                    Es gab nur die Wahl zwischen schlecht und noch schlechter.</strong>
+                </p>
+                <p>
+                    Ich weiß das. Weil es meine Geschichte ist.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================
+     Sarahs Geschichte · Teil 1: Die Schande
+     ===================== -->
+<section class="om-section om-section--white">
+    <div class="om-container--wide">
+        <div class="om-split">
+
+            <div class="om-split__image">
+                <div class="om-gold-frame">
+                    <img src="sarah.jpg"
+                         alt="Sarah Rabe mit HydraFacial-Gerät"
+                         loading="lazy">
+                </div>
+            </div>
+
+            <div class="om-split__text">
+                <span class="om-kicker">Die Geschichte dahinter</span>
+                <h2 class="om-heading">
+                    Ich bin die Tochter<br>
+                    zweier Welten.
+                </h2>
+                <div class="om-text">
+                    <p>
+                        Ich bin Halbitalienerin: deutsche Mutter, neapolitanischer Vater.
+                        Wer mich sieht, sieht zuerst das Deutsche:
+                        sehr helle Haut, blaue Augen, nichts verrät den Süden.
+                        Außer meinen Haaren. Auf dem Kopf: wahnsinnig viele,
+                        dicke, lockige Haare. Und am Körper genau das Gleiche:
+                        viele, dicke, dunkle Haare.
+                    </p>
+                    <p>
+                        Mit Beginn der Pubertät wurde aus einem Unterschied eine Qual.
+                        Beinhaare so stark wie die eines Mannes. Bikinizone.
+                        Innerer Oberschenkel. Kinn.
+                        Ich konnte mich morgens rasieren
+                        und hatte abends bereits wieder sichtbare Stoppeln.
+                    </p>
+
+                    <div class="om-pullquote">
+                        <p>"Ich lebte mit einem Geheimnis, das jeder sehen konnte,
+                        und über das ich nie gesprochen habe. Nicht weil es verboten war.
+                        Sondern weil die Scham lauter war als alles andere."</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================
+     Sarahs Geschichte · Teil 2: Die Versuche
+     ===================== -->
+<section class="om-section om-section--ivory">
+    <div class="om-container">
+
+        <span class="om-kicker" style="text-align:center;display:block">Was ich alles versucht habe</span>
+        <h2 class="om-heading" style="text-align:center;max-width:600px;margin:0 auto 48px">
+            Die langen Jahre des<br>
+            "Vielleicht hilft das jetzt."
+        </h2>
+
+        <div class="om-text" style="max-width:680px;margin:0 auto">
+            <p>
+                Mit 17 empfahl mir mein Gynäkologe gezielt eine sehr stark dosierte Pille,
+                als medizinische Lösung, um meinen starken Haarwuchs einzudämmen.
+                Die Pille wurde mittlerweile seit Jahren vom Markt genommen,
+                weil sie schwerwiegende Nebenwirkungen hatte.
+                Meine Mutter warnte mich nach einem Monat.
+                Ich hörte nicht hin.
+                Nach sechs Monaten hatte ich 20&nbsp;Kilo zugenommen.
+                Und kein einziges Haar weniger.
+            </p>
+            <p>
+                Ich habe Enthaarungscremes versucht, die meine Haut irritiert haben.
+                IPL-Geräte zuhause, die nichts gebracht haben.
+                Einen Dermatologen, der mit Laser arbeitete. Ohne Ergebnis.
+            </p>
+            <p>
+                Jede Enttäuschung saß tiefer als die vorherige.
+                Nicht weil ich das Geld verloren hatte.
+                <strong>Sondern weil ich wieder gehofft hatte. Und wieder verloren hatte.</strong>
+            </p>
+            <p>
+                Wenn du das kennst, dieses zögernde Hoffen bevor du etwas Neues ausprobierst,
+                dann weißt du genau, wovon ich rede.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================
+     Wendepunkt · dunkel, emotional
+     ===================== -->
+<section class="om-section om-section--dark">
+    <div class="om-container">
+        <div class="om-turning-point">
+
+            <span class="om-kicker om-kicker--gold">Der Moment, in dem ich aufgehört habe, mich abzufinden</span>
+            <h2 class="om-heading om-heading--light" style="font-style:italic">
+                "Mama, warum hast Du<br>denn einen Bart?"
+            </h2>
+
+            <div class="om-text om-text--light" style="max-width:580px;margin:0 auto;text-align:left">
+                <p>
+                    Ich war in Eile. Ein Telefontermin hatte sich hingezogen,
+                    keine Zeit mehr geblieben. Schnell aus dem Haus, ins Auto,
+                    bloß nicht zu spät am Kindergarten.
+                </p>
+                <p>
+                    Erst auf der Fahrt dorthin merkte ich es. Den Schal.
+                    Ich hatte vergessen, ihn umzubinden.
+                </p>
+                <p>
+                    Auf dem Rückweg saß meine Tochter in ihrem Kindersitz neben mir.
+                    Vier, vielleicht fünf Jahre alt. Aus dem Augenwinkel sah ich,
+                    wie sie mich anschaute. Immer wieder. Ein Kind in einem Kindersitz
+                    sitzt tiefer, schaut von unten nach oben. Ich spürte diesen Blick.
+                </p>
+                <p>
+                    Dann fiel der Satz. Ohne böse Absicht, ohne zu ahnen, was er auslöst.
+                    So wie Kinder eben fragen.
+                </p>
+                <p>
+                    Ich weiß, dass sie mich liebt. Egal was. Aber in diesem Moment
+                    wurde mir klar: <strong>Du kannst noch so sehr versuchen, es zu verbergen.
+                    Es wird immer den Moment geben, in dem es jemand bemerkt.
+                    Jederzeit. Überall.</strong>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================
+     Transformation
+     ===================== -->
+<section class="om-section om-section--white">
+    <div class="om-container--wide">
+        <div class="om-split om-split--reversed">
+
+            <div class="om-split__text">
+                <span class="om-kicker">Was dann passierte</span>
+                <h2 class="om-heading">
+                    Ich machte mich<br>
+                    selbstständig.
+                </h2>
+                <div class="om-text">
+                    <p>
+                        Ich begann, mich intensiv mit der Technologie der dauerhaften Haarentfernung
+                        zu beschäftigen, nicht als Kundin, sondern als jemand, der verstehen will.
+                        Wirklich verstehen.
+                    </p>
+                    <p>
+                        Ich startete mit einem IPL-Gerät. Wechselte auf einen Diodenlaser.
+                        Und mit dem richtigen Gerät, in den richtigen Händen,
+                        passierte endlich das, wovon ich zwanzig Jahre geträumt hatte.
+                    </p>
+                    <p>
+                        Seitdem habe ich unzählige Frauen behandelt, die denselben Leidensdruck kennen.
+                        Frauen, die einen Rasierer in der Handtasche tragen.
+                        Die sich mittags heimlich im Bürobad rasieren.
+                        Die nie über das sprechen, was sie täglich beschäftigt.
+                    </p>
+
+                    <div class="om-pullquote">
+                        <p>"Für mich beginnt jede Behandlung mit dem Zuhören,
+                        denn nur wer wirklich versteht, was eine Frau belastet,
+                        findet die Behandlung, die wirklich passt."</p>
+                    </div>
+
+                    <p>
+                        Von 2017 bis 2023 führte ich mein erstes Institut.
+                        Heute bin ich zurück, mit allem, was ich in dieser Zeit
+                        gelernt und erlebt habe, und demselben Versprechen:
+                        Ich werde dir die Wahrheit sagen.
+                        Auch wenn sie unbequem ist.
+                    </p>
+                </div>
+            </div>
+
+            <div class="om-split__image">
+                <div class="om-gold-frame">
+                    <img src="sarah.jpg"
+                         alt="Sarah Rabe im beautifulista Institut Unna"
+                         loading="lazy">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =====================
+     Werte · dunkel
+     ===================== -->
+<section class="om-section om-section--dark">
+    <div class="om-container--wide">
+
+        <div style="text-align:center;margin-bottom:0">
+            <span class="om-kicker om-kicker--gold">Wofür ich stehe</span>
+            <h2 class="om-heading om-heading--light" style="max-width:560px;margin:0 auto">
+                Was beautifulista bedeutet,<br>
+                über die Behandlung hinaus.
+            </h2>
+        </div>
+
+        <div class="om-values">
+            <div class="om-value">
+                <div class="om-value__title">Ehrlichkeit</div>
+                <p class="om-value__desc">
+                    Ich werde dir nie erzählen, was du hören möchtest.
+                    Nur das, was dich wirklich weiterbringt.
+                    Auch wenn das bedeutet, dass eine Behandlung bei dir nicht sinnvoll ist.
+                </p>
+            </div>
+            <div class="om-value">
+                <div class="om-value__title">Empathie</div>
+                <p class="om-value__desc">
+                    Ich kenne das, was viele meiner Kundinnen mitbringen,
+                    nicht aus einem Lehrbuch, sondern aus zwanzig Jahren eigenem Erleben.
+                    Das verändert, wie ich zuhöre.
+                </p>
+            </div>
+            <div class="om-value">
+                <div class="om-value__title">Ergebnisse</div>
+                <p class="om-value__desc">
+                    Schönheit braucht Vertrauen.
+                    Und Vertrauen entsteht, wenn Worte und Ergebnisse übereinstimmen.
+                    Das ist der Anspruch, mit dem ich jeden Termin beginne.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================
+     Haltung · Philosophie
+     ===================== -->
+<section class="om-section om-section--ivory">
+    <div class="om-container">
+
+        <span class="om-kicker" style="text-align:center;display:block">Meine Haltung</span>
+        <h2 class="om-heading" style="text-align:center;max-width:680px;margin:0 auto 48px;font-size:clamp(28px,4vw,44px)">
+            Ich bin nicht hier,<br>
+            um dir einzureden,<br>
+            dass du nicht in Ordnung bist.
+        </h2>
+
+        <div class="om-text" style="max-width:680px;margin:0 auto">
+            <p>
+                Ich bin nicht die Nächste, die sich am Beauty-Markt etabliert,
+                indem sie Menschen einredet, sie müssten in eine Schablone passen,
+                die die Gesellschaft irgendwie vorgibt.
+                Eine Schablone, in die sowieso niemand wirklich reinpasst,
+                weil jeder Mensch anders ist. Individuell. Einzigartig.
+            </p>
+            <p>
+                <strong>Wenn du mit dir im Reinen bist:</strong>
+                wenn du in den Spiegel schaust und ein gutes Gefühl hast,
+                egal ob mit Falten, starkem Haarwuchs, großen Poren oder was auch immer,
+                dann ist meine Botschaft an dich: <em>Bleib so, wie du bist.</em>
+                Niemand hat dir vorzuschreiben, wie du aussehen musst,
+                um dich selbst lieben zu dürfen. Das bestimmst nur du.
+            </p>
+            <p>
+                Wenn du aber etwas an dir verändern möchtest,
+                etwas, das dich schon lange beschäftigt und wofür ich ein Angebot habe,
+                dann bist du herzlich willkommen.
+                Wir schauen gemeinsam, ob und wie ich dir helfen kann.
+                Was dein Wunsch ist. Was realistisch möglich ist.
+                Und wenn du dann sagst: <em>Ja, ich möchte diesen Weg gehen,</em>
+                dann sehe ich das als großes Geschenk. Als etwas, das ich nicht für selbstverständlich halte.
+            </p>
+        </div>
+
+        <div style="text-align:center;margin-top:48px;padding-top:48px;border-top:1px solid rgba(0,0,0,0.08)">
+            <p style="font-family:var(--font-serif);font-size:clamp(20px,3vw,30px);font-weight:300;font-style:italic;color:var(--anthrazit);line-height:1.5;max-width:580px;margin:0 auto">
+                Schönheit definiert jeder für sich selbst.<br>
+                Wahre Schönheit entsteht, wenn man von innen<br>
+                und von außen schön ist, <strong style="font-style:normal">für sich.</strong><br>
+                Dann strahlt man.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =====================
+     Zitat / Leitspruch
+     ===================== -->
+<section class="om-section om-section--sage">
+    <div class="om-container" style="text-align:center">
+
+        <span style="font-family:var(--font-serif);font-size:80px;line-height:0.5;color:#fff;opacity:0.2;display:block;margin-bottom:32px">"</span>
+
+        <blockquote style="font-family:var(--font-serif);font-size:clamp(24px,3.5vw,40px);font-weight:300;font-style:italic;color:#fff;line-height:1.4;max-width:680px;margin:0 auto 28px">
+            Du hast dich lange genug für das geschämt,<br>
+            das du dir nicht ausgesucht hast.<br>
+            <strong style="font-style:normal;font-weight:600">Schönheit braucht Mut<br>
+            und jemanden, dem du vertrauen kannst.</strong>
+        </blockquote>
+
+        <span style="font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6)">
+            Sarah Rabe · Inhaberin beautifulista
+        </span>
+
+    </div>
+</section>
+
+
+<!-- =====================
+     CTA
+     ===================== -->
+<section class="om-section om-section--ivory">
+    <div class="om-container">
+        <div class="om-cta">
+
+            <span class="om-kicker" style="text-align:center;display:block">Du hast diesen ersten Schritt gemacht</span>
+            <h2 class="om-cta__title">
+                Jetzt bist du dran.<br>
+                <em>Ich bin für dich da.</em>
+            </h2>
+            <p class="om-cta__sub">
+                Kein Formular, keine Wartezeit, kein Callcenter.
+                Schreib mir auf WhatsApp, ich antworte persönlich.
+                Oder buch direkt einen Termin.
+            </p>
+
+            <div class="om-cta__actions">
+                <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna"
+                   class="btn btn--primary" target="_blank" rel="noopener">
+                    Termin buchen
+                </a>
+                <a href="https://wa.me/4915174127615?text=Hallo%20Sarah%2C%20ich%20habe%20deine%20Geschichte%20gelesen%20und%20m%C3%B6chte%20mehr%20erfahren%20%F0%9F%A4%8D"
+                   class="btn btn--whatsapp" target="_blank" rel="noopener">
+                    Auf WhatsApp schreiben
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===================== Footer ===================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <p class="footer__logo">
+                    <span class="logo__brand">beautifulista</span><span class="logo__sub footer__logo__sub"> · more than beauty 🤍</span>
+                </p>
+                <p class="footer__claim">because beauty needs trust ✨</p>
+                <p class="footer__location">Kosmetikinstitut · Ostring 37 · 59423 Unna</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer-Navigation">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy">© 2026 beautifulista · more than beauty</p>
+            <div class="footer__social">
+                <a href="https://instagram.com/beautifulista_official" target="_blank" rel="noopener">
+                    Instagram: @beautifulista_official
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61582520402459" target="_blank" rel="noopener">
+                    Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+const toggle   = document.querySelector('.nav__toggle');
+const navLinks = document.querySelector('.nav__links');
+if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('nav__links--open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+}
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 10 ? '0 2px 24px rgba(0,0,0,0.06)' : 'none';
+}, { passive: true });
+</script>
+
+</body>
+</html>
