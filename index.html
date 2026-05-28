@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script type="application/ld+json">
     {
@@ -635,10 +636,34 @@
     .quiz__email-form input::placeholder { color: rgba(255,255,255,0.3); }
     .quiz__email-form input:focus { border-color: var(--gold); }
 
-    .quiz__privacy {
-        color: rgba(255,255,255,0.3) !important;
-        font-size: 11px !important;
-        letter-spacing: 0.08em;
+    .quiz__optin {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        max-width: 480px;
+        margin: 0 auto 20px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .quiz__optin input[type="checkbox"] {
+        flex-shrink: 0;
+        margin-top: 3px;
+        width: 16px;
+        height: 16px;
+        accent-color: var(--gold);
+        cursor: pointer;
+    }
+
+    .quiz__optin span {
+        color: rgba(255,255,255,0.4);
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .quiz__optin a {
+        color: rgba(255,255,255,0.6);
+        text-decoration: underline;
     }
 
     /* Result */
@@ -1372,12 +1397,15 @@
                 <!-- Step 5: Email -->
                 <div class="quiz__panel quiz__email-step" id="quiz-step-5">
                     <p class="quiz__question">Deine Empfehlung ist fertig.</p>
-                    <p class="quiz__email-sub">Gib deine E-Mail ein — du siehst das Ergebnis sofort<br>und erhältst es auch direkt per Mail.</p>
-                    <form class="quiz__email-form" id="quiz-email-form">
-                        <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
-                        <button type="submit" class="btn btn--primary">Mein Ergebnis anzeigen</button>
+                    <p class="quiz__email-sub">Gib deine E-Mail ein — du siehst das Ergebnis sofort und erhältst es direkt per Mail.</p>
+                    <form class="quiz__email-form" id="quiz-email-form" style="flex-direction:column;">
+                        <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email" style="width:100%;box-sizing:border-box;">
+                        <label class="quiz__optin">
+                            <input type="checkbox" name="optin" required>
+                            <span>Ich bin einverstanden, dass beautifulista mein Ergebnis einmalig an diese E-Mail-Adresse sendet. Kein Newsletter ohne weitere Zustimmung. <a href="datenschutz.html">Datenschutzerklärung</a></span>
+                        </label>
+                        <button type="submit" class="btn btn--primary" style="width:100%;">Mein Ergebnis anzeigen</button>
                     </form>
-                    <p class="quiz__privacy">Kein Newsletter. Nur dein Ergebnis — und gelegentlich etwas Sinnvolles von mir.</p>
                 </div>
 
                 <!-- Result -->
@@ -1784,10 +1812,29 @@ document.querySelectorAll('.quiz__option').forEach(btn => {
     });
 });
 
+// ---- EmailJS-Konfiguration ----
+// Ersetze die drei Werte unten nach der Einrichtung auf emailjs.com
+const EMAILJS_PUBLIC_KEY  = 'DEIN_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = 'DEIN_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'DEIN_TEMPLATE_ID';
+emailjs.init(EMAILJS_PUBLIC_KEY);
+// --------------------------------
+
 document.getElementById('quiz-email-form').addEventListener('submit', e => {
     e.preventDefault();
     quizData.email = e.target.email.value;
-    showResult(getResult());
+    const res = getResult();
+    // Ergebnis sofort anzeigen — unabhängig vom E-Mail-Versand
+    showResult(res);
+    // E-Mail im Hintergrund senden
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        user_email:   quizData.email,
+        result_title: res.title,
+        result_desc:  res.desc,
+        result_link:  'https://www.beautifulista.com/termin.html'
+    }).catch(() => {
+        // Stiller Fehler — Ergebnis ist bereits sichtbar
+    });
 });
 
 document.getElementById('quiz-restart').addEventListener('click', () => {
