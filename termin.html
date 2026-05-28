@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termin buchen | beautifulista Kosmetikinstitut Unna</title>
+    <meta name="description" content="Termin buchen bei beautifulista in Unna. HydraFacial, Infuzion Systems, Circadia, Lash & Brow — jetzt online buchen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .booking-hero {
+            background: var(--ivory);
+            padding: 80px 0 48px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .booking-hero__eyebrow {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--sage);
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .booking-hero__title {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 300;
+            color: var(--anthrazit);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .booking-hero__sub {
+            font-family: var(--font-sans);
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .booking-widget {
+            background: var(--ivory);
+            padding: 48px 0 100px;
+        }
+
+        .booking-widget__container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Planity Widget Anpassungen */
+        #planitywl {
+            background-color: var(--ivory) !important;
+            border-radius: var(--radius);
+        }
+
+        @media (min-width: 768px) {
+            #planitywl h3 { color: var(--anthrazit) !important; }
+        }
+
+        #planitywl .planity_bookappointment-button-choose {
+            background-color: var(--sage) !important;
+        }
+
+        .planity_ui_appointment_background > div:nth-child(2) {
+            padding: 10px;
+        }
+
+        .planity-gift-voucher-button-choose {
+            background-color: var(--sage) !important;
+        }
+
+        #planitywl > div:nth-child(2) > div:nth-child(2) > div > div > div > div > h2 {
+            color: var(--anthrazit) !important;
+        }
+
+        #planitywl > div:nth-child(2) > div:nth-child(2) > div > div > div > h2 {
+            color: var(--anthrazit) !important;
+        }
+
+        #planitywl > div:nth-child(2) > div:nth-child(2) > div > div > div:nth-child(2) > span {
+            color: var(--anthrazit) !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===================== Navigation ===================== -->
+<nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav__container">
+        <a href="index.html" class="nav__logo" aria-label="beautifulista Startseite">
+            <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
+        </a>
+        <div class="nav__links" id="nav-links">
+            <a href="index.html#behandlungen">Behandlungen</a>
+            <a href="ueber-mich.html">Über mich</a>
+            <a href="index.html#bewertungen">Bewertungen</a>
+            <a href="index.html#kontakt">Kontakt</a>
+        </div>
+        <a href="termin.html" class="btn btn--nav">Termin buchen</a>
+        <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+
+<!-- ===================== Buchungs-Hero ===================== -->
+<section class="booking-hero">
+    <span class="booking-hero__eyebrow">Online buchen</span>
+    <h1 class="booking-hero__title">Termin buchen</h1>
+    <p class="booking-hero__sub">
+        Wähle deine Behandlung und einen passenden Termin.
+        Kein Anruf, keine Wartezeit.
+    </p>
+</section>
+
+
+<!-- ===================== Planity Widget ===================== -->
+<section class="booking-widget">
+    <div class="booking-widget__container">
+        <div id="myContainerId"></div>
+    </div>
+</section>
+
+
+<!-- ===================== Footer ===================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <p class="footer__logo">
+                    <span class="logo__brand">beautifulista</span><span class="logo__sub footer__logo__sub"> · more than beauty</span>
+                </p>
+                <p class="footer__claim">because beauty needs trust</p>
+                <p class="footer__location">Kosmetikinstitut · Ostring 37 · 59423 Unna</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer-Navigation">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy">© 2026 beautifulista · more than beauty</p>
+            <div class="footer__social">
+                <a href="https://instagram.com/beautifulista_official" target="_blank" rel="noopener">Instagram: @beautifulista_official</a>
+                <a href="https://www.facebook.com/profile.php?id=61582520402459" target="_blank" rel="noopener">Facebook</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ===================== Nav JS ===================== -->
+<script>
+const toggle   = document.querySelector('.nav__toggle');
+const navLinks = document.querySelector('.nav__links');
+if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('nav__links--open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+}
+</script>
+
+<!-- ===================== Planity Widget ===================== -->
+<script>
+var container = document.getElementById('myContainerId');
+window.planity = {
+    key: '-Oo9qbArkgeOSHjVmoS1',
+    primaryColor: '#6e7b67',
+    container: container,
+    options: {
+        countryCode: 'DE'
+    }
+};
+</script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
+
+</body>
+</html>
