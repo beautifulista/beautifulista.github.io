@@ -2084,13 +2084,14 @@ document.getElementById('quiz-email-form').addEventListener('submit', e => {
     showResult(res);
     const newsletter = document.getElementById('quiz-newsletter')?.checked ? 'Ja' : 'Nein';
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        user_email:      quizData.email,
-        result_hautbild: res.hautbild,
-        result_title:    res.title,
-        result_desc:     res.desc,
-        result_link:     'https://www.beautifulista.com/termin.html',
-        skin_triggers:   quizData.trigger || 'Keine Angabe',
-        newsletter:      newsletter
+        user_email:            quizData.email,
+        result_hautbild:       res.hautbild,
+        result_hautbild_desc:  buildHautbildDesc(res.hautbildBase),
+        result_title:          res.title,
+        result_desc:           res.desc,
+        result_link:           'https://www.beautifulista.com/termin.html',
+        skin_triggers:         quizData.trigger || 'Keine Angabe',
+        newsletter:            newsletter
     }).catch(() => {});
 });
 
