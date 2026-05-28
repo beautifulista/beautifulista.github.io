@@ -1291,10 +1291,10 @@
             <div class="quiz__header">
                 <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Kostenloser Behandlungstest</p>
                 <h2 id="quiz-heading">Welche Behandlung<br>passt zu <em>dir?</em></h2>
-                <p>4 Fragen. 60 Sekunden. Deine persönliche Empfehlung.</p>
+                <p>5 Fragen. 90 Sekunden. Deine persönliche Empfehlung.</p>
             </div>
 
-            <!-- Progress: 4 Fragen + Email = 5 Dots -->
+            <!-- Progress: 5 Fragen + Email = 6 Dots -->
             <div class="quiz__progress" id="quiz-progress">
                 <div class="quiz__dot active" data-step="1"></div>
                 <div class="quiz__line"></div>
@@ -1305,6 +1305,8 @@
                 <div class="quiz__dot" data-step="4"></div>
                 <div class="quiz__line"></div>
                 <div class="quiz__dot" data-step="5"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="6"></div>
             </div>
 
             <!-- Panels — alle in einem Grid, gleiche Höhe, kein Springen -->
@@ -1312,90 +1314,105 @@
 
                 <!-- Step 1 -->
                 <div class="quiz__panel active" id="quiz-step-1">
-                    <p class="quiz__question">Was siehst du, wenn du morgens in den Spiegel schaust?</p>
+                    <p class="quiz__question">Was beschäftigt dich beim Blick in den Spiegel am meisten?</p>
                     <div class="quiz__options">
                         <button class="quiz__option" data-q="1" data-v="unreine">
-                            <span class="quiz__opt-title">Müde, unebene Haut</span>
-                            <span class="quiz__opt-desc">Poren, Unreinheiten, fahler Teint — egal wie viel Schlaf du hattest</span>
+                            <span class="quiz__opt-title">Poren, Unreinheiten, unebener Teint</span>
+                            <span class="quiz__opt-desc">Die Haut sieht müde aus, ist unrein oder einfach nicht so, wie du sie dir wünschst</span>
                         </button>
                         <button class="quiz__option" data-q="1" data-v="muede">
-                            <span class="quiz__opt-title">Erschöpfung im Gesicht</span>
-                            <span class="quiz__opt-desc">Du siehst aus, wie du dich manchmal fühlst — und das willst du ändern</span>
+                            <span class="quiz__opt-title">Müde Ausstrahlung, fahler Teint</span>
+                            <span class="quiz__opt-desc">Du siehst erschöpfter aus als du dich fühlst — der Glanz fehlt</span>
                         </button>
                         <button class="quiz__option" data-q="1" data-v="straff">
-                            <span class="quiz__opt-title">Verlust von Frische und Straffheit</span>
-                            <span class="quiz__opt-desc">Die Konturen weicher, die Haut weniger vital — du willst das zurück</span>
+                            <span class="quiz__opt-title">Verlust von Straffheit und Frische</span>
+                            <span class="quiz__opt-desc">Die Haut wirkt weniger vital, die Konturen weicher — du willst das zurück</span>
                         </button>
                         <button class="quiz__option" data-q="1" data-v="augen">
                             <span class="quiz__opt-title">Ausdruckslose Augen und Brauen</span>
-                            <span class="quiz__opt-desc">Du willst, dass deine Augen sprechen — ohne Stunden vor dem Spiegel</span>
-                        </button>
-                        <button class="quiz__option" data-q="1" data-v="haare">
-                            <span class="quiz__opt-title">Etwas, das du täglich überwinden musst</span>
-                            <span class="quiz__opt-desc">Haarwuchs, der dich täglich Überwindung kostet — Zeit, Energie, manchmal Würde</span>
+                            <span class="quiz__opt-desc">Du willst, dass deine Augen für sich sprechen — ohne Aufwand jeden Morgen</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
                 <div class="quiz__panel" id="quiz-step-2">
-                    <p class="quiz__question">Wie lange begleitet dich das schon?</p>
+                    <p class="quiz__question">Was hast du bisher für deine Haut getan?</p>
                     <div class="quiz__options">
-                        <button class="quiz__option" data-q="2" data-v="kurz">
-                            <span class="quiz__opt-title">Erst seit kurzem</span>
-                            <span class="quiz__opt-desc">Ich möchte früh gegensteuern, bevor es sich festigt</span>
+                        <button class="quiz__option" data-q="2" data-v="basis">
+                            <span class="quiz__opt-title">Hauptsächlich Drogerieprodukte</span>
+                            <span class="quiz__opt-desc">Reinigung, Creme, gelegentlich eine Maske — das war's bisher</span>
                         </button>
-                        <button class="quiz__option" data-q="2" data-v="mittel">
-                            <span class="quiz__opt-title">Ein paar Jahre</span>
-                            <span class="quiz__opt-desc">Ich habe einiges versucht — nichts hat wirklich nachhaltig geholfen</span>
+                        <button class="quiz__option" data-q="2" data-v="aktiv">
+                            <span class="quiz__opt-title">Ich pflege regelmäßig, aber bin nicht zufrieden</span>
+                            <span class="quiz__opt-desc">Ich investiere Zeit und Geld — die Ergebnisse enttäuschen mich trotzdem</span>
                         </button>
-                        <button class="quiz__option" data-q="2" data-v="lang">
-                            <span class="quiz__opt-title">Sehr lange</span>
-                            <span class="quiz__opt-desc">Es ist Teil meines Alltags geworden — aber ich will, dass das aufhört</span>
+                        <button class="quiz__option" data-q="2" data-v="profi">
+                            <span class="quiz__opt-title">Ich war schon beim Institut</span>
+                            <span class="quiz__opt-desc">Professionelle Behandlungen sind für mich nichts Neues — ich will mehr</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
                 <div class="quiz__panel" id="quiz-step-3">
-                    <p class="quiz__question">Was wünschst du dir vor allem?</p>
+                    <p class="quiz__question">Wie reagiert deine Haut normalerweise auf neue Produkte?</p>
                     <div class="quiz__options">
-                        <button class="quiz__option" data-q="3" data-v="sofort">
-                            <span class="quiz__opt-title">Ein sofortiges, sichtbares Ergebnis</span>
-                            <span class="quiz__opt-desc">Ich habe einen Anlass — oder will es einfach jetzt sehen</span>
+                        <button class="quiz__option" data-q="3" data-v="robust">
+                            <span class="quiz__opt-title">Meistens gut — ich probiere gerne aus</span>
+                            <span class="quiz__opt-desc">Meine Haut ist unkompliziert und verträgt in der Regel das meiste</span>
                         </button>
-                        <button class="quiz__option" data-q="3" data-v="langzeit">
-                            <span class="quiz__opt-title">Nachhaltige, tiefe Veränderung</span>
-                            <span class="quiz__opt-desc">Ich investiere in mich — und möchte langfristig etwas spüren</span>
+                        <button class="quiz__option" data-q="3" data-v="sensitiv">
+                            <span class="quiz__opt-title">Manchmal gereizt oder trocken</span>
+                            <span class="quiz__opt-desc">Ich bin vorsichtig — meine Haut reagiert schnell auf Neues</span>
                         </button>
-                        <button class="quiz__option" data-q="3" data-v="beides">
-                            <span class="quiz__opt-title">Beides — ich gönn mir das Beste</span>
-                            <span class="quiz__opt-desc">Sofort UND nachhaltig. Ich bin bereit dafür</span>
+                        <button class="quiz__option" data-q="3" data-v="gemischt">
+                            <span class="quiz__opt-title">Kommt drauf an</span>
+                            <span class="quiz__opt-desc">Je nach Jahreszeit, Stress oder Produkt — mal so, mal so</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Step 4 -->
                 <div class="quiz__panel" id="quiz-step-4">
-                    <p class="quiz__question">Wie viel Zeit nimmst du dir für eine Behandlung?</p>
+                    <p class="quiz__question">Was ist das wichtigste Ergebnis für dich?</p>
                     <div class="quiz__options">
-                        <button class="quiz__option" data-q="4" data-v="kurz">
-                            <span class="quiz__opt-title">45 Minuten</span>
-                            <span class="quiz__opt-desc">Kompakt, effektiv, direkt wieder im Alltag</span>
+                        <button class="quiz__option" data-q="4" data-v="sofort">
+                            <span class="quiz__opt-title">Sichtbare Veränderung direkt nach der Behandlung</span>
+                            <span class="quiz__opt-desc">Ich will es noch am selben Tag sehen — strahlend, frisch, sofort</span>
                         </button>
-                        <button class="quiz__option" data-q="4" data-v="mittel">
-                            <span class="quiz__opt-title">1 Stunde</span>
-                            <span class="quiz__opt-desc">Ich gönne mir das — und das ist gut so</span>
+                        <button class="quiz__option" data-q="4" data-v="langzeit">
+                            <span class="quiz__opt-title">Tiefe Wirkung, die über Wochen anhält</span>
+                            <span class="quiz__opt-desc">Ich investiere in mich — und will eine Veränderung, die bleibt</span>
                         </button>
-                        <button class="quiz__option" data-q="4" data-v="lang">
-                            <span class="quiz__opt-title">1,5 Stunden oder mehr</span>
-                            <span class="quiz__opt-desc">Das volle Programm. Ich bin dabei</span>
+                        <button class="quiz__option" data-q="4" data-v="beides">
+                            <span class="quiz__opt-title">Beides — sofort sichtbar und langfristig wirksam</span>
+                            <span class="quiz__opt-desc">Warum wählen? Ich will das Beste aus beiden Welten</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Step 5: Email -->
-                <div class="quiz__panel quiz__email-step" id="quiz-step-5">
+                <!-- Step 5 -->
+                <div class="quiz__panel" id="quiz-step-5">
+                    <p class="quiz__question">Wie viel Zeit kannst du für eine Behandlung einplanen?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="5" data-v="kurz">
+                            <span class="quiz__opt-title">45 bis 60 Minuten</span>
+                            <span class="quiz__opt-desc">Kompakt und effektiv — danach direkt wieder im Alltag</span>
+                        </button>
+                        <button class="quiz__option" data-q="5" data-v="mittel">
+                            <span class="quiz__opt-title">75 bis 90 Minuten</span>
+                            <span class="quiz__opt-desc">Ich gönne mir das — und das ist gut so</span>
+                        </button>
+                        <button class="quiz__option" data-q="5" data-v="lang">
+                            <span class="quiz__opt-title">Ich habe Zeit. Hauptsache das Ergebnis stimmt.</span>
+                            <span class="quiz__opt-desc">Das volle Programm. Kein Kompromiss.</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Email -->
+                <div class="quiz__panel quiz__email-step" id="quiz-step-6">
                     <p class="quiz__question">Deine Empfehlung ist fertig.</p>
                     <p class="quiz__email-sub">Gib deine E-Mail ein — du siehst das Ergebnis sofort und erhältst es direkt per Mail.</p>
                     <form class="quiz__email-form" id="quiz-email-form" style="flex-direction:column;">
@@ -1715,7 +1732,7 @@ document.querySelectorAll('.results__video-wrap').forEach(wrap => {
 
 
 /* --- Quiz Logic --- */
-const quizData = { 1: null, 2: null, 3: null, 4: null, email: null };
+const quizData = { 1: null, 2: null, 3: null, 4: null, 5: null, email: null };
 
 const results = {
     hydrafacial_sig: {
@@ -1757,15 +1774,26 @@ const results = {
 };
 
 function getResult() {
-    const q1 = quizData[1], q3 = quizData[3], q4 = quizData[4];
-    if (q1 === 'haare') return results.laser;
+    const q1 = quizData[1], q2 = quizData[2], q3 = quizData[3], q4 = quizData[4], q5 = quizData[5];
+
+    // Lash & Brow — immer wenn Augen das Hauptthema sind
     if (q1 === 'augen') return results.lash;
-    if (q1 === 'unreine') return (q4 === 'kurz') ? results.hydrafacial_sig : results.hydrafacial_deluxe;
-    if (q1 === 'muede')   return (q3 === 'sofort') ? results.hydrafacial_deluxe : results.infuzion;
-    if (q1 === 'straff') {
-        if (q3 === 'beides' || q4 === 'lang') return results.kombo;
-        return results.infuzion;
-    }
+
+    // Skin Kombo — wenn beides gewünscht und Zeit vorhanden
+    if (q4 === 'beides' && (q5 === 'mittel' || q5 === 'lang')) return results.kombo;
+
+    // Infuzion — tiefe Wirkung, Straffheit, oder erfahrene Kundin mit Langzeitziel
+    if (q1 === 'straff' && q4 !== 'sofort') return results.infuzion;
+    if (q4 === 'langzeit' && q2 !== 'basis') return results.infuzion;
+
+    // HydraFacial Deluxe — müde Haut, intensiver Wunsch, mehr Zeit
+    if (q1 === 'muede') return results.hydrafacial_deluxe;
+    if (q1 === 'unreine' && q5 !== 'kurz') return results.hydrafacial_deluxe;
+
+    // HydraFacial Signature — kompakt, Erstlinge, Poren-Fokus
+    if (q1 === 'unreine') return results.hydrafacial_sig;
+
+    // Standard-Fallback
     return results.hydrafacial_deluxe;
 }
 
@@ -1799,7 +1827,7 @@ function showResult(res) {
     document.getElementById('quiz-result-title').textContent = res.title;
     document.getElementById('quiz-result-desc').textContent  = res.desc;
     document.getElementById('quiz-result-cta').href          = res.link;
-    updateProgress(6);
+    updateProgress(7);
 }
 
 document.querySelectorAll('.quiz__option').forEach(btn => {
@@ -1838,7 +1866,7 @@ document.getElementById('quiz-email-form').addEventListener('submit', e => {
 });
 
 document.getElementById('quiz-restart').addEventListener('click', () => {
-    quizData[1] = quizData[2] = quizData[3] = quizData[4] = quizData.email = null;
+    quizData[1] = quizData[2] = quizData[3] = quizData[4] = quizData[5] = quizData.email = null;
     const el = document.getElementById('quiz-result');
     el.style.display = 'none'; el.style.opacity = '0';
     el.style.visibility = 'hidden'; el.classList.remove('active');
