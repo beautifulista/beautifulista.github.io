@@ -1419,7 +1419,11 @@
                         <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email" style="width:100%;box-sizing:border-box;">
                         <label class="quiz__optin">
                             <input type="checkbox" name="optin" required>
-                            <span>Ich bin einverstanden, dass beautifulista mein Ergebnis einmalig an diese E-Mail-Adresse sendet. Kein Newsletter ohne weitere Zustimmung. <a href="datenschutz.html">Datenschutzerklärung</a></span>
+                            <span>Ich bin einverstanden, dass beautifulista mein Ergebnis einmalig an diese E-Mail-Adresse sendet. <a href="datenschutz.html">Datenschutzerklärung</a></span>
+                        </label>
+                        <label class="quiz__optin" style="margin-bottom:24px;">
+                            <input type="checkbox" name="newsletter" id="quiz-newsletter">
+                            <span><em>Optional:</em> Ja, ich möchte gelegentlich Tipps und Angebote von beautifulista per E-Mail erhalten. Abmeldung jederzeit möglich.</span>
                         </label>
                         <button type="submit" class="btn btn--primary" style="width:100%;">Mein Ergebnis anzeigen</button>
                     </form>
@@ -1855,11 +1859,13 @@ document.getElementById('quiz-email-form').addEventListener('submit', e => {
     // Ergebnis sofort anzeigen — unabhängig vom E-Mail-Versand
     showResult(res);
     // E-Mail im Hintergrund senden
+    const newsletter = document.getElementById('quiz-newsletter')?.checked ? 'Ja' : 'Nein';
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         user_email:   quizData.email,
         result_title: res.title,
         result_desc:  res.desc,
-        result_link:  'https://www.beautifulista.com/termin.html'
+        result_link:  'https://www.beautifulista.com/termin.html',
+        newsletter:   newsletter
     }).catch(() => {
         // Stiller Fehler — Ergebnis ist bereits sichtbar
     });
