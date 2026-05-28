@@ -128,49 +128,24 @@
     /* --- Goldener Rahmen --- */
     .gold-frame-wrap {
         position: relative;
-        padding: 20px 0 0 20px;
-        max-width: 430px;
+        max-width: 360px;
         width: 100%;
     }
 
-    /* Der goldene Rahmen dahinter — verschoben oben-links */
-    .gold-frame-wrap::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: calc(100% - 20px);
-        height: calc(100% - 20px);
-        border: 2px solid var(--gold);
-        border-radius: 24px;
-        z-index: 0;
-        pointer-events: none;
-    }
-
-    /* Subtiler Goldschimmer hinter dem Bild */
-    .gold-frame-wrap::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: calc(100% - 20px);
-        height: calc(100% - 20px);
-        border-radius: 24px;
-        background: linear-gradient(135deg, rgba(212,175,55,0.1), transparent 60%);
-        z-index: 0;
-        pointer-events: none;
-    }
+    .gold-frame-wrap::before { display: none; }
+    .gold-frame-wrap::after  { display: none; }
 
     .gold-frame-wrap img {
         display: block;
-        position: relative;
-        z-index: 1;
-        border-radius: 18px;
         width: 100%;
+        border-radius: 18px;
         aspect-ratio: 3 / 4;
         object-fit: cover;
         object-position: top center;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        box-shadow:
+            0 8px 24px rgba(0,0,0,0.08),
+            0 32px 80px rgba(0,0,0,0.14),
+            0 4px 12px rgba(212,175,55,0.12);
     }
 
     /* --- Stats Banner --- */
