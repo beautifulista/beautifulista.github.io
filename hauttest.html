@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenloser Hauttest | beautifulista · Kosmetikinstitut Unna</title>
+    <meta name="description" content="Welche Behandlung passt zu dir? 8 Fragen, 3 Minuten — du erhältst dein persönliches Hautbild und eine Behandlungsempfehlung. Kostenlos, sofort, per Mail.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Kostenloser Hauttest | beautifulista">
+    <meta property="og:description" content="8 Fragen. 3 Minuten. Dein persönliches Hautbild und die passende Behandlung bei beautifulista in Unna.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.beautifulista.com/hauttest.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body { background: var(--anthrazit); }
+
+        /* Mobile Nav Fix */
+        @media (max-width: 960px) {
+            .btn--nav { display: none !important; }
+            .nav__links-termin {
+                margin-top: 8px;
+                padding: 12px 20px;
+                background: var(--sage);
+                color: #fff !important;
+                border-radius: 4px;
+                text-align: center;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--anthrazit);
+            padding: 120px 0 100px;
+            min-height: 100vh;
+        }
+
+        .quiz-section .section__eyebrow { color: var(--gold); }
+
+        .quiz__wrapper {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .quiz__header {
+            text-align: center;
+            margin-bottom: 52px;
+        }
+
+        .quiz__header h2 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            font-size: clamp(34px, 5vw, 52px);
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .quiz__header h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .quiz__header-mood {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-style: italic;
+            color: rgba(255,255,255,0.3);
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .quiz__header p {
+            color: rgba(255,255,255,0.5) !important;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+        }
+
+        /* Progress Dots */
+        .quiz__progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 48px;
+        }
+
+        .quiz__dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .quiz__dot.active { background: var(--gold); transform: scale(1.3); }
+        .quiz__dot.done { background: var(--sage); }
+
+        .quiz__line {
+            width: 48px;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+
+        .quiz__line.done { background: var(--sage); }
+
+        /* Quiz Panel */
+        .quiz__panels-wrap {
+            display: grid;
+            min-height: 440px;
+            position: relative;
+        }
+
+        .quiz__panel {
+            grid-area: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .quiz__panel.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .quiz__result {
+            grid-area: 1 / 1;
+            transition: opacity 0.35s ease;
+        }
+
+        .quiz__result.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .quiz__question {
+            font-family: var(--font-serif);
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 300;
+            color: #fff !important;
+            margin-bottom: 32px;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .quiz__options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz__option {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.75);
+            font-family: var(--font-sans);
+            font-size: 15px;
+            padding: 18px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+            line-height: 1.4;
+        }
+
+        .quiz__option:hover {
+            border-color: var(--gold);
+            background: rgba(212,175,55,0.08);
+            color: #fff;
+        }
+
+        .quiz__option.selected {
+            border-color: var(--gold);
+            background: rgba(212,175,55,0.12);
+            color: #fff;
+        }
+
+        .quiz__opt-title {
+            display: block;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3px;
+            font-size: 15px;
+        }
+
+        .quiz__opt-desc {
+            display: block;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.4;
+        }
+
+        /* Email Step */
+        .quiz__email-step { text-align: center; }
+        .quiz__email-step .quiz__question { margin-bottom: 12px; }
+
+        .quiz__email-sub {
+            color: rgba(255,255,255,0.45) !important;
+            font-size: 14px !important;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .quiz__email-form {
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto 16px;
+            flex-direction: column;
+        }
+
+        .quiz__email-form input {
+            flex: 1;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            padding: 14px 18px;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .quiz__email-form input::placeholder { color: rgba(255,255,255,0.3); }
+        .quiz__email-form input:focus { border-color: var(--gold); }
+
+        .quiz__optin {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            max-width: 480px;
+            margin: 0 auto 20px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .quiz__optin input[type="checkbox"] {
+            flex-shrink: 0;
+            margin-top: 3px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+
+        .quiz__optin span {
+            color: rgba(255,255,255,0.4);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .quiz__optin a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: underline;
+        }
+
+        /* Textarea Q7 */
+        .quiz__textarea {
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            padding: 14px 18px;
+            border-radius: 4px;
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .quiz__textarea::placeholder { color: rgba(255,255,255,0.3); }
+        .quiz__textarea:focus { border-color: var(--gold); }
+
+        .quiz__trigger-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .quiz__skip-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.35);
+            font-family: var(--font-sans);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .quiz__skip-btn:hover { color: rgba(255,255,255,0.6); }
+
+        /* Result */
+        .quiz__result {
+            text-align: center;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz__result h3, .quiz__hautbild-name {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 300;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .quiz__result-desc {
+            color: rgba(255,255,255,0.65) !important;
+            font-size: 16px !important;
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .quiz__result-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .quiz__restart {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.5);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz__restart:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.75); }
+
+        /* Hautbild Result */
+        .quiz__hautbild {
+            text-align: center;
+            padding-bottom: 36px;
+            margin-bottom: 36px;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .quiz__behandlung { text-align: center; }
+
+        .quiz__section-label {
+            font-family: var(--font-sans);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+
+        .quiz__hautbild-name {
+            font-family: var(--font-serif);
+            font-size: clamp(30px, 5vw, 50px);
+            font-weight: 300;
+            color: var(--gold);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .quiz__hautbild-desc {
+            color: rgba(255,255,255,0.55) !important;
+            font-size: 15px !important;
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.75;
+            font-style: italic;
+        }
+
+        .quiz__behandlung-title {
+            font-family: var(--font-serif);
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Glowing gold CTA */
+        .btn--gold-glow {
+            display: inline-block;
+            text-align: center;
+            background: var(--gold);
+            color: var(--anthrazit);
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            padding: 20px 48px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 32px rgba(212,175,55,0.6), 0 0 64px rgba(212,175,55,0.25);
+            animation: gold-pulse 2.5s ease-in-out infinite;
+            transition: transform 0.2s;
+        }
+
+        @keyframes gold-pulse {
+            0%,100% { box-shadow: 0 0 24px rgba(212,175,55,0.5), 0 0 48px rgba(212,175,55,0.2); }
+            50%      { box-shadow: 0 0 44px rgba(212,175,55,0.9), 0 0 88px rgba(212,175,55,0.4); }
+        }
+
+        .btn--gold-glow:hover { transform: translateY(-2px); }
+
+        /* Zurück-Link */
+        .hauttest__back {
+            text-align: center;
+            margin-top: 52px;
+        }
+
+        .hauttest__back a {
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.3);
+            transition: color 0.2s;
+        }
+
+        .hauttest__back a:hover { color: rgba(255,255,255,0.6); }
+
+        /* Footer on dark background */
+        .footer {
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer__copy, .footer__location, .footer__claim { color: rgba(255,255,255,0.35); }
+        .footer__links a, .footer__social a { color: rgba(255,255,255,0.35); }
+        .footer__links a:hover, .footer__social a:hover { color: rgba(255,255,255,0.65); }
+        .logo__brand { color: rgba(255,255,255,0.5); }
+        .logo__sub { color: rgba(255,255,255,0.25); }
+    </style>
+</head>
+<body>
+
+<!-- ===================== Navigation ===================== -->
+<nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav__container">
+        <a href="index.html" class="nav__logo" aria-label="beautifulista Startseite">
+            <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
+        </a>
+        <div class="nav__links" id="nav-links">
+            <a href="index.html#behandlungen">Behandlungen</a>
+            <a href="warteliste.html">Warteliste</a>
+            <a href="hauttest.html" style="color: var(--anthrazit); font-weight: 500;">Hauttest</a>
+            <a href="index.html#ueber-mich">Über mich</a>
+            <a href="index.html#bewertungen">Bewertungen</a>
+            <a href="index.html#kontakt">Kontakt</a>
+            <a href="termin.html" target="_blank" rel="noopener" class="nav__links-termin">Termin buchen</a>
+        </div>
+        <a href="termin.html"
+           class="btn btn--nav" target="_blank" rel="noopener">Termin buchen</a>
+        <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+
+<!-- ===================== Hauttest / Quiz ===================== -->
+<section class="quiz-section" id="quiz" aria-labelledby="quiz-heading">
+    <div class="container">
+        <div class="quiz__wrapper">
+
+            <div class="quiz__header">
+                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Kostenloser Hauttest</p>
+                <h2 id="quiz-heading">Welche Behandlung<br>passt zu <em>dir?</em></h2>
+                <p>8 Fragen. 3 Minuten. Dein persönliches Hautbild.</p>
+                <p class="quiz__header-mood">Was würdest du deine Haut fragen, wenn sie dir antworten könnte?</p>
+            </div>
+
+            <!-- Progress: 8 Fragen + Email = 9 Dots -->
+            <div class="quiz__progress" id="quiz-progress">
+                <div class="quiz__dot active" data-step="1"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="2"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="3"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="4"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="5"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="6"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="7"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="8"></div>
+                <div class="quiz__line"></div>
+                <div class="quiz__dot" data-step="9"></div>
+            </div>
+
+            <!-- Panels -->
+            <div class="quiz__panels-wrap">
+
+                <!-- Step 1: Alter -->
+                <div class="quiz__panel active" id="quiz-step-1">
+                    <p class="quiz__question">Wie viele Kerzen stehen auf deiner Torte?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="1" data-v="jung">
+                            <span class="quiz__opt-title">20 bis 30</span>
+                            <span class="quiz__opt-desc">Die Haut ist jung — aber nicht immer unproblematisch</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="dreissig">
+                            <span class="quiz__opt-title">30 bis 40</span>
+                            <span class="quiz__opt-desc">Man merkt, dass man nicht mehr zwanzig ist</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="vierzig">
+                            <span class="quiz__opt-title">40 bis 50</span>
+                            <span class="quiz__opt-desc">Die Haut verändert sich — und ich merke es</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="wechsel">
+                            <span class="quiz__opt-title">50+ — mein Körper verändert sich gerade</span>
+                            <span class="quiz__opt-desc">Wechseljahre oder auf dem Weg dorthin — alles fühlt sich anders an</span>
+                        </button>
+                        <button class="quiz__option" data-q="1" data-v="post">
+                            <span class="quiz__opt-title">Die Wechseljahre sind durch</span>
+                            <span class="quiz__opt-desc">Ich bin angekommen — und will meiner Haut jetzt geben, was sie braucht</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Spiegel-Anliegen -->
+                <div class="quiz__panel" id="quiz-step-2">
+                    <p class="quiz__question">Was beschäftigt dich, wenn du in den Spiegel schaust?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="2" data-v="unreine">
+                            <span class="quiz__opt-title">Poren, Unreinheiten, unebener Teint</span>
+                            <span class="quiz__opt-desc">Die Haut sieht belastet aus — sie könnte so viel mehr</span>
+                        </button>
+                        <button class="quiz__option" data-q="2" data-v="muede">
+                            <span class="quiz__opt-title">Fahler Teint, müde Ausstrahlung</span>
+                            <span class="quiz__opt-desc">Der Glanz ist weg — du siehst erschöpfter aus als du dich fühlst</span>
+                        </button>
+                        <button class="quiz__option" data-q="2" data-v="straff">
+                            <span class="quiz__opt-title">Verlust von Straffheit und Kontur</span>
+                            <span class="quiz__opt-desc">Die Haut wirkt schlaffer, die Konturen weicher — du willst das zurück</span>
+                        </button>
+                        <button class="quiz__option" data-q="2" data-v="augen">
+                            <span class="quiz__opt-title">Ausdruckslose Augen, dünne Brauen</span>
+                            <span class="quiz__opt-desc">Dein Blick soll für sich sprechen — ohne Make-up jeden Morgen</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Pflegestatus -->
+                <div class="quiz__panel" id="quiz-step-3">
+                    <p class="quiz__question">Was tust du bisher für deine Haut?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="3" data-v="basis">
+                            <span class="quiz__opt-title">Reinigung und Creme — mehr nicht</span>
+                            <span class="quiz__opt-desc">Eine tiefere Routine habe ich bisher nicht</span>
+                        </button>
+                        <button class="quiz__option" data-q="3" data-v="regelmaessig">
+                            <span class="quiz__opt-title">Ich pflege regelmäßig — bin aber nicht zufrieden</span>
+                            <span class="quiz__opt-desc">Ich investiere Zeit und Geld. Die Ergebnisse enttäuschen mich trotzdem</span>
+                        </button>
+                        <button class="quiz__option" data-q="3" data-v="profi">
+                            <span class="quiz__opt-title">Ich war schon beim Institut</span>
+                            <span class="quiz__opt-desc">Professionelle Behandlungen kenne ich — ich will das nächste Level</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Lifestyle -->
+                <div class="quiz__panel" id="quiz-step-4">
+                    <p class="quiz__question">Wie würdest du deinen Alltag beschreiben?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="4" data-v="entspannt">
+                            <span class="quiz__opt-title">Ausgeglichen — Schlaf und Erholung kommen nicht zu kurz</span>
+                            <span class="quiz__opt-desc">Ich achte auf mich, und es tut mir gut</span>
+                        </button>
+                        <button class="quiz__option" data-q="4" data-v="moderat">
+                            <span class="quiz__opt-title">Phasenweise stressig — aber ich komme zur Ruhe</span>
+                            <span class="quiz__opt-desc">Es gibt gute und anstrengende Wochen</span>
+                        </button>
+                        <button class="quiz__option" data-q="4" data-v="stressig">
+                            <span class="quiz__opt-title">Viel Stress, Schlaf oft zu kurz</span>
+                            <span class="quiz__opt-desc">Der Alltag hinterlässt Spuren — auch auf meiner Haut</span>
+                        </button>
+                        <button class="quiz__option" data-q="4" data-v="extrem">
+                            <span class="quiz__opt-title">Dauerstress, kaum Erholung</span>
+                            <span class="quiz__opt-desc">Mein Körper und meine Haut zeigen, was mein Leben gerade fordert</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Sonne -->
+                <div class="quiz__panel" id="quiz-step-5">
+                    <p class="quiz__question">Wie viel Sonne bekommt deine Haut?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="5" data-v="wenig">
+                            <span class="quiz__opt-title">Eher wenig — ich bin viel drinnen</span>
+                            <span class="quiz__opt-desc">Sonnenlicht ist bei mir eher die Ausnahme</span>
+                        </button>
+                        <button class="quiz__option" data-q="5" data-v="normal">
+                            <span class="quiz__opt-title">Normal — Alltag, Spaziergänge, gelegentlich</span>
+                            <span class="quiz__opt-desc">Ich komme nach draußen, ohne mich aktiv in der Sonne aufzuhalten</span>
+                        </button>
+                        <button class="quiz__option" data-q="5" data-v="viel">
+                            <span class="quiz__opt-title">Viel — Sport, Outdoor, Urlaub</span>
+                            <span class="quiz__opt-desc">Die Sonne gehört zu meinem Leben</span>
+                        </button>
+                        <button class="quiz__option" data-q="5" data-v="intensiv">
+                            <span class="quiz__opt-title">Intensiv, mit wenig Sonnenschutz bisher</span>
+                            <span class="quiz__opt-desc">Ich war oft draußen — und auf Schutz habe ich nicht immer geachtet</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Hydration -->
+                <div class="quiz__panel" id="quiz-step-6">
+                    <p class="quiz__question">Wie sieht es mit Wasser und Ernährung aus?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="6" data-v="gut">
+                            <span class="quiz__opt-title">Ich trinke viel und esse ausgewogen</span>
+                            <span class="quiz__opt-desc">Ich achte auf das, was ich meinem Körper gebe</span>
+                        </button>
+                        <button class="quiz__option" data-q="6" data-v="okay">
+                            <span class="quiz__opt-title">Es geht so — mal gut, mal weniger</span>
+                            <span class="quiz__opt-desc">Ich weiß, dass es besser sein könnte</span>
+                        </button>
+                        <button class="quiz__option" data-q="6" data-v="schlecht">
+                            <span class="quiz__opt-title">Wenig Wasser, unregelmäßig — meine Haut zeigt es</span>
+                            <span class="quiz__opt-desc">Der Alltag lässt gesunde Gewohnheiten oft hintenanstehen</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 7: Hautreaktionen -->
+                <div class="quiz__panel" id="quiz-step-7">
+                    <p class="quiz__question">Gibt es etwas, das deine Haut besonders reagieren lässt?</p>
+                    <p class="quiz__email-sub" style="margin-bottom:20px;">Bestimmte Inhaltsstoffe, Situationen, Produkte? Was auch immer du bemerkt hast — hier ist Platz dafür.</p>
+                    <textarea id="quiz-trigger-text" class="quiz__textarea" placeholder="z. B. Parfum, Stress, Hitze, bestimmte Cremes ..." rows="4"></textarea>
+                    <div class="quiz__trigger-actions">
+                        <button class="btn btn--primary" id="quiz-trigger-weiter">Weiter</button>
+                        <button class="quiz__skip-btn" id="quiz-trigger-skip">Nichts Bekanntes — überspringen</button>
+                    </div>
+                </div>
+
+                <!-- Step 8: Erwartung -->
+                <div class="quiz__panel" id="quiz-step-8">
+                    <p class="quiz__question">Was erhoffst du dir von der Behandlung?</p>
+                    <div class="quiz__options">
+                        <button class="quiz__option" data-q="8" data-v="sofort">
+                            <span class="quiz__opt-title">Ein sichtbares Ergebnis direkt danach</span>
+                            <span class="quiz__opt-desc">Ich will es noch am selben Tag sehen</span>
+                        </button>
+                        <button class="quiz__option" data-q="8" data-v="tiefe">
+                            <span class="quiz__opt-title">Tiefe Wirkung, die bleibt</span>
+                            <span class="quiz__opt-desc">Ich investiere in eine echte, langfristige Veränderung</span>
+                        </button>
+                        <button class="quiz__option" data-q="8" data-v="beides">
+                            <span class="quiz__opt-title">Beides — sofort sichtbar und langfristig</span>
+                            <span class="quiz__opt-desc">Warum wählen? Ich will das Beste aus beiden Welten</span>
+                        </button>
+                        <button class="quiz__option" data-q="8" data-v="erleben">
+                            <span class="quiz__opt-title">Ich will mich endlich einmal um mich kümmern</span>
+                            <span class="quiz__opt-desc">Das Ergebnis kommt — aber das Erlebnis zählt genauso</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 9: Email -->
+                <div class="quiz__panel quiz__email-step" id="quiz-step-9">
+                    <p class="quiz__question">Dein Hautbild ist fertig.</p>
+                    <p class="quiz__email-sub">Gib deine E-Mail ein — du siehst dein Ergebnis sofort und erhältst es direkt per Mail.</p>
+                    <form class="quiz__email-form" id="quiz-email-form">
+                        <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
+                        <label class="quiz__optin">
+                            <input type="checkbox" name="optin" required>
+                            <span>Ich bin einverstanden, dass beautifulista mein Ergebnis einmalig an diese E-Mail-Adresse sendet. <a href="datenschutz.html">Datenschutzerklärung</a></span>
+                        </label>
+                        <label class="quiz__optin" style="margin-bottom:24px;">
+                            <input type="checkbox" name="newsletter" id="quiz-newsletter">
+                            <span><em>Optional:</em> Ja, ich möchte gelegentlich Tipps und Angebote von beautifulista per E-Mail erhalten. Abmeldung jederzeit möglich.</span>
+                        </label>
+                        <button type="submit" class="btn btn--primary" style="width:100%;">Mein Hautbild anzeigen</button>
+                    </form>
+                </div>
+
+                <!-- Result -->
+                <div class="quiz__result" id="quiz-result" style="display:none; opacity:0; visibility:hidden; pointer-events:none;">
+                    <div class="quiz__hautbild">
+                        <p class="quiz__section-label">Dein Hautbild</p>
+                        <h3 class="quiz__hautbild-name" id="quiz-hautbild-name"></h3>
+                        <p class="quiz__hautbild-desc" id="quiz-hautbild-desc"></p>
+                    </div>
+                    <div class="quiz__behandlung">
+                        <p class="quiz__section-label">Deine Behandlung</p>
+                        <h4 class="quiz__behandlung-title" id="quiz-result-title"></h4>
+                        <p class="quiz__result-desc" id="quiz-result-desc"></p>
+                        <div class="quiz__result-actions">
+                            <a id="quiz-result-cta" href="termin.html" class="btn--gold-glow" target="_blank" rel="noopener">Jetzt Termin buchen</a>
+                            <button class="quiz__restart" id="quiz-restart">Hauttest wiederholen</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /quiz__panels-wrap -->
+
+            <p class="hauttest__back"><a href="index.html">← Zurück zur Startseite</a></p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===================== Footer ===================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <p class="footer__logo">
+                    <span class="logo__brand">beautifulista</span><span class="logo__sub footer__logo__sub"> · more than beauty</span>
+                </p>
+                <p class="footer__claim">because beauty needs trust</p>
+                <p class="footer__location">Kosmetikinstitut · Ostring 37 · 59423 Unna</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer-Navigation">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy">© 2026 beautifulista · more than beauty</p>
+            <div class="footer__social">
+                <a href="https://instagram.com/beautifulista_official" target="_blank" rel="noopener">Instagram: @beautifulista_official</a>
+                <a href="https://www.facebook.com/profile.php?id=61582520402459" target="_blank" rel="noopener">Facebook</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ===================== JavaScript ===================== -->
+<script>
+/* --- Nav (Mobile-Toggle) --- */
+const toggle   = document.querySelector('.nav__toggle');
+const navLinks = document.querySelector('.nav__links');
+if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('nav__links--open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+        navLinks.classList.remove('nav__links--open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Menü öffnen');
+    }));
+}
+
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 10 ? '0 2px 24px rgba(0,0,0,0.06)' : 'none';
+});
+
+/* --- Quiz Logic --- */
+const quizData = { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 8: null, trigger: '', email: null };
+
+const results = {
+    erschoepfte_strahlkraft: {
+        hautbild:     'Erschöpfte Strahlkraft',
+        hautbildBase: 'Deine Haut strahlt, wenn man ihr die Chance gibt. Im Moment bekommt sie diese Chance nicht — sie ist belastet von dem, was sich im Alltag ansammelt. Was sie braucht, ist kein Wunder. Nur Raum.',
+        title:        'HydraFacial Signature',
+        desc:         'In 45 Minuten passiert etwas, das du spürst: Deine Haut wird tiefengereinigt, sanft gepeelt, von innen heraus versorgt. Du gehst rein mit dem Gefühl von Schwere. Du kommst raus mit einem Strahlen, das kein Filter erreicht.',
+        link:         'termin.html'
+    },
+    stille_erschoepfung: {
+        hautbild:     'Stille Erschöpfung',
+        hautbildBase: 'Diese Haut hat alles versucht. Sie gibt nicht auf — aber sie wirkt müde, flach, als hätte das Licht sie verlassen. Das Licht ist noch da. Es wartet nur darauf, geholt zu werden.',
+        title:        'HydraFacial Deluxe',
+        desc:         'Du gibst dir selbst eine Stunde — und diese Stunde verdient das Beste. HydraFacial Deluxe reinigt tiefer, wirkt länger und lässt dich frischer rausgehen als du reingekommen bist.',
+        link:         'termin.html'
+    },
+    verlorene_vitalitaet: {
+        hautbild:     'Verlorene Vitalität',
+        hautbildBase: 'Was du in deinem Gesicht siehst, ist keine Niederlage. Es ist Biografie. Und Biografie kann man nicht wegcemen — aber man kann ihr etwas entgegensetzen, das tiefer wirkt als jede Creme.',
+        title:        'Infuzion Systems',
+        desc:         'Du willst keine Lösung für die Oberfläche. Du willst echte Veränderung. Infuzion bringt hochkonzentrierte Wirkstoffe dorthin, wo Cremes nie ankommen — tief in die Haut, ohne Nadeln, ohne Schmerzen.',
+        link:         'termin.html'
+    },
+    schlafende_kraft: {
+        hautbild:     'Schlafende Kraft',
+        hautbildBase: 'Diese Haut schläft. Nicht kaputt, nicht verloren — sie wartet. Auf den Moment, wo jemand ihr wirklich zuhört und ihr gibt, was sie wirklich braucht.',
+        title:        'Skin Kombo',
+        desc:         'HydraFacial bereitet die Haut vor — öffnet sie, reinigt sie, macht sie empfänglich. Dann kommt Infuzion und bringt die Wirkstoffe dorthin, wo keine Creme je ankommt. Ein Termin. Zwei Behandlungen. Ein Ergebnis.',
+        link:         'termin.html'
+    },
+    der_blick_dahinter: {
+        hautbild:     'Der Blick dahinter',
+        hautbildBase: 'Augen lügen nicht. Was du in deinen siehst — diese Zurückhaltung, diese Unsichtbarkeit — liegt nicht an dir. Sie liegt an dem, was du noch nicht weißt.',
+        title:        'Lash & Brow Lifting',
+        desc:         'Definierte Brauen, geschwungene Wimpern, ein Blick, der für sich selbst spricht. Bis zu 8 Wochen. Kein Make-up nötig. Einfach du — wach, präsent, selbstbewusst.',
+        link:         'termin.html'
+    }
+};
+
+function buildHautbildDesc(baseDesc) {
+    let desc = baseDesc;
+    const q1 = quizData[1], q4 = quizData[4], q5 = quizData[5], q6 = quizData[6];
+    if (q1 === 'wechsel') desc += ' Hinzu kommt: dein Körper verändert sich gerade hormonell — und deine Haut verändert sich mit. Das ist kein Versagen, sondern ein Zeichen dafür, dass sie jetzt andere Unterstützung braucht.';
+    else if (q1 === 'post') desc += ' Dein Hormonspiegel hat sich eingependelt — jetzt kann man gezielt arbeiten, mit dem was ist, statt gegen das was war.';
+    if (q4 === 'stressig') desc += ' Stress hinterlässt Spuren, die keine Creme wegmacht — aber die richtige Behandlung kann der Haut die Erholung geben, die der Alltag ihr verweigert.';
+    else if (q4 === 'extrem') desc += ' Chronischer Stress ist einer der stärksten Hautaggressoren überhaupt. Dein Körper weiß das — und deine Haut zeigt es.';
+    if (q5 === 'intensiv') desc += ' Jahrelange Sonneneinstrahlung ohne ausreichenden Schutz ist in jeder Haut gespeichert. Das lässt sich nicht rückgängig machen — aber man kann das, was bleibt, gezielt behandeln.';
+    if (q6 === 'schlecht') desc += ' Eine Haut, die von innen zu wenig Wasser bekommt, kann von außen nicht dauerhaft aufgefüllt werden. Tiefe Feuchtigkeitsbehandlung ist hier besonders sinnvoll.';
+    return desc;
+}
+
+function getResult() {
+    const q1 = quizData[1], q2 = quizData[2], q3 = quizData[3], q8 = quizData[8];
+    if (q2 === 'augen') return results.der_blick_dahinter;
+    if (q8 === 'beides' && q3 !== 'basis') return results.schlafende_kraft;
+    if (q2 === 'straff') return results.verlorene_vitalitaet;
+    if ((q1 === 'vierzig' || q1 === 'wechsel' || q1 === 'post') && q8 === 'tiefe') return results.verlorene_vitalitaet;
+    if (q2 === 'muede') return results.stille_erschoepfung;
+    if (q2 === 'unreine' && q8 !== 'sofort') return results.stille_erschoepfung;
+    return results.erschoepfte_strahlkraft;
+}
+
+function updateProgress(step) {
+    document.querySelectorAll('.quiz__dot').forEach((dot, i) => {
+        dot.classList.remove('active', 'done');
+        if (i + 1 < step) dot.classList.add('done');
+        if (i + 1 === step) dot.classList.add('active');
+    });
+    document.querySelectorAll('.quiz__line').forEach((line, i) => {
+        line.classList.toggle('done', i + 1 < step);
+    });
+}
+
+function showStep(n) {
+    document.querySelectorAll('.quiz__panel').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('quiz-step-' + n);
+    if (el) el.classList.add('active');
+    updateProgress(n);
+}
+
+function showResult(res) {
+    document.querySelectorAll('.quiz__panel').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('quiz-result');
+    el.style.display = 'block'; el.style.opacity = '1';
+    el.style.visibility = 'visible'; el.style.pointerEvents = 'auto';
+    el.classList.add('active');
+    document.getElementById('quiz-hautbild-name').textContent = res.hautbild;
+    document.getElementById('quiz-hautbild-desc').textContent = buildHautbildDesc(res.hautbildBase);
+    document.getElementById('quiz-result-title').textContent  = res.title;
+    document.getElementById('quiz-result-desc').textContent   = res.desc;
+    document.getElementById('quiz-result-cta').href           = res.link;
+    updateProgress(10);
+}
+
+document.querySelectorAll('.quiz__option').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const q = +btn.dataset.q;
+        quizData[q] = btn.dataset.v;
+        btn.closest('.quiz__options').querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        setTimeout(() => showStep(q + 1), 300);
+    });
+});
+
+document.getElementById('quiz-trigger-weiter').addEventListener('click', () => {
+    quizData.trigger = document.getElementById('quiz-trigger-text').value.trim();
+    showStep(8);
+});
+
+document.getElementById('quiz-trigger-skip').addEventListener('click', () => {
+    quizData.trigger = '';
+    showStep(8);
+});
+
+const EMAILJS_PUBLIC_KEY  = 'RinEuFkYPZW7nzhl5';
+const EMAILJS_SERVICE_ID  = 'service_oiv3bki';
+const EMAILJS_TEMPLATE_ID = 'template_00thqnh';
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+document.getElementById('quiz-email-form').addEventListener('submit', e => {
+    e.preventDefault();
+    quizData.email = e.target.email.value;
+    const res = getResult();
+    showResult(res);
+    const newsletter = document.getElementById('quiz-newsletter')?.checked ? 'Ja' : 'Nein';
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        user_email:            quizData.email,
+        result_hautbild:       res.hautbild,
+        result_hautbild_desc:  buildHautbildDesc(res.hautbildBase),
+        result_title:          res.title,
+        result_desc:           res.desc,
+        result_link:           'https://www.beautifulista.com/termin.html',
+        skin_triggers:         quizData.trigger || 'Keine Angabe',
+        newsletter:            newsletter
+    }).catch(() => {});
+});
+
+document.getElementById('quiz-restart').addEventListener('click', () => {
+    quizData[1] = quizData[2] = quizData[3] = quizData[4] = quizData[5] = null;
+    quizData[6] = quizData[8] = null;
+    quizData.trigger = ''; quizData.email = null;
+    const el = document.getElementById('quiz-result');
+    el.style.display = 'none'; el.style.opacity = '0';
+    el.style.visibility = 'hidden'; el.classList.remove('active');
+    document.querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
+    const textarea = document.getElementById('quiz-trigger-text');
+    if (textarea) textarea.value = '';
+    showStep(1);
+});
+</script>
+
+</body>
+</html>
