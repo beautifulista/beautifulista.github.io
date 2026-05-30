@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circadia Warteliste | beautifulista · Kosmetikinstitut Unna</title>
+    <meta name="description" content="Trag dich in die Circadia-Warteliste bei beautifulista in Unna ein. Chronobiologische Hautpflege ab Mitte Juni. Du erfährst zuerst, sobald die ersten Termine zur Buchung freigegeben werden.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Circadia Warteliste | beautifulista">
+    <meta property="og:description" content="Chronobiologische Hautpflege ab Mitte Juni in Unna. Trag dich in die Warteliste ein.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://www.beautifulista.com/warteliste.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Seite vertikal füllen, Footer bleibt unten */
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        .warteliste-page { flex: 1; display: flex; }
+        .warteliste-page .waitlist {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-top: 140px;
+            padding-bottom: clamp(72px, 10vw, 120px);
+        }
+        /* Zurück-Link unter dem Formular */
+        .waitlist__back {
+            text-align: center;
+            margin-top: 36px;
+        }
+        .waitlist__back a {
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            color: rgba(250, 247, 240, 0.5);
+            transition: color var(--transition);
+        }
+        .waitlist__back a:hover { color: var(--ivory); }
+    </style>
+</head>
+<body>
+
+<!-- ===================== Navigation ===================== -->
+<nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav__container">
+        <a href="index.html" class="nav__logo" aria-label="beautifulista Startseite">
+            <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
+        </a>
+        <div class="nav__links" id="nav-links">
+            <a href="index.html#behandlungen">Behandlungen</a>
+            <a href="warteliste.html">Warteliste</a>
+            <a href="index.html#ueber-mich">Über mich</a>
+            <a href="index.html#bewertungen">Bewertungen</a>
+            <a href="index.html#kontakt">Kontakt</a>
+        </div>
+        <a href="termin.html"
+           class="btn btn--nav" target="_blank" rel="noopener">Termin buchen</a>
+        <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+
+<!-- ===================== Circadia Warteliste ===================== -->
+<main class="warteliste-page">
+    <section class="waitlist" id="circadia-warteliste" aria-labelledby="waitlist-heading">
+        <div class="container">
+            <div class="waitlist__inner">
+                <p class="waitlist__eyebrow">Bald verfügbar · ab Mitte Juni</p>
+                <h2 id="waitlist-heading" class="waitlist__title">Circadia Warteliste</h2>
+                <p class="waitlist__text">
+                    Circadia kommt zu beautifulista. Ab Mitte Juni biete ich die chronobiologische Hautpflege an, abgestimmt auf den natürlichen Rhythmus deiner Haut. Trag dich ein, dann erfährst du zuerst, sobald die ersten Termine zur Buchung freigegeben werden.
+                </p>
+
+                <form class="waitlist__form" id="circadia-waitlist-form"
+                      action="https://formspree.io/f/xredvbjr"
+                      method="POST">
+
+                    <!-- Spam-Schutz (Honeypot, für Menschen unsichtbar) -->
+                    <div class="waitlist__hp" aria-hidden="true">
+                        <label>Bitte leer lassen <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+                    </div>
+                    <input type="hidden" name="_subject" value="Neue Anmeldung · Circadia Warteliste">
+                    <input type="hidden" name="Warteliste" value="Circadia">
+
+                    <input type="text" name="Vorname" placeholder="Dein Vorname" required autocomplete="given-name">
+                    <input type="email" name="E-Mail" placeholder="Deine E-Mail-Adresse" required autocomplete="email">
+                    <textarea name="Behandlungswunsch" placeholder="Optional: Was beschäftigt deine Haut, oder worauf freust du dich?"></textarea>
+
+                    <label class="waitlist__consent">
+                        <input type="checkbox" name="Einwilligung" value="Ja" required>
+                        <span>Ich bin einverstanden, dass beautifulista meine Angaben speichert, um mich zur Circadia-Warteliste zu kontaktieren. Es folgt keine automatische Newsletter-Anmeldung. Mehr dazu in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
+                    </label>
+
+                    <button type="submit" class="btn btn--sage">Auf die Warteliste</button>
+                    <p class="waitlist__error" id="circadia-waitlist-error">Da ist etwas schiefgelaufen. Bitte versuch es noch einmal oder schreib mir auf Instagram.</p>
+                </form>
+
+                <div class="waitlist__success" id="circadia-waitlist-success" role="status" aria-live="polite">
+                    <h3>Danke, du stehst auf der Liste.</h3>
+                    <p>Ich melde mich bei dir, sobald die ersten Circadia-Termine zur Buchung freigegeben werden. Schön, dass du dabei bist.</p>
+                </div>
+
+                <p class="waitlist__back"><a href="index.html">← Zurück zur Startseite</a></p>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<!-- ===================== Footer ===================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__brand">
+                <p class="footer__logo">
+                    <span class="logo__brand">beautifulista</span><span class="logo__sub footer__logo__sub"> · more than beauty</span>
+                </p>
+                <p class="footer__claim">because beauty needs trust</p>
+                <p class="footer__location">Kosmetikinstitut · Ostring 37 · 59423 Unna</p>
+            </div>
+            <nav class="footer__links" aria-label="Footer-Navigation">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+        <div class="footer__bottom">
+            <p class="footer__copy">© 2026 beautifulista · more than beauty</p>
+            <div class="footer__social">
+                <a href="https://instagram.com/beautifulista_official" target="_blank" rel="noopener">Instagram: @beautifulista_official</a>
+                <a href="https://www.facebook.com/profile.php?id=61582520402459" target="_blank" rel="noopener">Facebook</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ===================== JavaScript ===================== -->
+<script>
+/* --- Nav (Mobile-Toggle) --- */
+const toggle   = document.querySelector('.nav__toggle');
+const navLinks = document.querySelector('.nav__links');
+if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('nav__links--open');
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    });
+}
+
+/* --- Warteliste (Formspree AJAX) --- */
+document.querySelectorAll('.waitlist__form').forEach(form => {
+    const inner   = form.closest('.waitlist__inner');
+    const success = inner ? inner.querySelector('.waitlist__success') : null;
+    const errorEl = form.querySelector('.waitlist__error');
+
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        if (errorEl) errorEl.classList.remove('is-visible');
+
+        const btn = form.querySelector('button[type="submit"]');
+        const btnLabel = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet ...'; }
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!res.ok) throw new Error('Submit failed');
+            form.style.display = 'none';
+            if (success) success.classList.add('is-visible');
+        } catch (err) {
+            if (errorEl) errorEl.classList.add('is-visible');
+            if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
+        }
+    });
+});
+</script>
+
+</body>
+</html>

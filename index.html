@@ -1057,6 +1057,7 @@
         </a>
         <div class="nav__links" id="nav-links">
             <a href="#behandlungen">Behandlungen</a>
+            <a href="warteliste.html">Warteliste</a>
             <a href="#ueber-mich">Über mich</a>
             <a href="#bewertungen">Bewertungen</a>
             <a href="#kontakt">Kontakt</a>
@@ -1087,7 +1088,7 @@
         <div class="hero__cta">
             <a href="termin.html"
                class="btn btn--primary" target="_blank" rel="noopener">Termin buchen</a>
-            <a href="#quiz" class="hero__cta-secondary">Behandlung finden →</a>
+            <a href="#quiz" class="hero__cta-secondary">Zum Hauttest →</a>
         </div>
     </div>
 
@@ -1344,7 +1345,7 @@
 
         <div class="flipcards-cta">
             <p>Unsicher, welche Behandlung die richtige für dich ist?</p>
-            <a href="#quiz" class="btn btn--primary">Jetzt Behandlung finden — kostenloser Test</a>
+            <a href="#quiz" class="btn btn--primary">Jetzt kostenlosen Hauttest machen</a>
         </div>
 
     </div>
@@ -1373,7 +1374,7 @@
         <div class="quiz__wrapper">
 
             <div class="quiz__header">
-                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Kostenloser Behandlungstest</p>
+                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Kostenloser Hauttest</p>
                 <h2 id="quiz-heading">Welche Behandlung<br>passt zu <em>dir?</em></h2>
                 <p>8 Fragen. 3 Minuten. Dein persönliches Hautbild.</p>
                 <p class="quiz__header-mood">Was würdest du deine Haut fragen, wenn sie dir antworten könnte?</p>
@@ -1602,7 +1603,7 @@
                         <p class="quiz__result-desc" id="quiz-result-desc"></p>
                         <div class="quiz__result-actions">
                             <a id="quiz-result-cta" href="termin.html" class="btn--gold-glow" target="_blank" rel="noopener">Jetzt Termin buchen</a>
-                            <button class="quiz__restart" id="quiz-restart">Test wiederholen</button>
+                            <button class="quiz__restart" id="quiz-restart">Hauttest wiederholen</button>
                         </div>
                     </div>
                 </div>
@@ -1859,6 +1860,37 @@ document.querySelectorAll('.flip-card').forEach(card => {
     const toggle = () => card.classList.toggle('is-flipped');
     card.addEventListener('click', toggle);
     card.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+});
+
+
+/* --- Warteliste (Formspree AJAX) --- */
+document.querySelectorAll('.waitlist__form').forEach(form => {
+    const inner   = form.closest('.waitlist__inner');
+    const success = inner ? inner.querySelector('.waitlist__success') : null;
+    const errorEl = form.querySelector('.waitlist__error');
+
+    form.addEventListener('submit', async e => {
+        e.preventDefault();
+        if (errorEl) errorEl.classList.remove('is-visible');
+
+        const btn = form.querySelector('button[type="submit"]');
+        const btnLabel = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet ...'; }
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!res.ok) throw new Error('Submit failed');
+            form.style.display = 'none';
+            if (success) success.classList.add('is-visible');
+        } catch (err) {
+            if (errorEl) errorEl.classList.add('is-visible');
+            if (btn) { btn.disabled = false; btn.textContent = btnLabel; }
+        }
+    });
 });
 
 
