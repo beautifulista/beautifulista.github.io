@@ -202,30 +202,18 @@
     /* Gold Frame für Bilder */
     .om-gold-frame {
         position: relative;
-        padding: 20px 0 0 20px;
-    }
-
-    .om-gold-frame::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0;
-        width: calc(100% - 20px);
-        height: calc(100% - 20px);
-        border: 2px solid var(--gold);
-        border-radius: 20px;
-        z-index: 0;
     }
 
     .om-gold-frame img {
         display: block;
         position: relative;
         z-index: 1;
-        border-radius: 14px;
+        border-radius: 18px;
         width: 100%;
         aspect-ratio: 4 / 5;
         object-fit: cover;
         object-position: top center;
-        box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 32px 80px rgba(0,0,0,0.14);
     }
 
     /* Text Blöcke */
@@ -467,8 +455,8 @@
 <section class="om-hero" aria-label="Über mich">
 
     <div class="om-hero__image">
-        <img src="sarah.jpg"
-             alt="Sarah Rabe, Inhaberin beautifulista, Kosmetikinstitut Unna"
+        <img src="sarah_behandlung_Hf.png"
+             alt="Sarah Rabe bei der HydraFacial-Behandlung, beautifulista Kosmetikinstitut Unna"
              loading="eager">
     </div>
 
@@ -739,9 +727,9 @@
 
             <div class="om-split__image">
                 <div class="om-gold-frame">
-                    <img src="sarah.jpg"
-                         alt="Sarah Rabe im beautifulista Institut Unna"
-                         loading="lazy">
+                    <img src="Sarah beim lasern.jpeg"
+                         alt="Sarah Rabe bei der Laserbehandlung im beautifulista Institut Unna"
+                         loading="lazy" style="object-position: center;">
                 </div>
             </div>
 
