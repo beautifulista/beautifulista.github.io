@@ -119,10 +119,14 @@
         object-position: 50% 0%;
     }
 
+    /* Termin-Link nur im Mobile-Dropdown sichtbar, auf Desktop ausgeblendet */
+    .nav__links-termin { display: none; }
+
     /* Mobile Nav Fix: Hamburger war off-screen wegen .btn--nav */
     @media (max-width: 960px) {
         .btn--nav { display: none !important; }
         .nav__links-termin {
+            display: block;
             margin-top: 8px;
             padding: 12px 20px;
             background: var(--sage);
