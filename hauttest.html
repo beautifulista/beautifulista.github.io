@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kostenloser Hauttest | beautifulista · Kosmetikinstitut Unna</title>
-    <meta name="description" content="Welche Behandlung passt zu dir? 8 Fragen, 3 Minuten - du erhältst dein persönliches Hautbild und eine Behandlungsempfehlung. Kostenlos, sofort, per Mail.">
+    <title>Hauttest | beautifulista · Kosmetikinstitut Unna</title>
+    <meta name="description" content="Welche Behandlung passt zu dir? 8 Fragen - du erhältst dein persönliches Hautbild und eine Behandlungsempfehlung von beautifulista in Unna.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Kostenloser Hauttest | beautifulista">
-    <meta property="og:description" content="8 Fragen. 3 Minuten. Dein persönliches Hautbild und die passende Behandlung bei beautifulista in Unna.">
+    <meta property="og:title" content="Hauttest | beautifulista">
+    <meta property="og:description" content="8 Fragen. Dein persönliches Hautbild und die passende Behandlung bei beautifulista in Unna.">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://www.beautifulista.com/hauttest.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -442,6 +442,55 @@
 
         .btn--gold-glow:hover { transform: translateY(-2px); }
 
+        /* Zurück + Weiter Navigation pro Step */
+        .quiz__step-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 28px;
+            gap: 12px;
+        }
+
+        .quiz__back {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.45);
+            font-family: var(--font-sans);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 10px 18px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .quiz__back:hover { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.75); }
+
+        .quiz__weiter {
+            background: var(--sage);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: auto;
+        }
+
+        .quiz__weiter:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .quiz__weiter:not(:disabled):hover { background: #5a6e62; }
+
         /* Zurück-Link */
         .hauttest__back {
             text-align: center;
@@ -502,10 +551,9 @@
         <div class="quiz__wrapper">
 
             <div class="quiz__header">
-                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Kostenloser Hauttest</p>
+                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Hauttest</p>
                 <h2 id="quiz-heading">Welche Behandlung<br>passt zu <em>dir?</em></h2>
-                <p>8 Fragen. 3 Minuten. Dein persönliches Hautbild.</p>
-                <p class="quiz__header-mood">Was würdest du deine Haut fragen, wenn sie dir antworten könnte?</p>
+                <p>8 Fragen. Dein persönliches Hautbild.</p>
             </div>
 
             <!-- Progress: 8 Fragen + Email = 9 Dots -->
@@ -557,6 +605,9 @@
                             <span class="quiz__opt-desc">Ich bin angekommen - und will meiner Haut jetzt geben, was sie braucht</span>
                         </button>
                     </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__weiter" data-next="2" disabled>Weiter →</button>
+                    </div>
                 </div>
 
                 <!-- Step 2: Spiegel-Anliegen -->
@@ -580,6 +631,10 @@
                             <span class="quiz__opt-desc">Dein Blick soll für sich sprechen - ohne Make-up jeden Morgen</span>
                         </button>
                     </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                        <button class="quiz__weiter" data-next="3" disabled>Weiter →</button>
+                    </div>
                 </div>
 
                 <!-- Step 3: Pflegestatus -->
@@ -598,6 +653,10 @@
                             <span class="quiz__opt-title">Ich war schon beim Institut</span>
                             <span class="quiz__opt-desc">Professionelle Behandlungen kenne ich - ich will das nächste Level</span>
                         </button>
+                    </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                        <button class="quiz__weiter" data-next="4" disabled>Weiter →</button>
                     </div>
                 </div>
 
@@ -622,6 +681,10 @@
                             <span class="quiz__opt-desc">Mein Körper und meine Haut zeigen, was mein Leben gerade fordert</span>
                         </button>
                     </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                        <button class="quiz__weiter" data-next="5" disabled>Weiter →</button>
+                    </div>
                 </div>
 
                 <!-- Step 5: Sonne -->
@@ -645,6 +708,10 @@
                             <span class="quiz__opt-desc">Ich war oft draußen - und auf Schutz habe ich nicht immer geachtet</span>
                         </button>
                     </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                        <button class="quiz__weiter" data-next="6" disabled>Weiter →</button>
+                    </div>
                 </div>
 
                 <!-- Step 6: Hydration -->
@@ -664,6 +731,10 @@
                             <span class="quiz__opt-desc">Der Alltag lässt gesunde Gewohnheiten oft hintenanstehen</span>
                         </button>
                     </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                        <button class="quiz__weiter" data-next="7" disabled>Weiter →</button>
+                    </div>
                 </div>
 
                 <!-- Step 7: Hautreaktionen -->
@@ -671,9 +742,12 @@
                     <p class="quiz__question">Gibt es etwas, das deine Haut besonders reagieren lässt?</p>
                     <p class="quiz__email-sub" style="margin-bottom:20px;">Bestimmte Inhaltsstoffe, Situationen, Produkte? Was auch immer du bemerkt hast - hier ist Platz dafür.</p>
                     <textarea id="quiz-trigger-text" class="quiz__textarea" placeholder="z. B. Parfum, Stress, Hitze, bestimmte Cremes ..." rows="4"></textarea>
-                    <div class="quiz__trigger-actions">
-                        <button class="btn btn--primary" id="quiz-trigger-weiter">Weiter</button>
-                        <button class="quiz__skip-btn" id="quiz-trigger-skip">Nichts Bekanntes - überspringen</button>
+                    <div class="quiz__step-nav" style="flex-direction:column;align-items:stretch;">
+                        <div class="quiz__trigger-actions">
+                            <button class="btn btn--primary" id="quiz-trigger-weiter">Weiter</button>
+                            <button class="quiz__skip-btn" id="quiz-trigger-skip">Nichts Bekanntes - überspringen</button>
+                        </div>
+                        <button class="quiz__back" onclick="goBack()" style="margin-top:12px;align-self:flex-start;">← Zurück</button>
                     </div>
                 </div>
 
@@ -698,6 +772,10 @@
                             <span class="quiz__opt-desc">Das Ergebnis kommt - aber das Erlebnis zählt genauso</span>
                         </button>
                     </div>
+                    <div class="quiz__step-nav">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                        <button class="quiz__weiter" data-next="9" disabled>Weiter →</button>
+                    </div>
                 </div>
 
                 <!-- Step 9: Email -->
@@ -716,6 +794,9 @@
                         </label>
                         <button type="submit" class="btn btn--primary" style="width:100%;">Mein Hautbild anzeigen</button>
                     </form>
+                    <div style="margin-top:16px;">
+                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
+                    </div>
                 </div>
 
                 <!-- Result -->
@@ -726,7 +807,7 @@
                         <p class="quiz__hautbild-desc" id="quiz-hautbild-desc"></p>
                     </div>
                     <div class="quiz__behandlung">
-                        <p class="quiz__section-label">Deine Behandlung</p>
+                        <p class="quiz__section-label">Deine empfohlene Behandlung</p>
                         <h4 class="quiz__behandlung-title" id="quiz-result-title"></h4>
                         <p class="quiz__result-desc" id="quiz-result-desc"></p>
                         <div class="quiz__result-actions">
@@ -796,7 +877,8 @@ window.addEventListener('scroll', () => {
 });
 
 /* --- Quiz Logic --- */
-const quizData = { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 8: null, trigger: '', email: null };
+const quizData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 8: [], trigger: '', email: null };
+const stepHistory = [];
 
 const results = {
     erschoepfte_strahlkraft: {
@@ -836,26 +918,27 @@ const results = {
     }
 };
 
+// Hilfsfunktion: prüft ob Wert in Array-Antwort enthalten
+function has(q, v) { return Array.isArray(quizData[q]) && quizData[q].includes(v); }
+
 function buildHautbildDesc(baseDesc) {
     let desc = baseDesc;
-    const q1 = quizData[1], q4 = quizData[4], q5 = quizData[5], q6 = quizData[6];
-    if (q1 === 'wechsel') desc += ' Hinzu kommt: dein Körper verändert sich gerade hormonell - und deine Haut verändert sich mit. Das ist kein Versagen, sondern ein Zeichen dafür, dass sie jetzt andere Unterstützung braucht.';
-    else if (q1 === 'post') desc += ' Dein Hormonspiegel hat sich eingependelt - jetzt kann man gezielt arbeiten, mit dem was ist, statt gegen das was war.';
-    if (q4 === 'stressig') desc += ' Stress hinterlässt Spuren, die keine Creme wegmacht - aber die richtige Behandlung kann der Haut die Erholung geben, die der Alltag ihr verweigert.';
-    else if (q4 === 'extrem') desc += ' Chronischer Stress ist einer der stärksten Hautaggressoren überhaupt. Dein Körper weiß das - und deine Haut zeigt es.';
-    if (q5 === 'intensiv') desc += ' Jahrelange Sonneneinstrahlung ohne ausreichenden Schutz ist in jeder Haut gespeichert. Das lässt sich nicht rückgängig machen - aber man kann das, was bleibt, gezielt behandeln.';
-    if (q6 === 'schlecht') desc += ' Eine Haut, die von innen zu wenig Wasser bekommt, kann von außen nicht dauerhaft aufgefüllt werden. Tiefe Feuchtigkeitsbehandlung ist hier besonders sinnvoll.';
+    if (has(1, 'wechsel')) desc += ' Hinzu kommt: dein Körper verändert sich gerade hormonell - und deine Haut verändert sich mit. Das ist kein Versagen, sondern ein Zeichen dafür, dass sie jetzt andere Unterstützung braucht.';
+    else if (has(1, 'post')) desc += ' Dein Hormonspiegel hat sich eingependelt - jetzt kann man gezielt arbeiten, mit dem was ist, statt gegen das was war.';
+    if (has(4, 'stressig')) desc += ' Stress hinterlässt Spuren, die keine Creme wegmacht - aber die richtige Behandlung kann der Haut die Erholung geben, die der Alltag ihr verweigert.';
+    else if (has(4, 'extrem')) desc += ' Chronischer Stress ist einer der stärksten Hautaggressoren überhaupt. Dein Körper weiß das - und deine Haut zeigt es.';
+    if (has(5, 'intensiv')) desc += ' Jahrelange Sonneneinstrahlung ohne ausreichenden Schutz ist in jeder Haut gespeichert. Das lässt sich nicht rückgängig machen - aber man kann das, was bleibt, gezielt behandeln.';
+    if (has(6, 'schlecht')) desc += ' Eine Haut, die von innen zu wenig Wasser bekommt, kann von außen nicht dauerhaft aufgefüllt werden. Tiefe Feuchtigkeitsbehandlung ist hier besonders sinnvoll.';
     return desc;
 }
 
 function getResult() {
-    const q1 = quizData[1], q2 = quizData[2], q3 = quizData[3], q8 = quizData[8];
-    if (q2 === 'augen') return results.der_blick_dahinter;
-    if (q8 === 'beides' && q3 !== 'basis') return results.schlafende_kraft;
-    if (q2 === 'straff') return results.verlorene_vitalitaet;
-    if ((q1 === 'vierzig' || q1 === 'wechsel' || q1 === 'post') && q8 === 'tiefe') return results.verlorene_vitalitaet;
-    if (q2 === 'muede') return results.stille_erschoepfung;
-    if (q2 === 'unreine' && q8 !== 'sofort') return results.stille_erschoepfung;
+    if (has(2, 'augen')) return results.der_blick_dahinter;
+    if (has(8, 'beides') && !has(3, 'basis')) return results.schlafende_kraft;
+    if (has(2, 'straff')) return results.verlorene_vitalitaet;
+    if ((has(1, 'vierzig') || has(1, 'wechsel') || has(1, 'post')) && has(8, 'tiefe')) return results.verlorene_vitalitaet;
+    if (has(2, 'muede')) return results.stille_erschoepfung;
+    if (has(2, 'unreine') && !has(8, 'sofort')) return results.stille_erschoepfung;
     return results.erschoepfte_strahlkraft;
 }
 
@@ -877,6 +960,12 @@ function showStep(n) {
     updateProgress(n);
 }
 
+function goBack() {
+    if (stepHistory.length === 0) return;
+    const prev = stepHistory.pop();
+    showStep(prev);
+}
+
 function showResult(res) {
     document.querySelectorAll('.quiz__panel').forEach(p => p.classList.remove('active'));
     const el = document.getElementById('quiz-result');
@@ -891,23 +980,40 @@ function showResult(res) {
     updateProgress(10);
 }
 
+// Multi-Choice: Toggle-Auswahl, Weiter-Button freischalten
 document.querySelectorAll('.quiz__option').forEach(btn => {
     btn.addEventListener('click', () => {
         const q = +btn.dataset.q;
-        quizData[q] = btn.dataset.v;
-        btn.closest('.quiz__options').querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        setTimeout(() => showStep(q + 1), 300);
+        btn.classList.toggle('selected');
+        quizData[q] = Array.from(
+            btn.closest('.quiz__options').querySelectorAll('.quiz__option.selected')
+        ).map(b => b.dataset.v);
+        // Weiter-Button aktivieren wenn mind. 1 Antwort gewählt
+        const weiter = btn.closest('.quiz__panel').querySelector('.quiz__weiter');
+        if (weiter) weiter.disabled = quizData[q].length === 0;
     });
 });
 
+// Weiter-Buttons (Steps 1-6, 8)
+document.querySelectorAll('.quiz__weiter').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const next = +btn.dataset.next;
+        const currentStep = next - 1;
+        stepHistory.push(currentStep);
+        showStep(next);
+    });
+});
+
+// Step 7: Freitext Weiter
 document.getElementById('quiz-trigger-weiter').addEventListener('click', () => {
     quizData.trigger = document.getElementById('quiz-trigger-text').value.trim();
+    stepHistory.push(7);
     showStep(8);
 });
 
 document.getElementById('quiz-trigger-skip').addEventListener('click', () => {
     quizData.trigger = '';
+    stepHistory.push(7);
     showStep(8);
 });
 
@@ -935,13 +1041,14 @@ document.getElementById('quiz-email-form').addEventListener('submit', e => {
 });
 
 document.getElementById('quiz-restart').addEventListener('click', () => {
-    quizData[1] = quizData[2] = quizData[3] = quizData[4] = quizData[5] = null;
-    quizData[6] = quizData[8] = null;
+    [1,2,3,4,5,6,8].forEach(q => { quizData[q] = []; });
     quizData.trigger = ''; quizData.email = null;
+    stepHistory.length = 0;
     const el = document.getElementById('quiz-result');
     el.style.display = 'none'; el.style.opacity = '0';
     el.style.visibility = 'hidden'; el.classList.remove('active');
     document.querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.quiz__weiter').forEach(b => { b.disabled = true; });
     const textarea = document.getElementById('quiz-trigger-text');
     if (textarea) textarea.value = '';
     showStep(1);
