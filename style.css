@@ -612,8 +612,6 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     gap: 28px;
     margin-bottom: 48px;
 }
-.testimonial:nth-child(4) { grid-column: 1; }
-.testimonial:nth-child(5) { grid-column: 2; }
 .testimonial {
     background: var(--white);
     border: 1px solid var(--border);

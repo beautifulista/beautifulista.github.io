@@ -853,6 +853,12 @@
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
 
+    @media (min-width: 900px) {
+        .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+        .testimonial:nth-child(4) { grid-column: auto !important; }
+        .testimonial:nth-child(5) { grid-column: auto !important; }
+    }
+
     /* --- Video Thumbnails --- */
     .results__video-wrap {
         position: relative;
