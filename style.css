@@ -1318,3 +1318,353 @@ p strong { color: var(--anthrazit); font-weight: 500; }
 .waitlist::before {
     background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.14) 0%, rgba(122, 176, 142, 0.10) 40%, transparent 66%);
 }
+
+
+/* ===========================
+   Behandlungs-Unterseite (HydraFacial, Infuzion, Circadia, Lash & Brow, Laser)
+   =========================== */
+.treatment-page { display: flex; flex-direction: column; min-height: 100vh; }
+.treatment-page main { flex: 1; }
+
+/* Hero */
+.treatment-hero {
+    padding: 140px 0 72px;
+    background: var(--ivory);
+    border-bottom: 1px solid var(--border);
+}
+.treatment-hero__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+}
+.treatment-hero__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark-green);
+    margin-bottom: 18px;
+}
+.treatment-hero h1 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(42px, 6vw, 76px);
+    color: var(--anthrazit);
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+.treatment-hero__lead {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    max-width: 520px;
+}
+.treatment-hero__cta { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.treatment-hero__img img {
+    width: 100%;
+    border-radius: 18px;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 32px 80px rgba(0,0,0,0.14);
+}
+.treatment-hero__badge {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--anthrazit);
+    background: var(--gold);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+}
+
+/* Inhaltssektionen */
+.treatment-section { padding: clamp(56px, 8vw, 88px) 0; }
+.treatment-section--alt { background: var(--white); }
+.treatment-section__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark-green);
+    margin-bottom: 14px;
+    text-align: center;
+}
+.treatment-section__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 46px);
+    color: var(--anthrazit);
+    line-height: 1.15;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.treatment-section__intro {
+    max-width: 640px;
+    margin: 0 auto 48px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--text-muted);
+}
+
+/* Benefits */
+.treatment-benefits {
+    list-style: none;
+    max-width: 680px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+}
+.treatment-benefits li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--anthrazit);
+}
+.treatment-benefits li::before {
+    content: '→';
+    color: var(--sage);
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+/* Ablauf-Schritte */
+.treatment-steps {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+}
+.treatment-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+.treatment-step__num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--ivory);
+    border: 1px solid var(--sage);
+    color: var(--dark-green);
+    font-family: var(--font-serif);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.treatment-section--alt .treatment-step__num { background: #fff; }
+.treatment-step__body h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 21px;
+    color: var(--anthrazit);
+    margin-bottom: 8px;
+}
+.treatment-step__body p { font-size: 15px; line-height: 1.75; color: var(--text-muted); }
+
+/* Preise */
+.treatment-pricing {
+    max-width: 680px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+}
+.treatment-pricing__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+.treatment-pricing__name { font-size: 16px; color: var(--anthrazit); }
+.treatment-pricing__name small {
+    display: block;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+.treatment-pricing__price {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--anthrazit);
+    white-space: nowrap;
+}
+.treatment-pricing__note {
+    max-width: 680px;
+    margin: 24px auto 0;
+    font-size: 14px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.7;
+}
+
+/* FAQ */
+.treatment-faq { max-width: 720px; margin: 0 auto; }
+.treatment-faq__item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+}
+.treatment-faq__q {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--anthrazit);
+    margin-bottom: 10px;
+}
+.treatment-faq__a { font-size: 15px; line-height: 1.8; color: var(--text-muted); }
+
+/* CTA-Band */
+.treatment-cta-band {
+    background: var(--sage);
+    padding: clamp(64px, 8vw, 96px) 0;
+    text-align: center;
+}
+.treatment-cta-band__eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+}
+.treatment-cta-band h2 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(30px, 4.5vw, 52px);
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+.treatment-cta-band p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.75;
+}
+.treatment-back {
+    text-align: center;
+    padding: 40px 0 64px;
+    background: var(--ivory);
+}
+.treatment-back a {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+.treatment-back a:hover { color: var(--anthrazit); }
+
+/* ===========================
+   Nav-Dropdown "Behandlungen"
+   =========================== */
+.nav__item-dropdown { position: relative; }
+.nav__dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.01em;
+    padding: 0;
+    transition: color var(--transition);
+}
+.nav__dropdown-toggle:hover { color: var(--anthrazit); }
+.nav__dropdown-toggle::after {
+    content: '';
+    width: 6px; height: 6px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-1px);
+    transition: transform var(--transition);
+}
+.nav__item-dropdown[aria-expanded="true"] .nav__dropdown-toggle::after { transform: rotate(225deg) translateY(2px); }
+
+.nav__dropdown-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 220px;
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+    z-index: 200;
+}
+.nav__item-dropdown:hover .nav__dropdown-menu,
+.nav__item-dropdown:focus-within .nav__dropdown-menu,
+.nav__item-dropdown[aria-expanded="true"] .nav__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.nav__dropdown-menu a {
+    font-size: 13px;
+    color: var(--anthrazit);
+    padding: 10px 14px;
+    border-radius: 2px;
+    transition: background var(--transition), color var(--transition);
+    white-space: nowrap;
+}
+.nav__dropdown-menu a:hover { background: rgba(122,176,142,0.12); color: var(--dark-green); }
+
+/* Responsive Behandlungs-Unterseite + Dropdown */
+@media (max-width: 900px) {
+    .treatment-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    .treatment-hero__img { order: -1; max-width: 380px; margin: 0 auto; }
+    .treatment-hero { padding: 120px 0 56px; }
+}
+@media (max-width: 960px) {
+    /* Dropdown im Mobile-Menü als Akkordeon: zu, bis per Pfeil aufgeklappt */
+    .nav__item-dropdown { width: 100%; }
+    .nav__dropdown-toggle { font-size: 15px; }
+
+    /* Menü grundsätzlich statisch & eingeklappt (überschreibt Desktop-Positionierung) */
+    .nav__item-dropdown .nav__dropdown-menu,
+    .nav__item-dropdown:hover .nav__dropdown-menu,
+    .nav__item-dropdown:focus-within .nav__dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding: 0 0 0 16px;
+        min-width: 0;
+        opacity: 1;
+        visibility: visible;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition), padding var(--transition);
+    }
+    /* Aufgeklappt, wenn aria-expanded="true" */
+    .nav__item-dropdown[aria-expanded="true"] .nav__dropdown-menu {
+        transform: none;
+        max-height: 320px;
+        padding: 8px 0 4px 16px;
+    }
+    .nav__dropdown-menu a { padding: 8px 0; font-size: 14px; }
+}

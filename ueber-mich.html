@@ -407,6 +407,24 @@
         margin-top: 32px;
         display: block;
     }
+    /* Mobile Nav Fix (konsistent mit den übrigen Seiten) */
+    .nav__links-termin { display: none; }
+    @media (max-width: 960px) {
+        .btn--nav { display: none !important; }
+        .nav__links-termin {
+            display: block;
+            margin-top: 8px;
+            padding: 12px 20px;
+            background: var(--sage);
+            color: #fff !important;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+    }
     </style>
 </head>
 <body>
@@ -418,10 +436,21 @@
             <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
         </a>
         <div class="nav__links" id="nav-links">
-            <a href="index.html#behandlungen">Behandlungen</a>
+            <div class="nav__item-dropdown" aria-expanded="false">
+                <a href="index.html#behandlungen" class="nav__dropdown-toggle-link">Behandlungen</a>
+                <button class="nav__dropdown-toggle" aria-label="Behandlungen aufklappen" aria-haspopup="true"></button>
+                <div class="nav__dropdown-menu">
+                    <a href="hydrafacial.html">HydraFacial</a>
+                    <a href="infuzion.html">Infuzion Systems</a>
+                    <a href="circadia.html">Circadia</a>
+                    <a href="lash-brow.html">Lash &amp; Brow</a>
+                    <a href="laser.html">Laser-Haarentfernung</a>
+                </div>
+            </div>
+            <a href="hauttest.html">Hauttest</a>
             <a href="ueber-mich.html" aria-current="page">Über mich</a>
-            <a href="index.html#bewertungen">Bewertungen</a>
             <a href="index.html#kontakt">Kontakt</a>
+            <a href="termin.html" target="_blank" rel="noopener" class="nav__links-termin">Termin buchen</a>
         </div>
         <a href="termin.html"
            class="btn btn--nav" target="_blank" rel="noopener">Termin buchen</a>
@@ -1012,6 +1041,17 @@ const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
     nav.style.boxShadow = window.scrollY > 10 ? '0 2px 24px rgba(0,0,0,0.06)' : 'none';
 }, { passive: true });
+
+/* Behandlungen-Dropdown */
+document.querySelectorAll('.nav__item-dropdown').forEach(dd => {
+    const btn = dd.querySelector('.nav__dropdown-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', e => {
+        e.preventDefault();
+        const open = dd.getAttribute('aria-expanded') === 'true';
+        dd.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+});
 </script>
 
 </body>
