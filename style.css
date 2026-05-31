@@ -1033,7 +1033,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #25D366;
+    background: var(--sage);
     color: #fff;
     border: none;
     margin-top: 12px;
@@ -1047,7 +1047,7 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     background-repeat: no-repeat;
     background-size: contain;
 }
-.btn--whatsapp:hover { background: #1da851; color: #fff; }
+.btn--whatsapp:hover { background: #5a6e62; color: #fff; }
 
 .contact__social-links {
     display: flex;

@@ -50,7 +50,7 @@
 
     /* --- Hero: 2-spaltig --- */
     .hero {
-        min-height: 100vh;
+        min-height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
@@ -119,8 +119,17 @@
         object-position: 50% 0%;
     }
 
+    @media (min-width: 900px) {
+        .hero .gold-frame-wrap { max-width: 480px; }
+    }
+
     /* Termin-Link nur im Mobile-Dropdown sichtbar, auf Desktop ausgeblendet */
     .nav__links-termin { display: none; }
+
+    /* WhatsApp Button: Brandfarbe + gleiche Breite wie Termin-Button */
+    .btn--whatsapp { background: var(--sage) !important; min-width: 220px; justify-content: center; }
+    .btn--whatsapp:hover { background: #5a6e62 !important; }
+    .contact__cta-block .btn--primary { min-width: 220px; text-align: center; }
 
     /* Mobile Nav Fix: Hamburger war off-screen wegen .btn--nav */
     @media (max-width: 960px) {
@@ -1369,11 +1378,17 @@
 
         </div><!-- /flipcards-grid -->
 
-        <div class="flipcards-cta">
-            <p>Unsicher, welche Behandlung die richtige für dich ist?</p>
-            <a href="hauttest.html" class="btn btn--primary">Jetzt Hauttest machen</a>
-        </div>
+    </div>
+</section>
 
+
+<!-- ===================== Hauttest CTA ===================== -->
+<section style="background:var(--sage);padding:80px 0;text-align:center;">
+    <div class="container" style="max-width:680px;">
+        <p style="font-family:var(--font-sans);font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Dein nächster Schritt</p>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,44px);font-weight:300;color:#fff;margin-bottom:16px;line-height:1.25;">Welche Behandlung passt<br>wirklich zu dir?</h2>
+        <p style="font-family:var(--font-sans);font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:40px;line-height:1.7;">8 Fragen. Dein persönliches Hautbild. Deine Behandlungsempfehlung.</p>
+        <a href="hauttest.html" class="btn--gold-glow">Jetzt Hauttest machen</a>
     </div>
 </section>
 
