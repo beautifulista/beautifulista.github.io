@@ -1,16 +1,17 @@
-/* beautifulista - Cookie-Consent-Banner */
+/* beautifulista - Cookie-Consent-Banner
+   Farben kommen aus den Marken-Variablen in style.css (mit Fallback). */
 #bf-consent {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 99999;
-  background: #FAF7F0;
-  border-top: 1px solid #D4AF37;
+  background: var(--ivory, #FAF7F0);
+  border-top: 1px solid var(--gold, #D4AF37);
   box-shadow: 0 -2px 16px rgba(28, 28, 28, 0.12);
   padding: 18px 20px;
   font-family: 'Raleway', sans-serif;
-  color: #1C1C1C;
+  color: var(--anthrazit, #1C1C1C);
 }
 #bf-consent .bf-inner {
   max-width: 1100px;
@@ -29,7 +30,7 @@
   min-width: 260px;
 }
 #bf-consent a {
-  color: #3E6B58;
+  color: var(--dark-green, #4C5A47);
   text-decoration: underline;
 }
 #bf-consent .bf-btns {
@@ -44,23 +45,23 @@
   padding: 10px 24px;
   border-radius: 30px;
   cursor: pointer;
-  border: 1px solid #7AB08E;
+  border: 1px solid var(--sage, #6E7B67);
   transition: background 0.2s ease, color 0.2s ease;
 }
 #bf-consent .bf-accept {
-  background: #7AB08E;
-  color: #fff;
+  background: var(--sage, #6E7B67);
+  color: var(--white, #FFFFFF);
 }
 #bf-consent .bf-accept:hover {
-  background: #3E6B58;
-  border-color: #3E6B58;
+  background: var(--dark-green, #4C5A47);
+  border-color: var(--dark-green, #4C5A47);
 }
 #bf-consent .bf-decline {
   background: transparent;
-  color: #3E6B58;
+  color: var(--dark-green, #4C5A47);
 }
 #bf-consent .bf-decline:hover {
-  background: rgba(122, 176, 142, 0.12);
+  background: rgba(110, 123, 103, 0.12);
 }
 @media (max-width: 600px) {
   #bf-consent .bf-inner {
