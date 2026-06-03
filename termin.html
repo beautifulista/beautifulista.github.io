@@ -186,7 +186,17 @@ window.planity = {
     primaryColor: '#6e7b67',
     container: container,
     options: {
-        countryCode: 'DE'
+        countryCode: 'DE',
+        // Feuert, wenn eine Buchung bestaetigt wurde (Planity-Callback).
+        // gtag existiert nur nach Cookie-Einwilligung -> DSGVO-konform.
+        appointmentCallback: function () {
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', 'buchung_abgeschlossen', {
+                    event_category: 'Conversion',
+                    event_label: 'Planity Terminbuchung'
+                });
+            }
+        }
     }
 };
 </script>
