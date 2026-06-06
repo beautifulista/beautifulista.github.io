@@ -1,0 +1,117 @@
+/* beautifulista - Newsletter-Anmeldeblock (Footer, alle Seiten)
+   Markenfarben aus style.css (mit Fallback). Postet an Brevo (Double-Opt-in). */
+.bf-news {
+  background: var(--dark-green, #4C5A47);
+  color: #fff;
+  padding: 52px 20px;
+  border-top: 1px solid var(--gold, #D4AF37);
+}
+.bf-news__inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+.bf-news__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 0 0 10px;
+  color: #fff;
+}
+.bf-news__text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.bf-news__row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.bf-news__row input[type="email"] {
+  flex: 1 1 280px;
+  min-width: 0;
+  padding: 13px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  background: #fff;
+  color: var(--anthrazit, #1C1C1C);
+}
+.bf-news__row input[type="email"]:focus {
+  outline: none;
+  border-color: var(--gold, #D4AF37);
+}
+.bf-news__btn {
+  flex: 0 0 auto;
+  padding: 13px 32px;
+  border: none;
+  border-radius: 30px;
+  background: var(--ivory, #FAF7F0);
+  color: var(--dark-green, #4C5A47);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.bf-news__btn:hover {
+  background: var(--gold, #D4AF37);
+  color: #fff;
+}
+.bf-news__btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.bf-news__consent {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  max-width: 520px;
+  margin: 16px auto 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.8);
+}
+.bf-news__consent input {
+  margin-top: 3px;
+  flex: 0 0 auto;
+}
+.bf-news__consent a {
+  color: #fff;
+  text-decoration: underline;
+}
+.bf-news__hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.bf-news__msg {
+  display: none;
+  margin: 18px auto 0;
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 14px 18px;
+  border-radius: 10px;
+}
+.bf-news__msg--ok {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+.bf-news__msg--err {
+  background: rgba(255, 120, 120, 0.18);
+  color: #ffe1e1;
+}
+@media (max-width: 560px) {
+  .bf-news__row { flex-direction: column; }
+  .bf-news__row input[type="email"] { flex: 0 0 auto; width: 100%; }
+  .bf-news__btn { width: 100%; }
+}
