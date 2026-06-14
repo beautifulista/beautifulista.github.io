@@ -347,10 +347,16 @@ document.querySelectorAll('.waitlist__form').forEach(form => {
     });
 });
 
-/* --- Direktbuchung (Planity): gleiches Lead-Event beim Klick auf "Termin buchen" --- */
+/* --- Buchungs-Klicks: Lead bleibt Optimierungs-Event (nicht anfassen),
+       zusaetzlich getrennt zaehlen: WhatsApp -> Contact, Planity -> Schedule --- */
 document.querySelectorAll('.js-book').forEach(function(el){
     el.addEventListener('click', function(){
-        if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'HydraFacial 99 Kennenlern', method: 'Planity' }); }
+        if (typeof fbq !== 'function') return;
+        var isWa = el.classList.contains('btn--whatsapp') || (el.href && el.href.indexOf('wa.me') !== -1);
+        var name = 'HydraFacial 99 Kennenlern';
+        fbq('track', 'Lead', { content_name: name, method: isWa ? 'WhatsApp' : 'Planity' });
+        if (isWa) { fbq('track', 'Contact', { content_name: name, method: 'WhatsApp' }); }
+        else { fbq('track', 'Schedule', { content_name: name, method: 'Planity' }); }
     });
 });
 </script>

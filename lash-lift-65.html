@@ -251,9 +251,16 @@ if (toggle && navLinks) {
         toggle.setAttribute('aria-expanded', open);
     });
 }
+/* Lead bleibt Optimierungs-Event; zusaetzlich getrennt zaehlen:
+   WhatsApp -> Contact, Planity -> Schedule */
 document.querySelectorAll('.js-book').forEach(function(el){
     el.addEventListener('click', function(){
-        if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'Korean Lash Lift 65 Kennenlern' }); }
+        if (typeof fbq !== 'function') return;
+        var isWa = el.classList.contains('btn--whatsapp') || (el.href && el.href.indexOf('wa.me') !== -1);
+        var name = 'Korean Lash Lift 65 Kennenlern';
+        fbq('track', 'Lead', { content_name: name, method: isWa ? 'WhatsApp' : 'Planity' });
+        if (isWa) { fbq('track', 'Contact', { content_name: name, method: 'WhatsApp' }); }
+        else { fbq('track', 'Schedule', { content_name: name, method: 'Planity' }); }
     });
 });
 </script>
