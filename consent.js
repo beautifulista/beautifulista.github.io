@@ -60,12 +60,36 @@
     showBanner();
   };
 
+  // Conversion-Klicks als GA4-Ereignisse zaehlbar machen: WhatsApp-Links (wa.me)
+  // und Termin-Buchen-Links (termin.html), seitenweit. Feuert nur, wenn gtag
+  // existiert -> also erst nach Cookie-Einwilligung (DSGVO-konform). Laeuft parallel
+  // zum bestehenden Meta-Pixel-Tracking, ohne es anzufassen.
+  function trackCtaClicks() {
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+      if (!t || !t.closest) return;
+      if (typeof window.gtag !== 'function') return;
+      if (t.closest('a[href*="wa.me"]')) {
+        window.gtag('event', 'whatsapp_klick', {
+          event_category: 'Conversion',
+          event_label: location.pathname
+        });
+      } else if (t.closest('a[href*="termin.html"]')) {
+        window.gtag('event', 'termin_klick', {
+          event_category: 'Conversion',
+          event_label: location.pathname
+        });
+      }
+    }, true);
+  }
+
   function init() {
     var c = null;
     try { c = localStorage.getItem(KEY); } catch (e) {}
     if (c === 'granted') { loadGA(); }
     else if (c === 'denied') { /* nichts laden */ }
     else { showBanner(); }
+    trackCtaClicks();
   }
 
   if (document.readyState === 'loading') {

@@ -1668,3 +1668,33 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     }
     .nav__dropdown-menu a { padding: 8px 0; font-size: 14px; }
 }
+
+/* Feste Termin-Buchen-Leiste am unteren Rand (nur Handy). Wird per HTML-Snippet
+   .mobile-cta-bar vor </body> auf den Seiten eingebunden. */
+.mobile-cta-bar { display: none; }
+@media (max-width: 960px) {
+    .mobile-cta-bar {
+        display: block;
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        z-index: 1000;
+        background: var(--sage);
+        box-shadow: 0 -2px 14px rgba(0, 0, 0, 0.18);
+    }
+    .mobile-cta-bar a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: #fff !important;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+    }
+    .mobile-cta-bar a:active { opacity: 0.92; }
+    /* Platz, damit die Leiste keinen Inhalt verdeckt */
+    body { padding-bottom: 68px; }
+}
