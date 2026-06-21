@@ -98,6 +98,27 @@
         .lp-form-sec.waitlist .waitlist__back a { color: rgba(250,247,240,0.75); }
         .lp-scarcity { text-align: center; color: var(--sage); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 22px; }
         .lp-wa-cta { text-align: center; margin: 8px 0 30px; }
+
+        /* ---- Fixe WhatsApp-Leiste am Handy (immer sichtbar beim Scrollen) ---- */
+        .lp-sticky-wa { display: none; }
+        @media (max-width: 860px) {
+            .lp-sticky-wa {
+                display: flex; align-items: center; justify-content: center; gap: 10px;
+                position: fixed; left: 0; right: 0; bottom: 0; z-index: 999;
+                background: var(--sage); color: #fff;
+                font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 16px;
+                letter-spacing: 0.02em; text-decoration: none;
+                padding: 15px 16px;
+                padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+                box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+            }
+            .lp-sticky-wa::before {
+                content: ''; flex: 0 0 auto; width: 20px; height: 20px;
+                background-repeat: no-repeat; background-size: contain;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z'/%3E%3Cpath d='M11.999 2C6.477 2 2 6.477 2 12c0 1.89.522 3.656 1.432 5.168L2 22l4.975-1.302A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.72 0-3.328-.463-4.71-1.27l-.338-.2-3.506.919.935-3.418-.22-.352A7.944 7.944 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z'/%3E%3C/svg%3E");
+            }
+            body { padding-bottom: 66px; }
+        }
     </style>
 </head>
 <body>
@@ -121,10 +142,10 @@
                     Der Korean Lash Lift bringt deine eigenen Wimpern in Form: sanft aufgerichtet, geschwungen und gefärbt. So entsteht ein offener, wacher Blick, der sechs bis acht Wochen hält. Keine Extensions, kein tägliches Nachgreifen zur Mascara. Statt 79 €.
                 </p>
                 <div class="lp-hero__cta">
-                    <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="btn btn--sage js-book">Jetzt Termin buchen</a>
-                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="lp-hero__alt js-book">oder per WhatsApp anfragen</a>
+                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Per WhatsApp sichern</a>
+                    <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="lp-hero__alt js-book">oder direkt online buchen</a>
                 </div>
-                <p class="lp-hero__note">Begrenzte Plätze</p>
+                <p class="lp-hero__note">Emilia meldet sich persönlich mit freien Terminen.</p>
             </div>
             <div class="lp-hero__media">
                 <img src="lash-ba-1.jpg" alt="Korean Lash Lift Vorher Nachher bei beautifulista in Unna" loading="eager">
@@ -199,8 +220,8 @@
             <p class="lp-offer__terms">
                 Korean Lash Lift inklusive Wimpernfärbung zum Kennenlernen. Begrenzte Plätze, bis 30. Juni.
             </p>
-            <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="btn js-book">Jetzt Termin buchen</a>
-            <p class="lp-offer__alt"><a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="js-book">Lieber per WhatsApp anfragen</a></p>
+            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn js-book">Termin per WhatsApp sichern</a>
+            <p class="lp-offer__alt"><a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="js-book">oder direkt online buchen</a></p>
         </div>
     </div>
 </section>
@@ -220,6 +241,9 @@
         </div>
     </div>
 </section>
+
+<!-- ===================== Fixe WhatsApp-Leiste (nur Handy) ===================== -->
+<a class="lp-sticky-wa js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" aria-label="Per WhatsApp den 65-Euro-Lash-Lift-Termin sichern">65-€-Termin per WhatsApp sichern</a>
 
 <footer class="footer">
     <div class="container">
