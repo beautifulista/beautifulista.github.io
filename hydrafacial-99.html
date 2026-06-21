@@ -137,6 +137,45 @@
         .lp-form-sec .waitlist__inner { max-width: 560px; margin: 0 auto; }
         .lp-scarcity { text-align: center; color: var(--sage); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 22px; }
         .lp-wa-cta { text-align: center; margin: 8px 0 30px; }
+
+        /* ---- Kundenstimmen (echte Google-Bewertungen) ---- */
+        .lp-reviews { padding: clamp(56px, 8vw, 96px) 0; }
+        .lp-reviews__grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: clamp(16px, 2.5vw, 26px); max-width: 880px; margin: 0 auto;
+        }
+        @media (max-width: 720px) { .lp-reviews__grid { grid-template-columns: 1fr; } }
+        .lp-review {
+            background: #fff; border-radius: 6px; padding: 30px 28px;
+            box-shadow: 0 6px 26px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column;
+        }
+        .lp-review__stars { color: var(--gold); letter-spacing: 3px; font-size: 14px; margin-bottom: 14px; }
+        .lp-review__text { line-height: 1.62; font-size: 15.5px; opacity: 0.9; margin: 0 0 18px; font-style: italic; }
+        .lp-review__name { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 19px; color: var(--sage); margin: auto 0 0; }
+        .lp-review__src { display: block; font-family: 'Raleway', sans-serif; font-style: normal; font-weight: 400; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.5; margin-top: 3px; }
+        .lp-reviews__note { text-align: center; margin-top: clamp(28px, 4vw, 40px); font-size: 13px; opacity: 0.6; }
+
+        /* ---- Fixe WhatsApp-Leiste am Handy (immer sichtbar beim Scrollen) ---- */
+        .lp-sticky-wa { display: none; }
+        @media (max-width: 860px) {
+            .lp-sticky-wa {
+                display: flex; align-items: center; justify-content: center; gap: 10px;
+                position: fixed; left: 0; right: 0; bottom: 0; z-index: 999;
+                background: var(--sage); color: #fff;
+                font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 16px;
+                letter-spacing: 0.02em; text-decoration: none;
+                padding: 15px 16px;
+                padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+                box-shadow: 0 -6px 24px rgba(0,0,0,0.18);
+            }
+            .lp-sticky-wa::before {
+                content: ''; flex: 0 0 auto; width: 20px; height: 20px;
+                background-repeat: no-repeat; background-size: contain;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z'/%3E%3Cpath d='M11.999 2C6.477 2 2 6.477 2 12c0 1.89.522 3.656 1.432 5.168L2 22l4.975-1.302A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.72 0-3.328-.463-4.71-1.27l-.338-.2-3.506.919.935-3.418-.22-.352A7.944 7.944 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z'/%3E%3C/svg%3E");
+            }
+            body { padding-bottom: 66px; }
+        }
     </style>
 </head>
 <body>
@@ -162,10 +201,10 @@
                     Statt ab 159 €. Sichtbar frischere, reinere Haut nach einer einzigen Behandlung. Sanftes Peeling, porentiefe Ausreinigung und Feuchtigkeit. Ganz ohne Nadeln, ohne Schmerz, ohne Ausfallzeit.
                 </p>
                 <div class="lp-hero__cta">
-                    <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="btn btn--sage js-book">Jetzt Termin buchen</a>
-                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="lp-hero__alt js-book">oder per WhatsApp anfragen</a>
+                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Per WhatsApp sichern</a>
+                    <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="lp-hero__alt js-book">oder direkt online buchen</a>
                 </div>
-                <p class="lp-hero__note">Begrenzte Plätze</p>
+                <p class="lp-hero__note">Sarah antwortet dir persönlich mit freien Terminen, meist innerhalb weniger Stunden.</p>
             </div>
             <div class="lp-hero__media">
                 <img src="sarah_behandlung_Hf.png" alt="Sarah von beautifulista bei einer HydraFacial-Behandlung in Unna" loading="eager">
@@ -227,6 +266,9 @@
             </figure>
         </div>
         <p class="lp-ba__note">Echtes, unretuschiertes Ergebnis einer Kundin. Ergebnisse sind individuell.</p>
+        <div class="lp-wa-cta" style="margin-top: 34px;">
+            <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener">Per WhatsApp sichern</a>
+        </div>
     </div>
 </section>
 
@@ -242,6 +284,42 @@
     </div>
 </section>
 
+<!-- ===================== Kundenstimmen (echte Google-Bewertungen) ===================== -->
+<section class="lp-reviews">
+    <div class="container">
+        <h2>Das sagen Kundinnen über beautifulista</h2>
+        <p class="lp-section-intro">Echte Google-Bewertungen aus Unna.</p>
+        <div class="lp-reviews__grid">
+
+            <figure class="lp-review">
+                <div class="lp-review__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                <blockquote class="lp-review__text">„Ich bin absolut begeistert von der Kosmetikbehandlung. Mein Gesicht sieht deutlich frischer, glatter und deutlich faltenfreier aus, genau das Ergebnis, das ich mir gewünscht habe. Man merkt sofort, dass hier mit viel Erfahrung und Fachwissen gearbeitet wird."</blockquote>
+                <figcaption class="lp-review__name">Birgit Wolter<span class="lp-review__src">Google Rezension</span></figcaption>
+            </figure>
+
+            <figure class="lp-review">
+                <div class="lp-review__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                <blockquote class="lp-review__text">„Besonders positiv fand ich die ehrliche Beratung. Mir wurde sogar von bestimmten Behandlungen abgeraten, weil sie in meinem Fall einfach nicht nötig gewesen wären. Genau das schafft für mich echtes Vertrauen. […] Das Ergebnis hat meine Erwartungen absolut übertroffen."</blockquote>
+                <figcaption class="lp-review__name">Olga (HeadUpHigh)<span class="lp-review__src">Google Rezension</span></figcaption>
+            </figure>
+
+            <figure class="lp-review">
+                <div class="lp-review__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                <blockquote class="lp-review__text">„Ich war heute zum ersten Mal im Studio zum Hydrafacial […]. Es wurde sich Zeit genommen & das lässt sich am Ergebnis auch sehen. Alles ist wirklich sehr schön geworden."</blockquote>
+                <figcaption class="lp-review__name">Anja K.<span class="lp-review__src">Google Rezension</span></figcaption>
+            </figure>
+
+            <figure class="lp-review">
+                <div class="lp-review__stars" aria-label="5 von 5 Sternen">★★★★★</div>
+                <blockquote class="lp-review__text">„Sehr angenehme Behandlung und Behandelnde. Sofort sichtbare Faltenreduzierung. Sehr empfehlenswert, bin begeistert."</blockquote>
+                <figcaption class="lp-review__name">Ramona Jurkiewicz-Schmidt<span class="lp-review__src">Google Rezension</span></figcaption>
+            </figure>
+
+        </div>
+        <p class="lp-reviews__note">Auszüge aus echten Google-Bewertungen. […] markiert gekürzte Stellen, am Wortlaut wurde nichts geändert.</p>
+    </div>
+</section>
+
 <!-- ===================== Angebot ===================== -->
 <section class="lp-offer">
     <div class="container">
@@ -251,8 +329,8 @@
             <p class="lp-offer__terms">
                 Deine erste HydraFacial Signature zum Kennenlernen. Begrenzte Plätze, bis 30. Juni.
             </p>
-            <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="btn js-book">Jetzt Termin buchen</a>
-            <p class="lp-offer__alt"><a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="js-book">Lieber per WhatsApp anfragen</a></p>
+            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn js-book">Termin per WhatsApp sichern</a>
+            <p class="lp-offer__alt"><a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="js-book">oder direkt online buchen</a></p>
         </div>
     </div>
 </section>
@@ -275,6 +353,9 @@
         </div>
     </div>
 </section>
+
+<!-- ===================== Fixe WhatsApp-Leiste (nur Handy) ===================== -->
+<a class="lp-sticky-wa js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" aria-label="Per WhatsApp den 99-Euro-HydraFacial-Termin sichern">99-€-Termin per WhatsApp sichern</a>
 
 <!-- ===================== Footer ===================== -->
 <footer class="footer">
