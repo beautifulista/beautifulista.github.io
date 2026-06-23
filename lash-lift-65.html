@@ -99,6 +99,17 @@
         .lp-scarcity { text-align: center; color: var(--sage); font-weight: 600; letter-spacing: 0.04em; margin-bottom: 22px; }
         .lp-wa-cta { text-align: center; margin: 8px 0 30px; }
 
+        /* ---- Kundenbewertungen ---- */
+        .lp-reviews { padding: clamp(56px, 8vw, 96px) 0; background: #fff; }
+        .lp-reviews__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.5vw, 28px); margin-top: clamp(32px, 5vw, 48px); }
+        @media (max-width: 800px) { .lp-reviews__grid { grid-template-columns: 1fr; } }
+        .lp-review-card { background: var(--ivory, #faf7f0); border-radius: 6px; padding: 28px 26px 24px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+        .lp-review-card__stars { color: #f4a623; font-size: 18px; letter-spacing: 2px; }
+        .lp-review-card blockquote { margin: 0; font-size: 15px; line-height: 1.65; opacity: 0.88; font-style: italic; }
+        .lp-review-card figcaption { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; margin-top: auto; }
+        .lp-review-card__via { opacity: 0.55; font-weight: 400; }
+        .lp-reviews__note { text-align: center; margin-top: 24px; font-size: 12px; opacity: 0.5; }
+
         /* ---- Fixe WhatsApp-Leiste am Handy (immer sichtbar beim Scrollen) ---- */
         .lp-sticky-wa { display: none; }
         @media (max-width: 860px) {
@@ -213,6 +224,31 @@
                 Bei beautifulista in Unna macht Emilia deine Lash- und Brow-Behandlungen. Sie stimmt den Schwung individuell auf deine Augenform ab, damit dein Blick natürlich und harmonisch wirkt, nie schablonenhaft. Genau das ist der Unterschied zu Lash Lifts von der Stange.
             </p>
         </div>
+    </div>
+</section>
+
+<section class="lp-reviews" aria-label="Kundenstimmen">
+    <div class="container">
+        <h2>Was Kundinnen sagen</h2>
+        <p class="lp-section-intro">Echte Bewertungen von Google, unverändert.</p>
+        <div class="lp-reviews__grid">
+            <figure class="lp-review-card">
+                <div class="lp-review-card__stars">★★★★★</div>
+                <blockquote>„Das Korean Lash Lift sieht toll aus, noch nirgendwo besser erlebt!"</blockquote>
+                <figcaption>Vanessa Schlüß<span class="lp-review-card__via"> · Google</span></figcaption>
+            </figure>
+            <figure class="lp-review-card">
+                <div class="lp-review-card__stars">★★★★★</div>
+                <blockquote>„Ich bin absolut verliebt in mein neues Lash Lifting! Meine Wimpern waren vorher total gerade und kaum zu sehen. Jetzt haben sie einen wunderschönen, tiefen Schwung und wirken doppelt so lang. Ich werde super oft darauf angesprochen."</blockquote>
+                <figcaption>Christiane Tomaszewski<span class="lp-review-card__via"> · Google</span></figcaption>
+            </figure>
+            <figure class="lp-review-card">
+                <div class="lp-review-card__stars">★★★★★</div>
+                <blockquote>„Das Ergebnis meines Brow- und Lashlifting war hervorragend."</blockquote>
+                <figcaption>Julia Denneng<span class="lp-review-card__via"> · Google</span></figcaption>
+            </figure>
+        </div>
+        <p class="lp-reviews__note">Bewertungen von Google Business (5,0 · 18 Rezensionen). Am Wortlaut wurde nichts geändert.</p>
     </div>
 </section>
 
