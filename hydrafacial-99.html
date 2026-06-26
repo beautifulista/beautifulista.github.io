@@ -81,6 +81,18 @@
         .lp-hero__cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
         .lp-hero__note { font-size: 13px; opacity: 0.6; margin-top: 10px; }
         .lp-hero__alt { font-size: 14px; text-decoration: underline; text-underline-offset: 3px; opacity: 0.8; }
+        .lp-hero__pricetag {
+            margin-top: 26px; font-family: 'Cormorant Garamond', serif;
+            display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+        }
+        .lp-hero__pricetag .lp-now { font-size: clamp(40px, 7vw, 56px); font-weight: 600; color: var(--sage); line-height: 1; }
+        .lp-hero__pricetag .lp-was { font-size: clamp(18px, 2.4vw, 22px); opacity: 0.5; text-decoration: line-through; }
+        .lp-hero__pricetag .lp-save {
+            font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 600;
+            letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: #1C1C1C;
+            padding: 6px 13px; border-radius: 999px; align-self: center;
+        }
+        .lp-hero__label { font-size: 14px; letter-spacing: 0.04em; opacity: 0.75; margin: 18px 0 0; }
         .lp-offer__alt { margin-top: 16px; }
         .lp-offer__alt a { color: #fff; font-size: 14px; text-decoration: underline; text-underline-offset: 3px; opacity: 0.9; }
         .lp-hero__media img {
@@ -129,8 +141,26 @@
         .lp-offer__box h2 { color: #fff; }
         .lp-offer__price { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 8vw, 68px); line-height: 1; margin: 6px 0; }
         .lp-offer__price s { opacity: 0.55; font-size: 0.45em; margin-left: 10px; }
+        .lp-offer__save {
+            display: inline-block; font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 600;
+            letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: #1C1C1C;
+            padding: 6px 14px; border-radius: 999px; margin: 4px 0 8px;
+        }
         .lp-offer__terms { color: #fff; opacity: 0.92; line-height: 1.6; margin: 10px auto 26px; max-width: 30em; }
         .lp-offer .btn { background: #fff; color: var(--sage); }
+        .btn--waico { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn--waico::before {
+            content: ''; flex: 0 0 auto; width: 18px; height: 18px; background-color: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z'/%3E%3Cpath d='M11.999 2C6.477 2 2 6.477 2 12c0 1.89.522 3.656 1.432 5.168L2 22l4.975-1.302A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.72 0-3.328-.463-4.71-1.27l-.338-.2-3.506.919.935-3.418-.22-.352A7.944 7.944 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z'/%3E%3Cpath d='M11.999 2C6.477 2 2 6.477 2 12c0 1.89.522 3.656 1.432 5.168L2 22l4.975-1.302A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.72 0-3.328-.463-4.71-1.27l-.338-.2-3.506.919.935-3.418-.22-.352A7.944 7.944 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+        .lp-planity-small { text-align: center; margin-top: 18px; }
+        .lp-planity-small a { font-size: 13px; opacity: 0.6; text-decoration: underline; text-underline-offset: 3px; }
+        /* ---- Ablauf-Video-Abschnitt ---- */
+        .lp-video { padding: clamp(48px, 7vw, 88px) 0; background: var(--ivory, #faf7f0); }
+        .lp-video__frame { max-width: 320px; margin: 0 auto; }
+        .lp-video__frame video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 6px; box-shadow: 0 10px 34px rgba(0,0,0,0.12); display: block; background: #000; }
+        .lp-video__cta { text-align: center; margin-top: 30px; }
 
         /* ---- Formular-Sektion (nutzt .waitlist Muster) ---- */
         .lp-form-sec { padding: clamp(48px, 7vw, 80px) 0 clamp(72px, 10vw, 110px); }
@@ -186,7 +216,7 @@
         <span class="nav__logo" aria-label="beautifulista">
             <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
         </span>
-        <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="btn btn--nav js-book">Termin buchen</a>
+        <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener" class="btn btn--nav js-book">Termin sichern</a>
     </div>
 </nav>
 
@@ -195,19 +225,27 @@
     <div class="container">
         <div class="lp-hero__grid">
             <div class="lp-hero__text">
-                <p class="lp-eyebrow">Kennenlern-Angebot · in Unna</p>
-                <h1>Deine erste HydraFacial-Behandlung für <span class="lp-price">99 €</span></h1>
+                <p class="lp-eyebrow">HydraFacial zum Kennenlernen · nur bis 30. Juni</p>
+                <h1>Strahlende, sichtbar reinere Haut. Schon nach der <span class="lp-price">ersten Behandlung.</span></h1>
                 <p class="lp-hero__sub">
-                    Statt ab 159 €. Sichtbar frischere, reinere Haut nach einer einzigen Behandlung. Sanftes Peeling, porentiefe Ausreinigung und Feuchtigkeit. Ganz ohne Nadeln, ohne Schmerz, ohne Ausfallzeit.
+                    Du gehst raus und es fällt sofort auf: glatter, frischer, ebenmäßiger. Sanftes Peeling, porentiefe Ausreinigung und intensive Feuchtigkeit, ganz ohne Nadeln, ohne Schmerz, ohne Ausfallzeit.
                 </p>
-                <div class="lp-hero__cta">
-                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Per WhatsApp sichern</a>
-                    <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="lp-hero__alt js-book">oder direkt online buchen</a>
+                <p class="lp-hero__label">Dein erstes HydraFacial zum Kennenlernen:</p>
+                <div class="lp-hero__pricetag">
+                    <span class="lp-now">99 €</span>
+                    <span class="lp-was">ab 159 €</span>
+                    <span class="lp-save">du sparst 60 €</span>
                 </div>
-                <p class="lp-hero__note">Sarah antwortet dir persönlich mit freien Terminen, meist innerhalb weniger Stunden.</p>
+                <div class="lp-hero__cta">
+                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Termin per WhatsApp sichern</a>
+                </div>
+                <p class="lp-hero__note">Schreib mir kurz, ich melde mich persönlich mit deinen freien Terminen und halte dir deinen Platz frei.</p>
             </div>
             <div class="lp-hero__media">
-                <img src="sarah_behandlung_Hf.png" alt="Sarah von beautifulista bei einer HydraFacial-Behandlung in Unna" loading="eager">
+                <picture>
+                    <source srcset="sarah_behandlung_Hf.webp" type="image/webp">
+                    <img src="sarah_behandlung_Hf.png" alt="Sarah von beautifulista bei einer HydraFacial-Behandlung in Unna" loading="eager" width="1023" height="1537">
+                </picture>
             </div>
         </div>
     </div>
@@ -216,8 +254,8 @@
 <!-- ===================== Was dich erwartet ===================== -->
 <section class="lp-benefits">
     <div class="container">
-        <h2>Was eine HydraFacial-Behandlung für deine Haut tut</h2>
-        <p class="lp-section-intro">Deine Haut bekommt zurück, was ihr im Alltag fehlt. Das Ergebnis siehst du sofort.</p>
+        <h2>Das bekommt deine Haut zurück</h2>
+        <p class="lp-section-intro">Vier Schritte, ein Ergebnis, das du sofort siehst und tagelang spürst.</p>
         <div class="lp-steps">
             <div class="lp-step">
                 <div class="lp-step__no">1</div>
@@ -250,24 +288,44 @@
     </div>
 </section>
 
+<!-- ===================== Ablauf-Video ===================== -->
+<section class="lp-video">
+    <div class="container">
+        <h2>So entspannt läuft deine Behandlung ab</h2>
+        <p class="lp-section-intro">Kein Stechen, kein Druck, keine Ausfallzeit. Schau dir die vier Schritte in Ruhe an.</p>
+        <div class="lp-video__frame">
+            <video src="hf-ablauf.mp4" poster="hf-ablauf-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ablauf einer HydraFacial-Behandlung bei beautifulista in Unna, vier Schritte"></video>
+        </div>
+        <div class="lp-video__cta">
+            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Termin per WhatsApp sichern</a>
+        </div>
+    </div>
+</section>
+
 <!-- ===================== Echtes Ergebnis (Vorher/Nachher) ===================== -->
 <section class="lp-proof">
     <div class="container">
         <h2>Ein echtes Ergebnis, eine Behandlung</h2>
-        <p class="lp-section-intro">Die Haut einer Kundin an der Nase, vorher und nach einer einzigen HydraFacial. Sichtbar gereinigte Poren und frischer Glow.</p>
+        <p class="lp-section-intro">Die Haut einer Kundin an der Nase, vorher und nach einer einzigen HydraFacial-Behandlung. Sichtbar gereinigte Poren und frischer Glow.</p>
         <div class="lp-ba">
             <figure class="lp-ba__item">
-                <img src="ergebnis-vorher.jpg" alt="Haut an der Nase einer Kundin vor der HydraFacial-Behandlung, mit sichtbaren Mitessern" loading="lazy">
+                <picture>
+                    <source srcset="ergebnis-vorher.webp" type="image/webp">
+                    <img src="ergebnis-vorher.jpg" alt="Haut an der Nase einer Kundin vor der HydraFacial-Behandlung, mit sichtbaren Mitessern" loading="lazy" width="768" height="1024">
+                </picture>
                 <figcaption>Vorher</figcaption>
             </figure>
             <figure class="lp-ba__item">
-                <img src="ergebnis-nachher.jpg" alt="Dieselbe Haut nach der HydraFacial-Behandlung, mit sichtbar gereinigten Poren und Glow" loading="lazy">
+                <picture>
+                    <source srcset="ergebnis-nachher.webp" type="image/webp">
+                    <img src="ergebnis-nachher.jpg" alt="Dieselbe Haut nach der HydraFacial-Behandlung, mit sichtbar gereinigten Poren und Glow" loading="lazy" width="768" height="1024">
+                </picture>
                 <figcaption>Nachher</figcaption>
             </figure>
         </div>
         <p class="lp-ba__note">Echtes, unretuschiertes Ergebnis einer Kundin. Ergebnisse sind individuell.</p>
         <div class="lp-wa-cta" style="margin-top: 34px;">
-            <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener">Per WhatsApp sichern</a>
+            <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener">Termin per WhatsApp sichern</a>
         </div>
     </div>
 </section>
@@ -278,7 +336,7 @@
         <div class="lp-trust__inner">
             <h2>Behandelt von Sarah, persönlich</h2>
             <p>
-                Ich bin Sarah, Kosmetikerin in Unna mit Schwerpunkt apparative Kosmetik. Bevor ich deine Haut behandle, sehe ich sie mir genau an. Kein Versprechen auf ewige Jugend, sondern eine Haut, die sich noch am selben Tag besser anfühlt und aussieht. Genau dafür ist HydraFacial meine Lieblingsbehandlung.
+                Ich bin Sarah, Kosmetikerin in Unna mit Schwerpunkt apparative Kosmetik. Ich schaue mir deine Haut genau an und hole mit HydraFacial das Beste aus ihr heraus. Das Ergebnis fühlst und siehst du noch am selben Tag. Dafür stehe ich mit meinem Namen.
             </p>
         </div>
     </div>
@@ -324,13 +382,13 @@
 <section class="lp-offer">
     <div class="container">
         <div class="lp-offer__box">
-            <h2>Dein Kennenlern-Angebot</h2>
+            <h2>Sichere dir dein HydraFacial für 99 €</h2>
             <div class="lp-offer__price">99 €<s>ab 159 €</s></div>
+            <div class="lp-offer__save">du sparst 60 €</div>
             <p class="lp-offer__terms">
-                Deine erste HydraFacial Signature zum Kennenlernen. Begrenzte Plätze, bis 30. Juni.
+                Dein erstes HydraFacial Signature zum Kennenlernen. Nur noch bis 30. Juni, danach gilt wieder der reguläre Preis ab 159 €. Schreib mir, ich halte dir deinen Platz frei.
             </p>
-            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn js-book">Termin per WhatsApp sichern</a>
-            <p class="lp-offer__alt"><a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="js-book">oder direkt online buchen</a></p>
+            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener" class="btn btn--waico js-book">Termin per WhatsApp sichern</a>
         </div>
     </div>
 </section>
@@ -339,23 +397,24 @@
 <section class="lp-form-sec waitlist" id="anmelden" aria-labelledby="lp-form-heading">
     <div class="container">
         <div class="waitlist__inner">
-            <p class="lp-scarcity">Begrenzte Plätze · nur 10 Termine</p>
-            <h2 id="lp-form-heading">Lieber per Nachricht? Schreib mir auf WhatsApp</h2>
+            <p class="lp-scarcity">Nur noch bis 30. Juni</p>
+            <h2 id="lp-form-heading">Sichere dir deinen Platz</h2>
             <p class="lp-section-intro">
-                Du kannst oben direkt online buchen. Oder du schreibst mir kurz auf WhatsApp, dann melde ich mich persönlich mit freien Terminen, und dein Platz ist fix.
+                Eine kurze Nachricht genügt. Ich melde mich persönlich mit deinen freien Terminen und halte dir deinen Platz frei.
             </p>
 
             <div class="lp-wa-cta">
-                <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener">Auf WhatsApp schreiben</a>
+                <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener">Termin per WhatsApp sichern</a>
             </div>
 
+            <p class="lp-planity-small"><a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener">Lieber selbst online buchen? Hier entlang</a></p>
             <p class="waitlist__back"><a href="index.html">← Zurück zur Startseite</a></p>
         </div>
     </div>
 </section>
 
 <!-- ===================== Fixe WhatsApp-Leiste (nur Handy) ===================== -->
-<a class="lp-sticky-wa js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20die%20HydraFacial-Behandlung%20zum%20Kennenlernen%20f%C3%BCr%2099%20%E2%82%AC%20sichern." target="_blank" rel="noopener" aria-label="Per WhatsApp den 99-Euro-HydraFacial-Termin sichern">99-€-Termin per WhatsApp sichern</a>
+<a class="lp-sticky-wa js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%2099-%E2%82%AC-HydraFacial%20zum%20Kennenlernen.%20Welche%20Termine%20hast%20du%20frei%3F" target="_blank" rel="noopener" aria-label="Per WhatsApp den 99-Euro-HydraFacial-Termin sichern">99-€-Termin per WhatsApp sichern</a>
 
 <!-- ===================== Footer ===================== -->
 <footer class="footer">

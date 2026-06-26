@@ -61,6 +61,21 @@
         .lp-hero__alt { font-size: 14px; text-decoration: underline; text-underline-offset: 3px; opacity: 0.8; }
         .lp-hero__note { font-size: 13px; opacity: 0.6; margin-top: 10px; }
         .lp-hero__media img { width: 100%; height: 100%; max-height: 560px; object-fit: cover; border-radius: 3px; box-shadow: 0 18px 50px rgba(0,0,0,0.16); }
+        .lp-hero__media video { width: 100%; height: 100%; max-height: 560px; object-fit: cover; border-radius: 3px; box-shadow: 0 18px 50px rgba(0,0,0,0.16); display: block; background: #000; }
+        /* ---- Lifestyle-Video-Abschnitt ---- */
+        .lp-video { padding: clamp(48px, 7vw, 88px) 0; background: #fff; }
+        .lp-video__frame { max-width: 320px; margin: 0 auto; }
+        .lp-video__frame video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 6px; box-shadow: 0 10px 34px rgba(0,0,0,0.12); display: block; background: #000; }
+        .lp-video__cta { text-align: center; margin-top: 30px; }
+        /* ---- WhatsApp-Icon fuer helle Buttons (Icon in Buttonfarbe) ---- */
+        .btn--waico { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn--waico::before {
+            content: ''; flex: 0 0 auto; width: 18px; height: 18px; background-color: currentColor;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z'/%3E%3Cpath d='M11.999 2C6.477 2 2 6.477 2 12c0 1.89.522 3.656 1.432 5.168L2 22l4.975-1.302A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.72 0-3.328-.463-4.71-1.27l-.338-.2-3.506.919.935-3.418-.22-.352A7.944 7.944 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z'/%3E%3Cpath d='M11.999 2C6.477 2 2 6.477 2 12c0 1.89.522 3.656 1.432 5.168L2 22l4.975-1.302A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.72 0-3.328-.463-4.71-1.27l-.338-.2-3.506.919.935-3.418-.22-.352A7.944 7.944 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+        .lp-planity-small { text-align: center; margin-top: 18px; }
+        .lp-planity-small a { font-size: 13px; opacity: 0.6; text-decoration: underline; text-underline-offset: 3px; }
         .lp-benefits { padding: clamp(56px, 8vw, 96px) 0; }
         .lp-benefits h2, .lp-proof h2, .lp-trust h2, .lp-offer h2, .lp-form-sec h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(28px, 4vw, 42px); text-align: center; margin: 0 0 12px; }
         .lp-section-intro { text-align: center; max-width: 34em; margin: 0 auto clamp(36px, 5vw, 56px); opacity: 0.8; line-height: 1.6; }
@@ -139,7 +154,7 @@
         <span class="nav__logo" aria-label="beautifulista">
             <span class="logo__brand">beautifulista</span><span class="logo__sub"> · more than beauty</span>
         </span>
-        <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="btn btn--nav js-book">Termin buchen</a>
+        <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--nav js-book">Termin sichern</a>
     </div>
 </nav>
 
@@ -150,16 +165,15 @@
                 <p class="lp-eyebrow">Kennenlern-Angebot · in Unna</p>
                 <h1>Dein wacher Blick, ganz ohne Mascara für <span class="lp-price">65 €</span></h1>
                 <p class="lp-hero__sub">
-                    Der Korean Lash Lift bringt deine eigenen Wimpern in Form: sanft aufgerichtet, geschwungen und gefärbt. So entsteht ein offener, wacher Blick, der sechs bis acht Wochen hält. Keine Extensions, kein tägliches Nachgreifen zur Mascara. Statt 79 €.
+                    Der Korean Lash Lift bringt deine eigenen Wimpern in Form: sanft aufgerichtet, geschwungen und gefärbt. So entsteht ein offener, definierter Blick, der sechs bis acht Wochen hält. Keine Extensions, kein tägliches Nachgreifen zur Mascara. Statt 79 €.
                 </p>
                 <div class="lp-hero__cta">
-                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Per WhatsApp sichern</a>
-                    <a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="lp-hero__alt js-book">oder direkt online buchen</a>
+                    <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Termin per WhatsApp sichern</a>
                 </div>
-                <p class="lp-hero__note">Wir melden uns persönlich mit freien Terminen.</p>
+                <p class="lp-hero__note">Wir melden uns persönlich mit freien Terminen und halten dir deinen Platz frei.</p>
             </div>
             <div class="lp-hero__media">
-                <img src="lash-ba-1.jpg" alt="Korean Lash Lift Vorher Nachher bei beautifulista in Unna" loading="eager">
+                <video src="lash-k10.mp4" poster="lash-k10-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Korean Lash Lift Vorher Nachher Ergebnis bei beautifulista in Unna"></video>
             </div>
         </div>
     </div>
@@ -168,7 +182,7 @@
 <section class="lp-benefits">
     <div class="container">
         <h2>Was ein Korean Lash Lift macht</h2>
-        <p class="lp-section-intro">Eine Behandlung genügt für einen sichtbar wacheren, definierten Blick, geformt aus deinen eigenen Wimpern.</p>
+        <p class="lp-section-intro">Eine Behandlung genügt für einen sichtbar betonteren, definierten Blick, geformt aus deinen eigenen Wimpern.</p>
         <div class="lp-steps">
             <div class="lp-step">
                 <div class="lp-step__no">1</div>
@@ -188,11 +202,11 @@
             <div class="lp-step">
                 <div class="lp-step__no">4</div>
                 <h3>Ergebnis</h3>
-                <p>Ein offener, wacher Blick, der sechs bis acht Wochen hält. Sofort alltagstauglich, ohne Ausfallzeit.</p>
+                <p>Ein offener, ausdrucksstarker Blick, der sechs bis acht Wochen hält. Sofort alltagstauglich, ohne Ausfallzeit.</p>
             </div>
         </div>
         <ul class="lp-checklist">
-            <li>Sichtbar wacherer, offener Blick, direkt nach dem Termin</li>
+            <li>Sichtbar gepflegter, offener Blick, direkt nach dem Termin</li>
             <li>Geformt aus deinen eigenen Wimpern, ohne künstliche Verlängerung</li>
             <li>Wimpernfärbung inklusive</li>
             <li>Hält sechs bis acht Wochen, das tägliche Tuschen entfällt</li>
@@ -201,12 +215,28 @@
     </div>
 </section>
 
+<section class="lp-video">
+    <div class="container">
+        <h2>Morgens aufstehen und fertig sein</h2>
+        <p class="lp-section-intro">Kein Tuschen, kein verschmiertes Make-up, kein Nachgreifen. Dein Blick ist da, bevor du überhaupt aufgestanden bist, und bleibt es sechs bis acht Wochen lang.</p>
+        <div class="lp-video__frame">
+            <video src="lash-frech.mp4" poster="lash-frech-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Korean Lash Lift im Alltag, ohne Mascara, bei beautifulista in Unna"></video>
+        </div>
+        <div class="lp-video__cta">
+            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--whatsapp js-book">Termin per WhatsApp sichern</a>
+        </div>
+    </div>
+</section>
+
 <section class="lp-proof">
     <div class="container">
         <h2>Echtes Ergebnis, eine Behandlung</h2>
         <p class="lp-section-intro">Eine Kundin vor und nach ihrem Korean Lash Lift. Unretuschiert.</p>
         <figure class="lp-proof__img">
-            <img src="lash-ba-2.jpg" alt="Korean Lash Lift Vorher Nachher, wacher Blick nach der Behandlung" loading="lazy">
+            <picture>
+                <source srcset="lash-ba-2.webp" type="image/webp">
+                <img src="lash-ba-2.jpg" alt="Korean Lash Lift Vorher und Nachher, definierter Blick nach der Behandlung" loading="lazy" width="960" height="1200">
+            </picture>
         </figure>
         <p class="lp-proof__note">Echtes, unretuschiertes Ergebnis einer Kundin. Ergebnisse sind individuell.</p>
         <div style="text-align:center; margin-top: 36px;">
@@ -260,8 +290,7 @@
             <p class="lp-offer__terms">
                 Korean Lash Lift inklusive Wimpernfärbung zum Kennenlernen. Begrenzte Plätze, bis 30. Juni.
             </p>
-            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn js-book">Termin per WhatsApp sichern</a>
-            <p class="lp-offer__alt"><a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener" class="js-book">oder direkt online buchen</a></p>
+            <a href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener" class="btn btn--waico js-book">Termin per WhatsApp sichern</a>
         </div>
     </div>
 </section>
@@ -270,13 +299,14 @@
     <div class="container">
         <div class="waitlist__inner">
             <p class="lp-scarcity">Begrenzte Plätze · nur 12 Kennenlern-Termine</p>
-            <h2 id="lp-form-heading">Lieber per Nachricht? Schreib uns auf WhatsApp</h2>
+            <h2 id="lp-form-heading">Sichere dir deinen Platz</h2>
             <p class="lp-section-intro">
-                Du kannst oben direkt online buchen. Oder du schreibst uns kurz auf WhatsApp, dann melden wir uns persönlich mit freien Terminen, und dein Platz ist fix.
+                Eine kurze Nachricht genügt. Wir melden uns persönlich mit freien Terminen und halten dir deinen Platz frei.
             </p>
             <div class="lp-wa-cta">
-                <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener">Auf WhatsApp schreiben</a>
+                <a class="btn btn--whatsapp js-book" href="https://wa.me/4915174127615?text=Hallo%2C%20ich%20m%C3%B6chte%20den%20Korean%20Lash%20Lift%20zum%20Kennenlernen%20f%C3%BCr%2065%20%E2%82%AC%20sichern." target="_blank" rel="noopener">Termin per WhatsApp sichern</a>
             </div>
+            <p class="lp-planity-small"><a href="https://planity.com/de-DE/beautifulista-more-than-beauty-59423-unna" target="_blank" rel="noopener">Lieber selbst online buchen? Hier entlang</a></p>
             <p class="waitlist__back"><a href="index.html">← Zurück zur Startseite</a></p>
         </div>
     </div>
