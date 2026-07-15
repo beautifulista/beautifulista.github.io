@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hauttest | beautifulista · Kosmetikinstitut Unna</title>
-    <meta name="description" content="Welche Behandlung passt zu dir? 8 Fragen - du erhältst dein persönliches Hautbild und eine Behandlungsempfehlung von beautifulista in Unna.">
+    <meta name="description" content="Professionelle Online-Hautanalyse: 20 Fragen nach dem 16-Hauttypen-Modell, dein Haut-Profil auf 5 Achsen und eine begründete Behandlungsempfehlung von beautifulista in Unna.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Hauttest | beautifulista">
-    <meta property="og:description" content="8 Fragen. Dein persönliches Hautbild und die passende Behandlung bei beautifulista in Unna.">
+    <meta property="og:description" content="Professionelle Online-Hautanalyse: dein Haut-Profil auf 5 Achsen und die passende Behandlung bei beautifulista in Unna.">
     <meta property="og:type" content="website">
     <link rel="canonical" href="https://www.beautifulista.com/hauttest.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,347 +43,268 @@
             }
         }
 
-        /* Quiz Section */
+        /* Während der Analyse: mobile Termin-Leiste ausblenden (kollidiert mit Weiter-Buttons) */
+        body.analyse-laeuft .mobile-cta-bar { display: none !important; }
+
+        /* ===== Analyse-Sektion ===== */
         .quiz-section {
             background: var(--anthrazit);
-            padding: 120px 0 100px;
+            padding: 110px 0 100px;
             min-height: 100vh;
         }
 
-        .quiz-section .section__eyebrow { color: var(--gold); }
+        .quiz__wrapper { max-width: 720px; margin: 0 auto; }
 
-        .quiz__wrapper {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .quiz__header {
-            text-align: center;
-            margin-bottom: 52px;
-        }
-
+        .quiz__header { text-align: center; margin-bottom: 36px; }
+        .quiz__header .section__eyebrow { color: var(--gold); text-align: center; }
         .quiz__header h2 {
             font-family: var(--font-serif);
             font-weight: 300;
-            font-size: clamp(34px, 5vw, 52px);
+            font-size: clamp(32px, 5vw, 50px);
             color: #fff;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+        .quiz__header h2 em { font-style: italic; color: var(--gold); }
+        .quiz__header p { color: rgba(255,255,255,0.5) !important; font-size: 14px; letter-spacing: 0.04em; }
+
+        /* ===== Intro ===== */
+        .analyse-intro { text-align: center; }
+        .analyse-intro__sub {
+            color: rgba(255,255,255,0.6) !important;
+            font-size: 15px !important;
+            line-height: 1.75;
+            max-width: 560px;
+            margin: 0 auto 30px;
+        }
+        .analyse-intro__facts {
+            display: flex;
+            justify-content: center;
+            gap: 10px 26px;
+            flex-wrap: wrap;
+            margin-bottom: 34px;
+        }
+        .analyse-intro__facts span {
+            font-family: var(--font-sans);
+            font-size: 11.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        .analyse-intro__list {
+            list-style: none;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto 36px;
+            text-align: left;
+        }
+        .analyse-intro__list li {
+            position: relative;
+            padding: 10px 0 10px 30px;
+            color: rgba(255,255,255,0.72);
+            font-size: 14.5px;
+            line-height: 1.55;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .analyse-intro__list li:last-child { border-bottom: none; }
+        .analyse-intro__list li::before {
+            content: "";
+            position: absolute;
+            left: 4px; top: 18px;
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+        .analyse-intro__privacy {
+            color: rgba(255,255,255,0.38) !important;
+            font-size: 12.5px !important;
+            max-width: 460px;
+            margin: 22px auto 0;
+            line-height: 1.6;
         }
 
-        .quiz__header h2 em {
+        /* ===== Fortschritt ===== */
+        .analyse-progress { margin-bottom: 34px; display: none; }
+        .analyse-progress.sichtbar { display: block; }
+        .analyse-progress__label {
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 12px;
+        }
+        .analyse-progress__label em {
+            font-family: var(--font-serif);
             font-style: italic;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            font-size: 15px;
             color: var(--gold);
         }
-
-        .quiz__header-mood {
-            font-family: var(--font-serif);
-            font-size: 16px;
-            font-style: italic;
-            color: rgba(255,255,255,0.3);
-            margin-top: 12px;
-            line-height: 1.5;
+        .analyse-progress__track {
+            height: 2px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .analyse-progress__fill {
+            height: 100%;
+            width: 6%;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: width 0.45s ease;
         }
 
-        .quiz__header p {
-            color: rgba(255,255,255,0.5) !important;
-            font-size: 14px;
-            letter-spacing: 0.04em;
-        }
+        /* ===== Panels ===== */
+        .quiz__panels-wrap { min-height: 420px; }
 
-        /* Progress Dots */
-        .quiz__progress {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            margin-bottom: 48px;
-        }
+        .quiz__panel { animation: fadeInUp 0.35s ease; }
 
-        .quiz__dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .quiz__dot.active { background: var(--gold); transform: scale(1.3); }
-        .quiz__dot.done { background: var(--sage); }
-
-        .quiz__line {
-            width: 48px;
-            height: 1px;
-            background: rgba(255,255,255,0.1);
-            transition: background 0.3s;
-            flex-shrink: 0;
-        }
-
-        .quiz__line.done { background: var(--sage); }
-
-        /* Quiz Panel */
-        .quiz__panels-wrap {
-            display: grid;
-            min-height: 440px;
-            position: relative;
-        }
-
-        .quiz__panel {
-            grid-area: 1 / 1;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-
-        .quiz__panel.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .quiz__result {
-            grid-area: 1 / 1;
-            transition: opacity 0.35s ease;
-        }
-
-        .quiz__result.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .quiz__question {
             font-family: var(--font-serif);
-            font-size: clamp(22px, 3.5vw, 32px);
+            font-size: clamp(22px, 3.5vw, 30px);
             font-weight: 300;
             color: #fff !important;
-            margin-bottom: 32px;
+            margin-bottom: 12px;
             text-align: center;
             line-height: 1.3;
         }
-
-        .quiz__options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .quiz__question-sub {
+            color: rgba(255,255,255,0.45) !important;
+            font-size: 13.5px !important;
+            text-align: center;
+            max-width: 520px;
+            margin: 0 auto 28px;
+            line-height: 1.6;
         }
 
+        .quiz__options { display: flex; flex-direction: column; gap: 12px; }
+
         .quiz__option {
+            position: relative;
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.75);
             font-family: var(--font-sans);
             font-size: 15px;
-            padding: 18px 24px;
+            padding: 17px 52px 17px 24px;
             border-radius: 8px;
             cursor: pointer;
             text-align: left;
             transition: all 0.2s ease;
             line-height: 1.4;
         }
-
         .quiz__option:hover {
             border-color: var(--gold);
             background: rgba(212,175,55,0.08);
             color: #fff;
         }
-
         .quiz__option.selected {
             border-color: var(--gold);
             background: rgba(212,175,55,0.12);
             color: #fff;
         }
-
         .quiz__opt-title {
             display: block;
             font-weight: 500;
             color: rgba(255,255,255,0.9);
-            margin-bottom: 3px;
             font-size: 15px;
         }
-
         .quiz__opt-desc {
             display: block;
             font-size: 13px;
             color: rgba(255,255,255,0.4);
             line-height: 1.4;
-        }
-
-        /* Email Step */
-        .quiz__email-step { text-align: center; }
-        .quiz__email-step .quiz__question { margin-bottom: 12px; }
-
-        .quiz__email-sub {
-            color: rgba(255,255,255,0.45) !important;
-            font-size: 14px !important;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .quiz__email-form {
-            display: flex;
-            gap: 12px;
-            max-width: 480px;
-            margin: 0 auto 16px;
-            flex-direction: column;
-        }
-
-        .quiz__email-form input {
-            flex: 1;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: #fff;
-            font-family: var(--font-sans);
-            font-size: 15px;
-            padding: 14px 18px;
-            border-radius: 4px;
-            outline: none;
-            transition: border-color 0.2s;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .quiz__email-form input::placeholder { color: rgba(255,255,255,0.3); }
-        .quiz__email-form input:focus { border-color: var(--gold); }
-
-        .quiz__optin {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            max-width: 480px;
-            margin: 0 auto 20px;
-            text-align: left;
-            cursor: pointer;
-        }
-
-        .quiz__optin input[type="checkbox"] {
-            flex-shrink: 0;
             margin-top: 3px;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--gold);
-            cursor: pointer;
         }
+        .quiz__opt-rank {
+            position: absolute;
+            right: 16px; top: 50%;
+            transform: translateY(-50%);
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--anthrazit);
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .quiz__option.selected .quiz__opt-rank { display: flex; }
 
-        .quiz__optin span {
-            color: rgba(255,255,255,0.4);
-            font-size: 12px;
+        /* Zwischenscreen */
+        .analyse-zwischen { text-align: center; padding: 40px 0; }
+        .analyse-zwischen__text {
+            font-family: var(--font-serif);
+            font-size: clamp(20px, 3vw, 26px);
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(255,255,255,0.85) !important;
+            max-width: 520px;
+            margin: 0 auto 12px;
             line-height: 1.5;
         }
-
-        .quiz__optin a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: underline;
+        .analyse-zwischen__sub {
+            color: rgba(255,255,255,0.45) !important;
+            font-size: 14px !important;
+            max-width: 480px;
+            margin: 0 auto 34px;
+            line-height: 1.65;
         }
 
-        /* Textarea Q7 */
-        .quiz__textarea {
-            width: 100%;
-            box-sizing: border-box;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: #fff;
-            font-family: var(--font-sans);
-            font-size: 15px;
-            padding: 14px 18px;
-            border-radius: 4px;
-            outline: none;
-            resize: vertical;
-            transition: border-color 0.2s;
-            margin-bottom: 20px;
-        }
-
-        .quiz__textarea::placeholder { color: rgba(255,255,255,0.3); }
-        .quiz__textarea:focus { border-color: var(--gold); }
-
-        .quiz__trigger-actions {
+        /* Navigation pro Step */
+        .quiz__step-nav {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
             align-items: center;
-            max-width: 360px;
-            margin: 0 auto;
+            justify-content: space-between;
+            margin-top: 28px;
+            gap: 12px;
         }
-
-        .quiz__skip-btn {
+        .quiz__back {
             background: transparent;
-            border: none;
-            color: rgba(255,255,255,0.35);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.45);
             font-family: var(--font-sans);
             font-size: 12px;
             letter-spacing: 0.08em;
-            cursor: pointer;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            padding: 4px 0;
-            transition: color 0.2s;
-        }
-
-        .quiz__skip-btn:hover { color: rgba(255,255,255,0.6); }
-
-        /* Result */
-        .quiz__result {
-            text-align: center;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .quiz__result h3, .quiz__hautbild-name {
-            font-family: var(--font-serif);
-            font-size: clamp(32px, 5vw, 52px);
-            font-weight: 300;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .quiz__result-desc {
-            color: rgba(255,255,255,0.65) !important;
-            font-size: 16px !important;
-            max-width: 520px;
-            margin: 0 auto 36px;
-            line-height: 1.7;
-        }
-
-        .quiz__result-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .quiz__restart {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.5);
-            font-family: var(--font-sans);
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.14em;
             text-transform: uppercase;
-            padding: 12px 24px;
+            padding: 10px 18px;
             border-radius: 3px;
             cursor: pointer;
             transition: all 0.2s;
+            flex-shrink: 0;
         }
-
-        .quiz__restart:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.75); }
-
-        /* Hautbild Result */
-        .quiz__hautbild {
-            text-align: center;
-            padding-bottom: 36px;
-            margin-bottom: 36px;
-            border-bottom: 1px solid rgba(212,175,55,0.2);
+        .quiz__back:hover { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.75); }
+        .quiz__weiter {
+            background: var(--sage);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: auto;
         }
+        .quiz__weiter:disabled { opacity: 0.3; cursor: not-allowed; }
+        .quiz__weiter:not(:disabled):hover { background: #5a6e62; }
 
-        .quiz__behandlung { text-align: center; }
+        /* ===== Ergebnis ===== */
+        .quiz__result { animation: fadeInUp 0.5s ease; }
 
         .quiz__section-label {
             font-family: var(--font-sans);
@@ -393,37 +314,144 @@
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 16px;
-            opacity: 0.7;
+            opacity: 0.8;
+            text-align: center;
         }
-
         .quiz__hautbild-name {
             font-family: var(--font-serif);
-            font-size: clamp(30px, 5vw, 50px);
+            font-size: clamp(28px, 4.6vw, 46px);
             font-weight: 300;
             color: var(--gold);
-            margin-bottom: 20px;
-            line-height: 1.1;
+            margin-bottom: 16px;
+            line-height: 1.15;
+            text-align: center;
         }
-
-        .quiz__hautbild-desc {
-            color: rgba(255,255,255,0.55) !important;
+        .quiz__hautbild-kern {
+            color: rgba(255,255,255,0.6) !important;
             font-size: 15px !important;
+            font-style: italic;
             max-width: 540px;
             margin: 0 auto;
-            line-height: 1.75;
-            font-style: italic;
+            line-height: 1.7;
+            text-align: center;
         }
 
-        .quiz__behandlung-title {
+        /* Achsen-Balken (Befund-Stil) */
+        .achsen {
+            max-width: 560px;
+            margin: 40px auto;
+            padding: 28px 26px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(212,175,55,0.18);
+            border-radius: 8px;
+        }
+        .achse { margin-bottom: 20px; }
+        .achse:last-child { margin-bottom: 4px; }
+        .achse__kopf {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 7px;
+        }
+        .achse__name {
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+        }
+        .achse__wert {
             font-family: var(--font-serif);
-            font-size: clamp(22px, 3vw, 32px);
-            font-weight: 300;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 16px;
-            letter-spacing: 0.02em;
+            font-style: italic;
+            font-size: 14.5px;
+            color: var(--gold);
+            text-align: right;
+        }
+        .achse__track {
+            height: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .achse__fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, rgba(212,175,55,0.55), var(--gold));
+            border-radius: 3px;
+            transition: width 0.9s cubic-bezier(0.25, 0.6, 0.3, 1);
         }
 
-        /* Glowing gold CTA */
+        /* Befund-Text */
+        .befund {
+            max-width: 560px;
+            margin: 0 auto 44px;
+        }
+        .befund p {
+            color: rgba(255,255,255,0.62) !important;
+            font-size: 15px !important;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+        .befund p strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+        /* Empfehlung */
+        .empfehlung {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            padding: 36px 30px;
+            background: rgba(212,175,55,0.06);
+            border: 1px solid rgba(212,175,55,0.28);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .empfehlung__title {
+            font-family: var(--font-serif);
+            font-size: clamp(23px, 3.2vw, 32px);
+            font-weight: 300;
+            color: #fff;
+            margin: 0 0 6px;
+            line-height: 1.25;
+        }
+        .empfehlung__preis {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .empfehlung__warum {
+            color: rgba(255,255,255,0.78) !important;
+            font-size: 15px !important;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        .empfehlung__desc, .empfehlung__pfad {
+            color: rgba(255,255,255,0.58) !important;
+            font-size: 14.5px !important;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        .empfehlung__zusatz {
+            color: rgba(255,255,255,0.48) !important;
+            font-size: 13.5px !important;
+            line-height: 1.65;
+            padding-top: 16px;
+            border-top: 1px solid rgba(212,175,55,0.18);
+            margin-top: 6px;
+        }
+        .empfehlung__zusatz strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+
+        .quiz__result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 48px;
+        }
+
         .btn--gold-glow {
             display: inline-block;
             text-align: center;
@@ -442,84 +470,219 @@
             animation: gold-pulse 2.5s ease-in-out infinite;
             transition: transform 0.2s;
         }
-
         @keyframes gold-pulse {
             0%,100% { box-shadow: 0 0 24px rgba(212,175,55,0.5), 0 0 48px rgba(212,175,55,0.2); }
             50%      { box-shadow: 0 0 44px rgba(212,175,55,0.9), 0 0 88px rgba(212,175,55,0.4); }
         }
-
         .btn--gold-glow:hover { transform: translateY(-2px); }
 
-        /* Zurück + Weiter Navigation pro Step */
-        .quiz__step-nav {
+        /* Sarah-Block */
+        .sarah-block {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-top: 28px;
-            gap: 12px;
+            gap: 20px;
+            max-width: 520px;
+            margin: 0 auto 40px;
+            padding: 22px 24px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
         }
-
-        .quiz__back {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.45);
-            font-family: var(--font-sans);
-            font-size: 12px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 10px 18px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.2s;
+        .sarah-block img {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
             flex-shrink: 0;
+            border: 1px solid rgba(212,175,55,0.4);
         }
+        .sarah-block p {
+            color: rgba(255,255,255,0.6) !important;
+            font-size: 13.5px !important;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .sarah-block p strong { color: rgba(255,255,255,0.85); font-weight: 500; }
 
-        .quiz__back:hover { border-color: rgba(255,255,255,0.35); color: rgba(255,255,255,0.75); }
-
-        .quiz__weiter {
-            background: var(--sage);
-            color: #fff;
+        /* Review */
+        .result-review {
+            max-width: 520px;
+            margin: 0 auto 44px;
+            text-align: center;
+        }
+        .result-review__stars { color: var(--gold); letter-spacing: 3px; font-size: 13px; margin-bottom: 10px; }
+        .result-review__text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 16.5px;
+            color: rgba(255,255,255,0.7) !important;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .result-review__name {
             font-family: var(--font-sans);
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            padding: 12px 28px;
+            color: rgba(255,255,255,0.4) !important;
+        }
+
+        /* Zweifel-Block */
+        .zweifel {
+            max-width: 560px;
+            margin: 0 auto 48px;
+        }
+        .zweifel__item {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .zweifel__item:last-child { border-bottom: none; }
+        .zweifel__q {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.85) !important;
+            margin-bottom: 6px;
+        }
+        .zweifel__a {
+            color: rgba(255,255,255,0.52) !important;
+            font-size: 13.5px !important;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Report-Formular */
+        .report-box {
+            max-width: 520px;
+            margin: 0 auto 44px;
+            padding: 32px 28px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .report-box h4 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            font-size: 24px;
+            color: #fff;
+            margin: 0 0 10px;
+        }
+        .report-box > p {
+            color: rgba(255,255,255,0.5) !important;
+            font-size: 13.5px !important;
+            line-height: 1.65;
+            margin-bottom: 22px;
+        }
+        .report-box form { display: flex; flex-direction: column; gap: 12px; }
+        .report-box input[type="text"], .report-box input[type="email"] {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 15px;
+            padding: 14px 18px;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .report-box input::placeholder { color: rgba(255,255,255,0.3); }
+        .report-box input:focus { border-color: var(--gold); }
+        .quiz__optin {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: left;
+            cursor: pointer;
+        }
+        .quiz__optin input[type="checkbox"] {
+            flex-shrink: 0;
+            margin-top: 3px;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+        .quiz__optin span { color: rgba(255,255,255,0.4); font-size: 12px; line-height: 1.5; }
+        .quiz__optin a { color: rgba(255,255,255,0.6); text-decoration: underline; }
+        .report-box .btn--primary { width: 100%; }
+        .report-erfolg {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 18px;
+            color: var(--gold) !important;
+            padding: 12px 0;
+        }
+
+        /* WhatsApp-Zeile + Restart + Disclaimer */
+        .result-wa {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+        .result-wa a {
+            color: rgba(255,255,255,0.55);
+            font-size: 13.5px;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s;
+        }
+        .result-wa a:hover { color: rgba(255,255,255,0.85); }
+
+        .quiz__restart {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.5);
+            font-family: var(--font-sans);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 12px 24px;
             border-radius: 3px;
-            border: none;
             cursor: pointer;
             transition: all 0.2s;
-            margin-left: auto;
+        }
+        .quiz__restart:hover { border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.75); }
+
+        .result-disclaimer {
+            color: rgba(255,255,255,0.32) !important;
+            font-size: 11.5px !important;
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 36px auto 0;
+            text-align: center;
         }
 
-        .quiz__weiter:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
+        /* Gate-Ergebnis */
+        .gate-result { text-align: center; max-width: 560px; margin: 0 auto; }
+        .gate-result h3 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            font-size: clamp(26px, 4vw, 40px);
+            color: var(--gold);
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
-
-        .quiz__weiter:not(:disabled):hover { background: #5a6e62; }
+        .gate-result p {
+            color: rgba(255,255,255,0.62) !important;
+            font-size: 15px !important;
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
 
         /* Zurück-Link */
-        .hauttest__back {
-            text-align: center;
-            margin-top: 52px;
-        }
-
+        .hauttest__back { text-align: center; margin-top: 52px; }
         .hauttest__back a {
             font-size: 13px;
             letter-spacing: 0.05em;
             color: rgba(255,255,255,0.3);
             transition: color 0.2s;
         }
-
         .hauttest__back a:hover { color: rgba(255,255,255,0.6); }
 
         /* Footer on dark background */
-        .footer {
-            background: rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.06);
-        }
-
+        .footer { background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.06); }
         .footer__copy, .footer__location, .footer__claim { color: rgba(255,255,255,0.35); }
         .footer__links a, .footer__social a { color: rgba(255,255,255,0.35); }
         .footer__links a:hover, .footer__social a:hover { color: rgba(255,255,255,0.65); }
@@ -542,8 +705,7 @@
             <a href="index.html#kontakt">Kontakt</a>
             <a href="termin.html" target="_blank" rel="noopener" class="nav__links-termin">Termin buchen</a>
         </div>
-        <a href="termin.html"
-           class="btn btn--nav" target="_blank" rel="noopener">Termin buchen</a>
+        <a href="termin.html" class="btn btn--nav" target="_blank" rel="noopener">Termin buchen</a>
         <button class="nav__toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
             <span></span><span></span><span></span>
         </button>
@@ -551,279 +713,22 @@
 </nav>
 
 
-<!-- ===================== Hauttest / Quiz ===================== -->
+<!-- ===================== Hautanalyse ===================== -->
 <section class="quiz-section" id="quiz" aria-labelledby="quiz-heading">
     <div class="container">
         <div class="quiz__wrapper">
 
             <div class="quiz__header">
-                <p class="section__eyebrow" style="text-align:center;color:var(--gold)">Hauttest</p>
-                <h2 id="quiz-heading">Welche Behandlung<br>passt zu <em>dir?</em></h2>
-                <p>8 Fragen. Dein persönliches Hautbild.</p>
+                <p class="section__eyebrow">Professionelle Hautanalyse</p>
+                <h2 id="quiz-heading">Was braucht deine Haut <em>wirklich?</em></h2>
             </div>
 
-            <!-- Progress: 8 Fragen + Email = 9 Dots -->
-            <div class="quiz__progress" id="quiz-progress">
-                <div class="quiz__dot active" data-step="1"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="2"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="3"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="4"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="5"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="6"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="7"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="8"></div>
-                <div class="quiz__line"></div>
-                <div class="quiz__dot" data-step="9"></div>
+            <div class="analyse-progress" id="analyse-progress">
+                <p class="analyse-progress__label" id="progress-label"></p>
+                <div class="analyse-progress__track"><div class="analyse-progress__fill" id="progress-fill"></div></div>
             </div>
 
-            <!-- Panels -->
-            <div class="quiz__panels-wrap">
-
-                <!-- Step 1: Alter -->
-                <div class="quiz__panel active" id="quiz-step-1">
-                    <p class="quiz__question">Wie viele Kerzen stehen auf deiner Torte?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="1" data-v="jung">
-                            <span class="quiz__opt-title">20 bis 30</span>
-                            <span class="quiz__opt-desc">Die Haut ist jung - aber nicht immer unproblematisch</span>
-                        </button>
-                        <button class="quiz__option" data-q="1" data-v="dreissig">
-                            <span class="quiz__opt-title">30 bis 40</span>
-                            <span class="quiz__opt-desc">Man merkt, dass man nicht mehr zwanzig ist</span>
-                        </button>
-                        <button class="quiz__option" data-q="1" data-v="vierzig">
-                            <span class="quiz__opt-title">40 bis 50</span>
-                            <span class="quiz__opt-desc">Die Haut verändert sich - und ich merke es</span>
-                        </button>
-                        <button class="quiz__option" data-q="1" data-v="wechsel">
-                            <span class="quiz__opt-title">50+ - mein Körper verändert sich gerade</span>
-                            <span class="quiz__opt-desc">Wechseljahre oder auf dem Weg dorthin - alles fühlt sich anders an</span>
-                        </button>
-                        <button class="quiz__option" data-q="1" data-v="post">
-                            <span class="quiz__opt-title">Die Wechseljahre sind durch</span>
-                            <span class="quiz__opt-desc">Ich bin angekommen - und will meiner Haut jetzt geben, was sie braucht</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__weiter" data-next="2" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 2: Spiegel-Anliegen -->
-                <div class="quiz__panel" id="quiz-step-2">
-                    <p class="quiz__question">Was beschäftigt dich, wenn du in den Spiegel schaust?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="2" data-v="unreine">
-                            <span class="quiz__opt-title">Poren, Unreinheiten, unebener Teint</span>
-                            <span class="quiz__opt-desc">Die Haut sieht belastet aus - sie könnte so viel mehr</span>
-                        </button>
-                        <button class="quiz__option" data-q="2" data-v="muede">
-                            <span class="quiz__opt-title">Fahler Teint, müde Ausstrahlung</span>
-                            <span class="quiz__opt-desc">Der Glanz ist weg - du siehst erschöpfter aus als du dich fühlst</span>
-                        </button>
-                        <button class="quiz__option" data-q="2" data-v="straff">
-                            <span class="quiz__opt-title">Verlust von Straffheit und Kontur</span>
-                            <span class="quiz__opt-desc">Die Haut wirkt schlaffer, die Konturen weicher - du willst das zurück</span>
-                        </button>
-                        <button class="quiz__option" data-q="2" data-v="augen">
-                            <span class="quiz__opt-title">Ausdruckslose Augen, dünne Brauen</span>
-                            <span class="quiz__opt-desc">Dein Blick soll für sich sprechen - ohne Make-up jeden Morgen</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                        <button class="quiz__weiter" data-next="3" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Pflegestatus -->
-                <div class="quiz__panel" id="quiz-step-3">
-                    <p class="quiz__question">Was tust du bisher für deine Haut?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="3" data-v="basis">
-                            <span class="quiz__opt-title">Reinigung und Creme - mehr nicht</span>
-                            <span class="quiz__opt-desc">Eine tiefere Routine habe ich bisher nicht</span>
-                        </button>
-                        <button class="quiz__option" data-q="3" data-v="regelmaessig">
-                            <span class="quiz__opt-title">Ich pflege regelmäßig - bin aber nicht zufrieden</span>
-                            <span class="quiz__opt-desc">Ich investiere Zeit und Geld. Die Ergebnisse enttäuschen mich trotzdem</span>
-                        </button>
-                        <button class="quiz__option" data-q="3" data-v="profi">
-                            <span class="quiz__opt-title">Ich war schon beim Institut</span>
-                            <span class="quiz__opt-desc">Professionelle Behandlungen kenne ich - ich will das nächste Level</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                        <button class="quiz__weiter" data-next="4" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 4: Lifestyle -->
-                <div class="quiz__panel" id="quiz-step-4">
-                    <p class="quiz__question">Wie würdest du deinen Alltag beschreiben?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="4" data-v="entspannt">
-                            <span class="quiz__opt-title">Ausgeglichen - Schlaf und Erholung kommen nicht zu kurz</span>
-                            <span class="quiz__opt-desc">Ich achte auf mich, und es tut mir gut</span>
-                        </button>
-                        <button class="quiz__option" data-q="4" data-v="moderat">
-                            <span class="quiz__opt-title">Phasenweise stressig - aber ich komme zur Ruhe</span>
-                            <span class="quiz__opt-desc">Es gibt gute und anstrengende Wochen</span>
-                        </button>
-                        <button class="quiz__option" data-q="4" data-v="stressig">
-                            <span class="quiz__opt-title">Viel Stress, Schlaf oft zu kurz</span>
-                            <span class="quiz__opt-desc">Der Alltag hinterlässt Spuren - auch auf meiner Haut</span>
-                        </button>
-                        <button class="quiz__option" data-q="4" data-v="extrem">
-                            <span class="quiz__opt-title">Dauerstress, kaum Erholung</span>
-                            <span class="quiz__opt-desc">Mein Körper und meine Haut zeigen, was mein Leben gerade fordert</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                        <button class="quiz__weiter" data-next="5" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 5: Sonne -->
-                <div class="quiz__panel" id="quiz-step-5">
-                    <p class="quiz__question">Wie viel Sonne bekommt deine Haut?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="5" data-v="wenig">
-                            <span class="quiz__opt-title">Eher wenig - ich bin viel drinnen</span>
-                            <span class="quiz__opt-desc">Sonnenlicht ist bei mir eher die Ausnahme</span>
-                        </button>
-                        <button class="quiz__option" data-q="5" data-v="normal">
-                            <span class="quiz__opt-title">Normal - Alltag, Spaziergänge, gelegentlich</span>
-                            <span class="quiz__opt-desc">Ich komme nach draußen, ohne mich aktiv in der Sonne aufzuhalten</span>
-                        </button>
-                        <button class="quiz__option" data-q="5" data-v="viel">
-                            <span class="quiz__opt-title">Viel - Sport, Outdoor, Urlaub</span>
-                            <span class="quiz__opt-desc">Die Sonne gehört zu meinem Leben</span>
-                        </button>
-                        <button class="quiz__option" data-q="5" data-v="intensiv">
-                            <span class="quiz__opt-title">Intensiv, mit wenig Sonnenschutz bisher</span>
-                            <span class="quiz__opt-desc">Ich war oft draußen - und auf Schutz habe ich nicht immer geachtet</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                        <button class="quiz__weiter" data-next="6" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 6: Hydration -->
-                <div class="quiz__panel" id="quiz-step-6">
-                    <p class="quiz__question">Wie sieht es mit Wasser und Ernährung aus?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="6" data-v="gut">
-                            <span class="quiz__opt-title">Ich trinke viel und esse ausgewogen</span>
-                            <span class="quiz__opt-desc">Ich achte auf das, was ich meinem Körper gebe</span>
-                        </button>
-                        <button class="quiz__option" data-q="6" data-v="okay">
-                            <span class="quiz__opt-title">Es geht so - mal gut, mal weniger</span>
-                            <span class="quiz__opt-desc">Ich weiß, dass es besser sein könnte</span>
-                        </button>
-                        <button class="quiz__option" data-q="6" data-v="schlecht">
-                            <span class="quiz__opt-title">Wenig Wasser, unregelmäßig - meine Haut zeigt es</span>
-                            <span class="quiz__opt-desc">Der Alltag lässt gesunde Gewohnheiten oft hintenanstehen</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                        <button class="quiz__weiter" data-next="7" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 7: Hautreaktionen -->
-                <div class="quiz__panel" id="quiz-step-7">
-                    <p class="quiz__question">Gibt es etwas, das deine Haut besonders reagieren lässt?</p>
-                    <p class="quiz__email-sub" style="margin-bottom:20px;">Bestimmte Inhaltsstoffe, Situationen, Produkte? Was auch immer du bemerkt hast - hier ist Platz dafür.</p>
-                    <textarea id="quiz-trigger-text" class="quiz__textarea" placeholder="z. B. Parfum, Stress, Hitze, bestimmte Cremes ..." rows="4"></textarea>
-                    <div class="quiz__step-nav" style="flex-direction:column;align-items:stretch;">
-                        <div class="quiz__trigger-actions">
-                            <button class="btn btn--primary" id="quiz-trigger-weiter">Weiter</button>
-                            <button class="quiz__skip-btn" id="quiz-trigger-skip">Nichts Bekanntes - überspringen</button>
-                        </div>
-                        <button class="quiz__back" onclick="goBack()" style="margin-top:12px;align-self:flex-start;">← Zurück</button>
-                    </div>
-                </div>
-
-                <!-- Step 8: Erwartung -->
-                <div class="quiz__panel" id="quiz-step-8">
-                    <p class="quiz__question">Was erhoffst du dir von der Behandlung?</p>
-                    <div class="quiz__options">
-                        <button class="quiz__option" data-q="8" data-v="sofort">
-                            <span class="quiz__opt-title">Ein sichtbares Ergebnis direkt danach</span>
-                            <span class="quiz__opt-desc">Ich will es noch am selben Tag sehen</span>
-                        </button>
-                        <button class="quiz__option" data-q="8" data-v="tiefe">
-                            <span class="quiz__opt-title">Tiefe Wirkung, die bleibt</span>
-                            <span class="quiz__opt-desc">Ich investiere in eine echte, langfristige Veränderung</span>
-                        </button>
-                        <button class="quiz__option" data-q="8" data-v="beides">
-                            <span class="quiz__opt-title">Beides - sofort sichtbar und langfristig</span>
-                            <span class="quiz__opt-desc">Warum wählen? Ich will das Beste aus beiden Welten</span>
-                        </button>
-                        <button class="quiz__option" data-q="8" data-v="erleben">
-                            <span class="quiz__opt-title">Ich will mich endlich einmal um mich kümmern</span>
-                            <span class="quiz__opt-desc">Das Ergebnis kommt - aber das Erlebnis zählt genauso</span>
-                        </button>
-                    </div>
-                    <div class="quiz__step-nav">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                        <button class="quiz__weiter" data-next="9" disabled>Weiter →</button>
-                    </div>
-                </div>
-
-                <!-- Step 9: Email -->
-                <div class="quiz__panel quiz__email-step" id="quiz-step-9">
-                    <p class="quiz__question">Dein Hautbild ist fertig.</p>
-                    <p class="quiz__email-sub">Gib deine E-Mail ein - du siehst dein Ergebnis sofort und erhältst es direkt per Mail.</p>
-                    <form class="quiz__email-form" id="quiz-email-form">
-                        <input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">
-                        <label class="quiz__optin">
-                            <input type="checkbox" name="optin" required>
-                            <span>Ich bin einverstanden, dass beautifulista mein Ergebnis einmalig an diese E-Mail-Adresse sendet. <a href="datenschutz.html">Datenschutzerklärung</a></span>
-                        </label>
-                        <label class="quiz__optin" style="margin-bottom:24px;">
-                            <input type="checkbox" name="newsletter" id="quiz-newsletter">
-                            <span><em>Optional:</em> Ja, ich möchte gelegentlich Tipps und Angebote von beautifulista per E-Mail erhalten. Abmeldung jederzeit möglich.</span>
-                        </label>
-                        <button type="submit" class="btn btn--primary" style="width:100%;">Mein Hautbild anzeigen</button>
-                    </form>
-                    <div style="margin-top:16px;">
-                        <button class="quiz__back" onclick="goBack()">← Zurück</button>
-                    </div>
-                </div>
-
-                <!-- Result -->
-                <div class="quiz__result" id="quiz-result" style="display:none; opacity:0; visibility:hidden; pointer-events:none;">
-                    <div class="quiz__hautbild">
-                        <p class="quiz__section-label">Dein Hautbild</p>
-                        <h3 class="quiz__hautbild-name" id="quiz-hautbild-name"></h3>
-                        <p class="quiz__hautbild-desc" id="quiz-hautbild-desc"></p>
-                    </div>
-                    <div class="quiz__behandlung">
-                        <p class="quiz__section-label">Deine empfohlene Behandlung</p>
-                        <h4 class="quiz__behandlung-title" id="quiz-result-title"></h4>
-                        <p class="quiz__result-desc" id="quiz-result-desc"></p>
-                        <div class="quiz__result-actions">
-                            <a id="quiz-result-cta" href="termin.html" class="btn--gold-glow" target="_blank" rel="noopener">Jetzt Termin buchen</a>
-                            <button class="quiz__restart" id="quiz-restart">Hauttest wiederholen</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- /quiz__panels-wrap -->
+            <div class="quiz__panels-wrap" id="panels"></div>
 
             <p class="hauttest__back"><a href="index.html">← Zurück zur Startseite</a></p>
 
@@ -876,189 +781,1165 @@ if (toggle && navLinks) {
         toggle.setAttribute('aria-label', 'Menü öffnen');
     }));
 }
-
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
     nav.style.boxShadow = window.scrollY > 10 ? '0 2px 24px rgba(0,0,0,0.06)' : 'none';
 });
 
-/* --- Quiz Logic --- */
-const quizData = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 8: [], trigger: '', email: null };
-const stepHistory = [];
+/* =====================================================================
+   HAUTANALYSE-ENGINE
+   Fachliche Basis: 16-Hauttypen-Modell nach Dr. Leslie Baumann
+   (4 Achsen: Lipide, Sensibilität, Pigmentierung, Hautalterung),
+   erweitert um die Zustandsachse Hydratation/Barriere.
+   Auswertung komplett im Browser. Die Antworten der Sicherheits-Frage
+   werden weder gespeichert noch übertragen (DSGVO Art. 9).
+   ===================================================================== */
 
-const results = {
-    erschoepfte_strahlkraft: {
-        hautbild:     'Erschöpfte Strahlkraft',
-        hautbildBase: 'Deine Haut strahlt, wenn man ihr die Chance gibt. Im Moment bekommt sie diese Chance nicht - sie ist belastet von dem, was sich im Alltag ansammelt. Was sie braucht, ist kein Wunder. Nur Raum.',
-        title:        'HydraFacial Signature',
-        desc:         'In 45 Minuten passiert etwas, das du spürst: Deine Haut wird tiefengereinigt, sanft gepeelt, von innen heraus versorgt. Du gehst rein mit dem Gefühl von Schwere. Du kommst raus mit einem Strahlen, das kein Filter erreicht.',
-        link:         'termin.html'
+const WA_LINK = 'https://wa.me/4915174127615';
+const TERMIN_LINK = 'termin.html';
+
+/* --- Fragen-Katalog: 4 Kapitel, 20 Fragen --- */
+const KAPITEL = [
+    {
+        name: 'Deine Haut heute',
+        fragen: [
+            {
+                id: 'lipid_gefuehl', typ: 'single',
+                frage: 'Wie fühlt sich deine Haut zwei bis drei Stunden nach der Reinigung an, ganz ohne Pflege?',
+                optionen: [
+                    { v: 'spannt',  t: 'Sie spannt deutlich, teils raue Stellen', d: 'Ein Hinweis, dass Lipide fehlen', p: { od: 1, hyd: 1 } },
+                    { v: 'angenehm', t: 'Angenehm, weder trocken noch glänzend', p: { od: 2 } },
+                    { v: 'tzone',   t: 'Die T-Zone beginnt zu glänzen', p: { od: 3 } },
+                    { v: 'glanz',   t: 'Sie glänzt großflächig', p: { od: 4 } },
+                    { v: 'unklar',  t: 'Weiß ich ehrlich gesagt nicht', d: 'Kein Problem, wir werten neutral', p: { od: 2 } }
+                ]
+            },
+            {
+                id: 'poren', typ: 'single',
+                frage: 'Wie sichtbar sind deine Poren auf Nase und Wangen?',
+                optionen: [
+                    { v: 'kaum',    t: 'Kaum sichtbar', p: { od: 1 } },
+                    { v: 'fein',    t: 'Fein sichtbar, vor allem in der T-Zone', p: { od: 2 } },
+                    { v: 'tzone',   t: 'Deutlich sichtbar in der T-Zone', p: { od: 3 } },
+                    { v: 'wangen',  t: 'Deutlich sichtbar, auch auf den Wangen', p: { od: 4 } },
+                    { v: 'nur_wangen', t: 'Eher auf den Wangen sichtbar als in der T-Zone', d: 'Das spricht weniger für Talg, mehr für Hautstruktur', p: { od: 2, wt: 0.5 } }
+                ]
+            },
+            {
+                id: 'glanz_spannen', typ: 'single',
+                frage: 'Glänzt deine Haut, obwohl sie sich gleichzeitig gespannt oder rau anfühlt?',
+                sub: 'Das klingt widersprüchlich, ist aber eine der wichtigsten Fragen dieser Analyse.',
+                optionen: [
+                    { v: 'ja',       t: 'Ja, genau das kenne ich', d: 'Öl und Durst zugleich: ein klassisches Zeichen für Feuchtigkeitsmangel', p: { hyd: 3 } },
+                    { v: 'manchmal', t: 'Manchmal', p: { hyd: 1.5 } },
+                    { v: 'nein',     t: 'Nein', p: {} }
+                ]
+            },
+            {
+                id: 'knitter', typ: 'single',
+                frage: 'Siehst du feine Knitterlinien, etwa an den Wangen, die nach einer reichhaltigen Creme kurzzeitig verschwinden?',
+                optionen: [
+                    { v: 'ja',       t: 'Ja', d: 'Diese Linien entstehen durch Wassermangel, nicht durch Falten', p: { hyd: 3 } },
+                    { v: 'manchmal', t: 'Manchmal, je nach Tagesform', p: { hyd: 1.5 } },
+                    { v: 'nein',     t: 'Nein', p: {} },
+                    { v: 'unklar',   t: 'Darauf habe ich nie geachtet', p: { hyd: 1 } }
+                ]
+            },
+            {
+                id: 'ziele', typ: 'goals', max: 3,
+                frage: 'Was sind deine wichtigsten Hautziele?',
+                sub: 'Wähle bis zu drei, in deiner Reihenfolge. Die Reihenfolge fließt in deine Empfehlung ein.',
+                optionen: [
+                    { v: 'glow',        t: 'Frische und Ausstrahlung' },
+                    { v: 'poren',       t: 'Verfeinerte Poren, klareres Hautbild' },
+                    { v: 'feuchtigkeit', t: 'Tiefe, anhaltende Feuchtigkeit' },
+                    { v: 'ton',         t: 'Ein ebenmäßigerer Hautton' },
+                    { v: 'festigkeit',  t: 'Festigkeit und Konturen' },
+                    { v: 'ruhe',        t: 'Beruhigte, ausgeglichene Haut' },
+                    { v: 'blick',       t: 'Ein ausdrucksstarker Blick (Wimpern und Brauen)' }
+                ]
+            }
+        ]
     },
-    stille_erschoepfung: {
-        hautbild:     'Stille Erschöpfung',
-        hautbildBase: 'Diese Haut hat alles versucht. Sie gibt nicht auf - aber sie wirkt müde, flach, als hätte das Licht sie verlassen. Das Licht ist noch da. Es wartet nur darauf, geholt zu werden.',
-        title:        'HydraFacial Deluxe',
-        desc:         'Du gibst dir selbst eine Stunde - und diese Stunde verdient das Beste. HydraFacial Deluxe reinigt tiefer, wirkt länger und lässt dich frischer rausgehen als du reingekommen bist.',
-        link:         'termin.html'
+    {
+        name: 'Empfindlichkeit & Ebenmäßigkeit',
+        zwischen: 'Gut. Dein Haut-Profil nimmt schon Form an.',
+        zwischenSub: 'Jetzt schauen wir auf Empfindlichkeit und Ebenmäßigkeit. Beides entscheidet darüber, wie intensiv deine Haut behandelt werden darf.',
+        fragen: [
+            {
+                id: 'flushing', typ: 'single',
+                frage: 'Wird dein Gesicht nach Sport, Sauna, Alkohol oder scharfem Essen sichtbar rot, und bleibt die Rötung eine Weile?',
+                optionen: [
+                    { v: 'oft',    t: 'Ja, häufig und deutlich', p: { sr: 4 } },
+                    { v: 'gelegentlich', t: 'Gelegentlich', p: { sr: 2.5 } },
+                    { v: 'selten', t: 'Selten', p: { sr: 1 } },
+                    { v: 'nie',    t: 'Nein, eigentlich nie', p: {} }
+                ]
+            },
+            {
+                id: 'produkte', typ: 'single',
+                frage: 'Wie reagiert deine Haut auf neue Produkte oder Duftstoffe?',
+                optionen: [
+                    { v: 'nie',    t: 'Nie ein Problem', p: {} },
+                    { v: 'selten', t: 'Selten mal eine kleine Reaktion', p: { sr: 1 } },
+                    { v: 'oft',    t: 'Häufig Rötung, Jucken oder Brennen', p: { sr: 3 } },
+                    { v: 'kaum',   t: 'Ich traue mich kaum noch an Neues', p: { sr: 4 } }
+                ]
+            },
+            {
+                id: 'brennen', typ: 'single',
+                frage: 'Brennen oder stechen Produkte, die du früher gut vertragen hast?',
+                sub: 'Das ist ein typisches Zeichen für eine belastete Hautbarriere.',
+                optionen: [
+                    { v: 'ja',        t: 'Ja, seit einiger Zeit', p: { sr: 2, ba: 2 } },
+                    { v: 'vereinzelt', t: 'Vereinzelt', p: { sr: 1, ba: 1 } },
+                    { v: 'nein',      t: 'Nein', p: {} }
+                ]
+            },
+            {
+                id: 'pih', typ: 'single',
+                frage: 'Bleiben nach Pickeln oder kleinen Verletzungen dunkle Flecken zurück, die über Wochen sichtbar sind?',
+                optionen: [
+                    { v: 'ja',       t: 'Ja, regelmäßig', p: { pn: 3 } },
+                    { v: 'manchmal', t: 'Manchmal, sie verblassen aber', p: { pn: 1.5 } },
+                    { v: 'nein',     t: 'Nein', p: {} }
+                ]
+            },
+            {
+                id: 'sonnenreaktion', typ: 'single',
+                frage: 'Wie reagiert deine ungebräunte Haut auf die erste kräftige Sonne im Jahr?',
+                optionen: [
+                    { v: 'verbrennt', t: 'Verbrennt fast immer', p: { wt: 1, pn: 0.5 } },
+                    { v: 'erst',      t: 'Verbrennt erst, bräunt dann leicht', p: { wt: 0.5, pn: 1 } },
+                    { v: 'langsam',   t: 'Bräunt langsam, verbrennt selten', p: { pn: 2 } },
+                    { v: 'schnell',   t: 'Bräunt schnell und tief', p: { pn: 3 } }
+                ]
+            },
+            {
+                id: 'pigment', typ: 'single',
+                frage: 'Haben sich bei dir Pigmentflecken entwickelt, etwa durch Sonne, eine Schwangerschaft oder die Pille?',
+                optionen: [
+                    { v: 'mehrere',  t: 'Ja, mehrere sichtbare Stellen', p: { pn: 3 } },
+                    { v: 'einzelne', t: 'Einzelne kleine Stellen', p: { pn: 1.5 } },
+                    { v: 'nein',     t: 'Nein', p: {} }
+                ]
+            }
+        ]
     },
-    verlorene_vitalitaet: {
-        hautbild:     'Verlorene Vitalität',
-        hautbildBase: 'Was du in deinem Gesicht siehst, ist keine Niederlage. Es ist Biografie. Und Biografie kann man nicht wegcemen - aber man kann ihr etwas entgegensetzen, das tiefer wirkt als jede Creme.',
-        title:        'Infuzion Systems',
-        desc:         'Du willst keine Lösung für die Oberfläche. Du willst echte Veränderung. Infuzion bringt hochkonzentrierte Wirkstoffe dorthin, wo Cremes nie ankommen - tief in die Haut, ohne Nadeln, ohne Schmerzen.',
-        link:         'termin.html'
+    {
+        name: 'Dein Leben & deine Pflege',
+        fragen: [
+            {
+                id: 'lebensphase', typ: 'single',
+                frage: 'Wie viele Kerzen stehen auf deiner Torte?',
+                optionen: [
+                    { v: 'jung',     t: '20 bis 30', p: { wt: 0 }, flags: ['jung'] },
+                    { v: 'dreissig', t: '30 bis 40', p: { wt: 1 } },
+                    { v: 'vierzig',  t: '40 bis 50', p: { wt: 2 } },
+                    { v: 'wechsel',  t: '50+, mein Körper verändert sich gerade', d: 'Wechseljahre oder auf dem Weg dorthin', p: { wt: 3 }, flags: ['meno'] },
+                    { v: 'post',     t: 'Die Wechseljahre sind durch', p: { wt: 3 }, flags: ['postmeno'] }
+                ]
+            },
+            {
+                id: 'linien', typ: 'single',
+                frage: 'Wo stehst du bei Linien und Festigkeit?',
+                optionen: [
+                    { v: 'vorbeugen', t: 'Noch keine Linien, ich will vorbeugen', p: { wt: 0 }, flags: ['prevent'] },
+                    { v: 'mimik',     t: 'Erste feine Linien, vor allem bei Mimik', p: { wt: 1.5 } },
+                    { v: 'ruhe',      t: 'Linien sind auch in Ruhe sichtbar', p: { wt: 3 } },
+                    { v: 'kontur',    t: 'Deutliche Falten, die Konturen werden weicher', p: { wt: 4.5 }, flags: ['volumen'] }
+                ]
+            },
+            {
+                id: 'sonnenkonto', typ: 'single',
+                frage: 'Wie viel Sonne hat deine Haut über die Jahre gesehen, und wie hältst du es mit Sonnenschutz?',
+                optionen: [
+                    { v: 'viel_ohne', t: 'Viel Sonne, Schutz eher selten', p: { wt: 3, pn: 1.5 } },
+                    { v: 'viel_mit',  t: 'Viel Sonne, aber meist mit Schutz', p: { wt: 1.5, pn: 0.5 } },
+                    { v: 'normal',    t: 'Normales Maß, Schutz unregelmäßig', p: { wt: 1 } },
+                    { v: 'wenig',     t: 'Eher wenig Sonne, Sonnenschutz gehört zur Routine', p: {} }
+                ]
+            },
+            {
+                id: 'saeuren', typ: 'single',
+                frage: 'Nutzt du aktuell Säuren (AHA/BHA), Retinol oder regelmäßige Peelings?',
+                optionen: [
+                    { v: 'nein',     t: 'Nein', p: {} },
+                    { v: 'woche',    t: 'Etwa einmal pro Woche', p: { ba: 0.5 } },
+                    { v: 'mehrmals', t: 'Mehrmals pro Woche', p: { ba: 1.5 } },
+                    { v: 'taeglich', t: 'Täglich oder mehrere Aktivstoffe parallel', p: { ba: 2.5 }, flags: ['aktivstoffe'] }
+                ]
+            },
+            {
+                id: 'stress', typ: 'single',
+                frage: 'Und dein Alltag gerade: wie viel Ruhe bekommt dein Körper?',
+                optionen: [
+                    { v: 'ruhig',   t: 'Ausgeglichen, ich komme zur Ruhe', p: {} },
+                    { v: 'phasen',  t: 'Phasenweise stressig', p: { hyd: 0.5 } },
+                    { v: 'dauer',   t: 'Dauerhaft angespannt, Schlaf kommt oft zu kurz', p: { hyd: 1 }, flags: ['stress'] }
+                ]
+            }
+        ]
     },
-    schlafende_kraft: {
-        hautbild:     'Schlafende Kraft',
-        hautbildBase: 'Diese Haut schläft. Nicht kaputt, nicht verloren - sie wartet. Auf den Moment, wo jemand ihr wirklich zuhört und ihr gibt, was sie wirklich braucht.',
-        title:        'Skin Kombo',
-        desc:         'HydraFacial bereitet die Haut vor - öffnet sie, reinigt sie, macht sie empfänglich. Dann kommt Infuzion und bringt die Wirkstoffe dorthin, wo keine Creme je ankommt. Ein Termin. Zwei Behandlungen. Ein Ergebnis.',
-        link:         'termin.html'
-    },
-    der_blick_dahinter: {
-        hautbild:     'Der Blick dahinter',
-        hautbildBase: 'Augen lügen nicht. Was du in deinen siehst - diese Zurückhaltung, diese Unsichtbarkeit - liegt nicht an dir. Sie liegt an dem, was du noch nicht weißt.',
-        title:        'Lash & Brow Lifting',
-        desc:         'Definierte Brauen, geschwungene Wimpern, ein Blick, der für sich selbst spricht. Bis zu 8 Wochen. Kein Make-up nötig. Einfach du - wach, präsent, selbstbewusst.',
-        link:         'termin.html'
+    {
+        name: 'Dein Ziel',
+        zwischen: 'Fast geschafft.',
+        zwischenSub: 'Jetzt geht es um das, was du dir wünschst, und um einen kurzen Sicherheits-Check, wie er zu jeder professionellen Hautanalyse gehört.',
+        fragen: [
+            {
+                id: 'erfahrung', typ: 'single',
+                frage: 'Hast du schon Erfahrung mit professionellen Behandlungen?',
+                optionen: [
+                    { v: 'apparativ', t: 'Ja, auch mit apparativen (HydraFacial, Infuzion o. Ä.)', flags: ['erfahren'] },
+                    { v: 'institut',  t: 'Ich war im Kosmetikinstitut, aber nie apparativ' },
+                    { v: 'neu',       t: 'Nein, das wäre mein erstes Mal', flags: ['neuling'] }
+                ]
+            },
+            {
+                id: 'erwartung', typ: 'single',
+                frage: 'Was erwartest du von deiner Behandlung?',
+                optionen: [
+                    { v: 'sofort', t: 'Ein sichtbares Ergebnis direkt danach', d: 'Ich will es noch am selben Tag sehen' },
+                    { v: 'tiefe',  t: 'Eine tiefe Wirkung, die bleibt', d: 'Ich investiere in echte, langfristige Veränderung' },
+                    { v: 'beides', t: 'Beides: sofort sichtbar und langfristig' },
+                    { v: 'erleben', t: 'Vor allem Zeit für mich', d: 'Das Ergebnis kommt, aber das Erlebnis zählt genauso' }
+                ]
+            },
+            {
+                id: 'zeitpunkt', typ: 'single',
+                frage: 'Wann möchtest du starten?',
+                optionen: [
+                    { v: 'woche',  t: 'Am liebsten diese Woche' },
+                    { v: 'wochen', t: 'In den nächsten Wochen' },
+                    { v: 'info',   t: 'Ich möchte es erst einmal verstehen' }
+                ]
+            },
+            {
+                id: 'gate', typ: 'gate',
+                frage: 'Zum Schluss ein kurzer Sicherheits-Check: Trifft etwas davon gerade auf dich zu?',
+                sub: 'Er gehört zu jeder professionellen Hautanalyse. Deine Antwort wird nur hier im Browser ausgewertet und weder gespeichert noch übertragen.',
+                optionen: [
+                    { v: 'schwanger', t: 'Ich bin schwanger oder stille' },
+                    { v: 'onko',      t: 'Ich bin aktuell in einer Krebstherapie' },
+                    { v: 'derma',     t: 'Eine Hauterkrankung ist in ärztlicher Behandlung oder in einem akuten Schub' },
+                    { v: 'nichts',    t: 'Nichts davon', excl: true },
+                    { v: 'keine_angabe', t: 'Möchte ich nicht angeben', excl: true }
+                ]
+            }
+        ]
     }
+];
+
+/* --- Flache Step-Liste bauen: intro, zwischen, fragen, ergebnis --- */
+const STEPS = [{ typ: 'intro' }];
+KAPITEL.forEach((k, ki) => {
+    if (k.zwischen) STEPS.push({ typ: 'zwischen', kapitel: ki });
+    k.fragen.forEach(f => STEPS.push({ typ: 'frage', kapitel: ki, frage: f }));
+});
+const GESAMT_FRAGEN = KAPITEL.reduce((n, k) => n + k.fragen.length, 0);
+
+/* --- State --- */
+let stepIndex = 0;
+let antworten = {};           // frageId -> Wert (single) | Array (goals, gate)
+const STORAGE_KEY = 'beautifulista_hautanalyse_v2';
+
+function speichern() {
+    try {
+        const kopie = Object.assign({}, antworten);
+        delete kopie.gate; // Sicherheits-Frage wird nie persistiert
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ stepIndex, antworten: kopie }));
+    } catch (e) {}
+}
+function wiederherstellen() {
+    try {
+        const raw = sessionStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (data && data.antworten) {
+            antworten = data.antworten;
+            // Nie hinter die Gate-Frage springen (die ist nicht gespeichert)
+            const maxStep = STEPS.findIndex(s => s.typ === 'frage' && s.frage.id === 'gate');
+            stepIndex = Math.min(data.stepIndex || 0, maxStep);
+        }
+    } catch (e) {}
+}
+
+function trackEvent(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+}
+
+/* --- Rendering --- */
+const panels = document.getElementById('panels');
+const progressWrap = document.getElementById('analyse-progress');
+const progressLabel = document.getElementById('progress-label');
+const progressFill = document.getElementById('progress-fill');
+
+function frageNummer(step) {
+    let n = 0;
+    for (const s of STEPS) {
+        if (s.typ === 'frage') n++;
+        if (s === step) return n;
+    }
+    return n;
+}
+
+function updateProgress() {
+    const step = STEPS[stepIndex];
+    if (!step || step.typ === 'intro') { progressWrap.classList.remove('sichtbar'); return; }
+    progressWrap.classList.add('sichtbar');
+    if (step.typ === 'ergebnis') {
+        progressLabel.innerHTML = '<em>Deine Analyse ist fertig</em>';
+        progressFill.style.width = '100%';
+        return;
+    }
+    const kapitel = KAPITEL[step.kapitel];
+    progressLabel.innerHTML = 'Kapitel ' + (step.kapitel + 1) + ' von ' + KAPITEL.length + ' · <em>' + kapitel.name + '</em>';
+    const n = step.typ === 'frage' ? frageNummer(step) : frageNummer(step);
+    const pct = 6 + (n / GESAMT_FRAGEN) * 94;
+    progressFill.style.width = Math.min(pct, 100) + '%';
+}
+
+function zeigeStep() {
+    const step = STEPS[stepIndex];
+    document.body.classList.toggle('analyse-laeuft', step.typ === 'frage' || step.typ === 'zwischen');
+    updateProgress();
+    panels.innerHTML = '';
+    if (step.typ === 'intro') renderIntro();
+    else if (step.typ === 'zwischen') renderZwischen(step);
+    else if (step.typ === 'frage') renderFrage(step);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    speichern();
+}
+
+function renderIntro() {
+    const div = document.createElement('div');
+    div.className = 'quiz__panel analyse-intro';
+    div.innerHTML =
+        '<p class="analyse-intro__sub">Dieselbe Systematik, mit der ich in der Kabine arbeite: aufgebaut auf dem 16-Hauttypen-Modell nach Dr.&nbsp;Leslie Baumann und erweitert um deinen aktuellen Hautzustand.</p>' +
+        '<div class="analyse-intro__facts"><span>20 kurze Fragen</span><span>ca. 3 Minuten</span><span>4 Kapitel</span></div>' +
+        '<ul class="analyse-intro__list">' +
+        '<li>Dein Haut-Profil auf 5 Achsen, wie ein Befund aufbereitet</li>' +
+        '<li>Der Unterschied zwischen Hauttyp und Hautzustand, den die meisten Tests übersehen</li>' +
+        '<li>Eine begründete Behandlungsempfehlung, von mir persönlich gesichtet</li>' +
+        '</ul>' +
+        '<button class="btn--gold-glow" id="analyse-start">Analyse starten</button>' +
+        '<p class="analyse-intro__privacy">Deine Antworten werden direkt hier im Browser ausgewertet und nicht gespeichert. Dein Ergebnis siehst du sofort, ohne E-Mail-Adresse.</p>';
+    panels.appendChild(div);
+    document.getElementById('analyse-start').addEventListener('click', () => {
+        trackEvent('hauttest_start');
+        stepIndex++;
+        zeigeStep();
+    });
+}
+
+function renderZwischen(step) {
+    const k = KAPITEL[step.kapitel];
+    const div = document.createElement('div');
+    div.className = 'quiz__panel analyse-zwischen';
+    div.innerHTML =
+        '<p class="analyse-zwischen__text">' + k.zwischen + '</p>' +
+        '<p class="analyse-zwischen__sub">' + k.zwischenSub + '</p>' +
+        '<button class="quiz__weiter" style="margin:0 auto;">Weiter →</button>';
+    panels.appendChild(div);
+    div.querySelector('.quiz__weiter').addEventListener('click', () => { stepIndex++; zeigeStep(); });
+}
+
+function optionHtml(f, o) {
+    let inner = '<span class="quiz__opt-title">' + o.t + '</span>';
+    if (o.d) inner += '<span class="quiz__opt-desc">' + o.d + '</span>';
+    if (f.typ === 'goals') inner += '<span class="quiz__opt-rank"></span>';
+    return inner;
+}
+
+function renderFrage(step) {
+    const f = step.frage;
+    const div = document.createElement('div');
+    div.className = 'quiz__panel';
+    let html = '<p class="quiz__question">' + f.frage + '</p>';
+    if (f.sub) html += '<p class="quiz__question-sub">' + f.sub + '</p>';
+    html += '<div class="quiz__options">';
+    f.optionen.forEach(o => {
+        html += '<button class="quiz__option" data-v="' + o.v + '">' + optionHtml(f, o) + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="quiz__step-nav">' +
+        (stepIndex > 1 ? '<button class="quiz__back">← Zurück</button>' : '<span></span>') +
+        ((f.typ !== 'single') ? '<button class="quiz__weiter" disabled>Weiter →</button>' : '') +
+        '</div>';
+    div.innerHTML = html;
+    panels.appendChild(div);
+
+    const backBtn = div.querySelector('.quiz__back');
+    if (backBtn) backBtn.addEventListener('click', () => {
+        do { stepIndex--; } while (stepIndex > 0 && STEPS[stepIndex].typ === 'zwischen');
+        zeigeStep();
+    });
+
+    const weiterBtn = div.querySelector('.quiz__weiter');
+    const optBtns = Array.from(div.querySelectorAll('.quiz__option'));
+
+    function weiterZu() {
+        stepIndex++;
+        if (STEPS[stepIndex] === undefined) { zeigeErgebnis(); return; }
+        // Kapitel-Abschluss tracken
+        const prev = STEPS[stepIndex - 1], next = STEPS[stepIndex];
+        if (prev.typ === 'frage' && (next.typ === 'zwischen' || (next.typ === 'frage' && next.kapitel !== prev.kapitel))) {
+            trackEvent('hauttest_kapitel', { kapitel: prev.kapitel + 1 });
+        }
+        zeigeStep();
+    }
+
+    if (f.typ === 'single') {
+        const vorhandene = antworten[f.id];
+        optBtns.forEach(b => {
+            if (vorhandene === b.dataset.v) b.classList.add('selected');
+            b.addEventListener('click', () => {
+                optBtns.forEach(x => x.classList.remove('selected'));
+                b.classList.add('selected');
+                antworten[f.id] = b.dataset.v;
+                speichern();
+                setTimeout(weiterZu, 260);
+            });
+        });
+    }
+
+    if (f.typ === 'goals') {
+        antworten[f.id] = Array.isArray(antworten[f.id]) ? antworten[f.id] : [];
+        function refresh() {
+            optBtns.forEach(b => {
+                const idx = antworten[f.id].indexOf(b.dataset.v);
+                b.classList.toggle('selected', idx >= 0);
+                const badge = b.querySelector('.quiz__opt-rank');
+                if (badge) badge.textContent = idx >= 0 ? (idx + 1) : '';
+            });
+            weiterBtn.disabled = antworten[f.id].length === 0;
+        }
+        optBtns.forEach(b => b.addEventListener('click', () => {
+            const arr = antworten[f.id];
+            const idx = arr.indexOf(b.dataset.v);
+            if (idx >= 0) arr.splice(idx, 1);
+            else if (arr.length < f.max) arr.push(b.dataset.v);
+            refresh(); speichern();
+        }));
+        refresh();
+        weiterBtn.addEventListener('click', weiterZu);
+    }
+
+    if (f.typ === 'gate') {
+        antworten[f.id] = Array.isArray(antworten[f.id]) ? antworten[f.id] : [];
+        const exklusiv = f.optionen.filter(o => o.excl).map(o => o.v);
+        function refresh() {
+            optBtns.forEach(b => b.classList.toggle('selected', antworten[f.id].includes(b.dataset.v)));
+            weiterBtn.disabled = antworten[f.id].length === 0;
+        }
+        optBtns.forEach(b => b.addEventListener('click', () => {
+            const v = b.dataset.v;
+            let arr = antworten[f.id];
+            if (arr.includes(v)) { arr = arr.filter(x => x !== v); }
+            else if (exklusiv.includes(v)) { arr = [v]; }
+            else { arr = arr.filter(x => !exklusiv.includes(x)); arr.push(v); }
+            antworten[f.id] = arr;
+            refresh(); // Gate wird bewusst NICHT gespeichert
+        }));
+        refresh();
+        weiterBtn.textContent = 'Auswertung anzeigen →';
+        weiterBtn.addEventListener('click', () => { zeigeErgebnis(); });
+    }
+}
+
+/* =====================================================================
+   AUSWERTUNG
+   ===================================================================== */
+
+function punkteFuer(frageId, wert) {
+    for (const k of KAPITEL) for (const f of k.fragen) {
+        if (f.id !== frageId) continue;
+        const o = f.optionen.find(x => x.v === wert);
+        return o ? { p: o.p || {}, flags: o.flags || [] } : { p: {}, flags: [] };
+    }
+    return { p: {}, flags: [] };
+}
+
+function auswerten() {
+    const axen = { od: 0, hyd: 0, sr: 0, ba: 0, pn: 0, wt: 0 };
+    const flags = new Set();
+    for (const [id, wert] of Object.entries(antworten)) {
+        if (id === 'ziele' || id === 'gate' || Array.isArray(wert)) continue;
+        const { p, flags: fl } = punkteFuer(id, wert);
+        for (const [k, v] of Object.entries(p)) axen[k] += v;
+        fl.forEach(x => flags.add(x));
+    }
+    const ziele = Array.isArray(antworten.ziele) ? antworten.ziele : [];
+    const gate = Array.isArray(antworten.gate) ? antworten.gate : [];
+
+    // Zustands-Flags ableiten
+    const dehydriert = axen.hyd >= 4;
+    const leichtDehydriert = axen.hyd >= 2 && axen.hyd < 4;
+    const barriereGestoert = axen.ba >= 3 || (axen.ba >= 2 && axen.sr >= 5);
+    const sensibel = axen.sr >= 6;
+    const leichtSensibel = axen.sr >= 3 && axen.sr < 6;
+    const pigmentHoch = axen.pn >= 5.5;
+    const pigmentNeigung = axen.pn >= 2.5 && axen.pn < 5.5;
+
+    return { axen, flags, ziele, gate, dehydriert, leichtDehydriert, barriereGestoert, sensibel, leichtSensibel, pigmentHoch, pigmentNeigung };
+}
+
+/* --- Achsen-Darstellung (Befund-Stil, Wort-Skala statt Prozent) --- */
+function achsenDarstellung(E) {
+    const a = E.axen;
+    function stufe(wert, max, worte) {
+        const anteil = Math.max(0, Math.min(1, wert / max));
+        const idx = Math.min(worte.length - 1, Math.floor(anteil * worte.length));
+        return { wort: worte[idx], pct: Math.round(8 + anteil * 88) };
+    }
+    const lipid = (function () {
+        const od = a.od; // 2 bis 8
+        let wort;
+        if (od <= 3.5) wort = 'trocken, Lipide fehlen';
+        else if (od <= 5) wort = 'ausgeglichen';
+        else if (od <= 6.5) wort = 'Mischhaut, ölige T-Zone';
+        else wort = 'ölig';
+        return { name: 'Lipid-Balance', wort, pct: Math.round(((od - 2) / 6) * 88 + 8) };
+    })();
+    const feucht = stufe(a.hyd, 8, ['gut versorgt', 'weitgehend versorgt', 'leicht dehydriert', 'deutlich dehydriert']);
+    const barriere = stufe(a.ba + a.sr * 0.3, 7, ['stabil und belastbar', 'überwiegend stabil', 'leicht gereizt', 'braucht Aufmerksamkeit']);
+    const ebenmass = stufe(a.pn, 9, ['gleichmäßig', 'leichte Pigmentneigung', 'deutliche Pigmentneigung']);
+    const festigkeit = stufe(a.wt, 11.5, ['straff und elastisch', 'erste feine Zeichen', 'sichtbare Zeichen', 'deutliche Zeichen der Zeit']);
+    return [
+        lipid,
+        { name: 'Feuchtigkeit', wort: feucht.wort, pct: feucht.pct },
+        { name: 'Barriere & Ruhe', wort: barriere.wort, pct: barriere.pct },
+        { name: 'Ebenmäßigkeit', wort: ebenmass.wort, pct: ebenmass.pct },
+        { name: 'Festigkeit & Frische', wort: festigkeit.wort, pct: festigkeit.pct }
+    ];
+}
+
+/* --- Profil-Name --- */
+function profilName(E) {
+    const od = E.axen.od;
+    let name;
+    if (od <= 3.5) name = E.dehydriert ? 'Trockene, dehydrierte Haut' : 'Trockene Haut';
+    else if (od <= 5) name = E.dehydriert ? 'Dehydrierte Haut' : 'Normale Haut';
+    else if (od <= 6.5) name = E.dehydriert ? 'Dehydrierte Mischhaut' : 'Mischhaut';
+    else name = E.dehydriert ? 'Ölige, dehydrierte Haut' : 'Ölige Haut';
+
+    const zusaetze = [];
+    if (E.barriereGestoert) zusaetze.push('mit gestresster Barriere');
+    else if (E.sensibel) zusaetze.push('mit feiner Sensibilität');
+    if (E.pigmentHoch && zusaetze.length < 2) zusaetze.push('mit Pigmentneigung');
+    if (E.axen.wt >= 7 && zusaetze.length < 1) zusaetze.push('mit Zeichen der Zeit');
+    if (zusaetze.length) name += ' ' + zusaetze[0];
+    return name;
+}
+
+function kernSatz(E) {
+    if (E.dehydriert && E.axen.od >= 5.5) return 'Deine Haut produziert genug Öl und hat trotzdem Durst. Genau diese Unterscheidung übersehen die meisten Tests.';
+    if (E.dehydriert) return 'Deiner Haut fehlt weniger Fett als Wasser. Das ist ein Zustand, kein Hauttyp, und genau deshalb gut behandelbar.';
+    if (E.barriereGestoert) return 'Deine Haut ist nicht schwierig. Ihre Schutzbarriere ist gerade belastet und braucht Wiederaufbau statt noch mehr Wirkung.';
+    if (E.sensibel) return 'Deine Haut reagiert fein. Das ist keine Schwäche, es bedeutet nur: die Behandlungsintensität muss zu ihr passen.';
+    if (E.axen.wt >= 7) return 'Deine Haut erzählt Biografie. Man kann ihr nichts wegzaubern, aber man kann ihr gezielt zurückgeben, was sie über die Jahre abgegeben hat.';
+    if (E.pigmentHoch) return 'Deine Haut merkt sich Licht. Mit einem realistischen Plan lässt sich der Ton Schritt für Schritt sichtbar ausgleichen.';
+    return 'Deine Haut hat eine gute Grundlage. Jetzt geht es darum, sie gezielt zu unterstützen statt breit zu behandeln.';
+}
+
+/* --- Teaser zur dominanten Achse (frei sichtbar); volle Deutung nur im Report --- */
+function domTeaser(E) {
+    if (E.dehydriert) return 'Das Auffälligste in deinem Profil: ein deutliches Feuchtigkeitsdefizit. Trockenheit und Dehydrierung sind dabei zwei verschiedene Dinge, und genau dieser Unterschied entscheidet, welche Pflege bei dir wirkt.';
+    if (E.barriereGestoert) return 'Das Auffälligste in deinem Profil: Deine Hautbarriere ist gerade belastet. Das erklärt, warum vertraute Produkte plötzlich brennen und warum mehr Pflege im Moment nicht die Lösung ist.';
+    if (E.sensibel) return 'Das Auffälligste in deinem Profil: Deine Haut reagiert feiner als die meisten. Das ist keine Schwäche, aber es entscheidet darüber, welche Behandlungsintensität ihr guttut.';
+    if (E.pigmentHoch) return 'Das Auffälligste in deinem Profil: Deine Haut merkt sich Licht und reagiert mit Pigment. Warum sie das tut und was den Ton wirklich ausgleicht, folgt einer klaren Logik.';
+    if (E.axen.wt >= 7) return 'Das Auffälligste in deinem Profil: Festigkeit und Spannkraft sind bei dir die zentrale Achse. Zwei Faktoren treiben das, und nur einer davon ist das Alter.';
+    if (E.axen.od >= 5.5) return 'Das Auffälligste in deinem Profil: Deine Lipid-Balance neigt zur öligen Seite. Das hat einen versteckten Vorteil und eine typische Falle bei der Pflege.';
+    return 'Dein Profil zeigt eine gute Grundlage mit klaren Ansatzpunkten. Was hinter deinen einzelnen Werten steckt, liest du in deinem ausführlichen Report.';
+}
+
+/* --- Kurz-Fakten je Empfehlung (frei sichtbar, nehmen Buchungs-Hürden) --- */
+const BULLETS = {
+    'HydraFacial Signature': ['45 Minuten', 'Sanft und schmerzfrei', 'Keine Ausfallzeit, Ergebnis sofort sichtbar'],
+    'HydraFacial Deluxe Clear': ['60 Minuten', 'Porentiefe Ausreinigung ohne hartes Ausdrücken', 'Keine Ausfallzeit, sofort gesellschaftsfähig'],
+    'HydraFacial Deluxe Glow': ['60 Minuten', 'Sanft und schmerzfrei', 'Glow direkt nach der Behandlung, keine Ausfallzeit'],
+    'HydraFacial Deluxe Refine': ['60 Minuten', 'Sanft und schmerzfrei', 'Keine Ausfallzeit, Ergebnis sofort sichtbar'],
+    'Infuzion Boozter-Kur': ['Drei Termine, je ca. 30 Minuten', 'Ganz ohne Nadeln, schmerzfrei', 'Keine Ausfallzeit'],
+    'Infuzion klassische Kur': ['Drei Termine, je ca. 30 Minuten', 'Ganz ohne Nadeln, schmerzfrei', 'Keine Ausfallzeit'],
+    'Infuzion CBD Skin Balanz Kur': ['Zwei Termine, je ca. 30 Minuten', 'Ganz ohne Nadeln, ohne zusätzliche Reizung', 'Keine Ausfallzeit'],
+    'Glow Combo: HydraFacial + Infuzion': ['Ein Termin, zwei Behandlungen', 'Ganz ohne Nadeln, schmerzfrei', 'Keine Ausfallzeit, Glow sofort sichtbar'],
+    'Pro Skin Combo: HydraFacial Deluxe + Infuzion': ['Ein Termin, zwei Behandlungen', 'Ganz ohne Nadeln, schmerzfrei', 'Keine Ausfallzeit'],
+    'Ultimate Skin Combo': ['Erster Termin 120 Minuten, inkl. Lymphdrainage und LED', 'Ganz ohne Nadeln, schmerzfrei', 'Keine Ausfallzeit'],
+    'Circadia Peel-Serie mit Brightening-Pflege': ['Je Behandlung ca. 45 bis 60 Minuten', 'Sanfte Peelings, auf deine Haut abgestimmt', 'Als Serie geplant, passend zur Jahreszeit'],
+    'Circadia Calming Facial': ['60 Minuten', 'Speziell für feine, zu Rötungen neigende Haut', 'Keine Peelings, keine Reizung'],
+    'Korean Lash Lift bei Emilia': ['Ca. 60 Minuten', 'Deine eigenen Wimpern, geliftet und gefärbt', 'Hält bis zu 8 Wochen']
 };
 
-// Hilfsfunktion: prüft ob Wert in Array-Antwort enthalten
-function has(q, v) { return Array.isArray(quizData[q]) && quizData[q].includes(v); }
+/* --- Befund-Absätze (Typ vs. Zustand, echte Mechanismen) — NUR für den Report per Mail --- */
+function befundText(E, achsen) {
+    const abs = [];
+    const od = E.axen.od;
 
-function buildHautbildDesc(baseDesc) {
-    let desc = baseDesc;
-    if (has(1, 'wechsel')) desc += ' Hinzu kommt: dein Körper verändert sich gerade hormonell - und deine Haut verändert sich mit. Das ist kein Versagen, sondern ein Zeichen dafür, dass sie jetzt andere Unterstützung braucht.';
-    else if (has(1, 'post')) desc += ' Dein Hormonspiegel hat sich eingependelt - jetzt kann man gezielt arbeiten, mit dem was ist, statt gegen das was war.';
-    if (has(4, 'stressig')) desc += ' Stress hinterlässt Spuren, die keine Creme wegmacht - aber die richtige Behandlung kann der Haut die Erholung geben, die der Alltag ihr verweigert.';
-    else if (has(4, 'extrem')) desc += ' Chronischer Stress ist einer der stärksten Hautaggressoren überhaupt. Dein Körper weiß das - und deine Haut zeigt es.';
-    if (has(5, 'intensiv')) desc += ' Jahrelange Sonneneinstrahlung ohne ausreichenden Schutz ist in jeder Haut gespeichert. Das lässt sich nicht rückgängig machen - aber man kann das, was bleibt, gezielt behandeln.';
-    if (has(6, 'schlecht')) desc += ' Eine Haut, die von innen zu wenig Wasser bekommt, kann von außen nicht dauerhaft aufgefüllt werden. Tiefe Feuchtigkeitsbehandlung ist hier besonders sinnvoll.';
-    return desc;
+    let typ;
+    if (od <= 3.5) typ = '<strong>Dein Hauttyp:</strong> Deine Haut produziert eher wenig eigene Lipide. Das ist genetisch, kein Pflegefehler. Sie braucht Schutzstoffe von außen, damit die Barriere dicht bleibt.';
+    else if (od <= 5) typ = '<strong>Dein Hauttyp:</strong> Deine Talgproduktion ist ausgeglichen, eine gute Ausgangslage. Entscheidend ist bei dir der aktuelle Hautzustand, nicht der Typ.';
+    else if (od <= 6.5) typ = '<strong>Dein Hauttyp:</strong> Deine T-Zone produziert mehr Talg als die Wangen, eine klassische Mischhaut. Sie braucht Pflege, die ausgleicht statt auszutrocknen.';
+    else typ = '<strong>Dein Hauttyp:</strong> Deine Haut produziert reichlich Talg. Das hält sie langfristig sogar jünger, verlangt aber eine gründliche, porentiefe Reinigung, die die Haut nicht reizt.';
+    abs.push(typ);
+
+    if (E.dehydriert) {
+        abs.push('<strong>Dein Hautzustand:</strong> Deine Antworten zeigen ein deutliches Feuchtigkeitsdefizit. Wichtig zu wissen: Trockenheit ist Lipidmangel, Dehydrierung ist Wassermangel, und beides kann unabhängig voneinander auftreten. Wenn Wasser fehlt, steigt der Feuchtigkeitsverlust über die Hautoberfläche, die Haut wirkt fahl, spannt und zeigt feine Knitterlinien. Cremes allein füllen dieses Depot nicht auf, sie halten vor allem fest, was da ist.');
+    } else if (E.leichtDehydriert) {
+        abs.push('<strong>Dein Hautzustand:</strong> Deine Haut zeigt erste Zeichen von Feuchtigkeitsmangel. Noch nichts Dramatisches, aber der richtige Moment, das Depot aufzufüllen, bevor die Haut fahl wirkt und feine Linien sichtbar werden.');
+    }
+
+    if (E.barriereGestoert) {
+        abs.push('<strong>Deine Barriere:</strong> Brennen bei vertrauten Produkten und Reizbarkeit sind typische Zeichen einer belasteten Hautschutzbarriere' + (E.flags.has('aktivstoffe') ? ', und deine aktuelle Aktivstoff-Routine spricht dafür, dass deine Haut gerade schlicht zu viel Wirkung bekommt' : '') + '. Die gute Nachricht: Eine Barriere lässt sich gezielt wieder aufbauen. Der erste Schritt ist beruhigen und stärken, nicht noch mehr Aktivstoffe.');
+    } else if (E.sensibel) {
+        abs.push('<strong>Deine Sensibilität:</strong> Deine Haut reagiert schneller als andere, mit Rötungen oder Unruhe. Für die Behandlungswahl heißt das: sanfte, beruhigende Wirkstoffe und eine Intensität, die sich an deiner Haut orientiert, nicht am Maximalprogramm.');
+    }
+
+    if (E.pigmentHoch) {
+        abs.push('<strong>Ebenmäßigkeit:</strong> Deine Haut neigt dazu, auf Sonne, Entzündungen oder Hormone mit Pigment zu reagieren. Das ist über Jahre entstanden und braucht Zeit und Regelmäßigkeit, um sichtbar milder zu werden. Ein tägliches Sonnenschutz-Ritual ist dabei nicht verhandelbar, es ist die halbe Behandlung.');
+    }
+
+    if (E.axen.wt >= 7) {
+        abs.push('<strong>Festigkeit:</strong> Elastizität und Spannkraft verändern sich durch zwei Dinge: die Zeit selbst und das, was die Haut erlebt hat, vor allem Sonne. Gegen die Zeit arbeiten wir nicht, mit ihr schon: Feuchtigkeitsdepots auffüllen, Volumen sanft aufpolstern, Regeneration anstoßen.');
+    } else if (E.axen.wt >= 3.5) {
+        abs.push('<strong>Festigkeit:</strong> Deine Haut zeigt erste feine Zeichen der Zeit. Genau jetzt lohnt es sich zu handeln, denn Vorsorge und früher Aufbau erhalten mehr, als späteres Korrigieren zurückholen kann.');
+    }
+
+    if (E.flags.has('meno')) {
+        abs.push('<strong>Deine Lebensphase:</strong> In den Wechseljahren verändert sich die Haut hormonell mit: Sie wird oft trockener, dünner und verliert schneller Spannkraft. Das ist kein Versagen deiner Pflege, sondern ein Zeichen, dass deine Haut jetzt andere Unterstützung braucht als vor zehn Jahren.');
+    } else if (E.flags.has('postmeno')) {
+        abs.push('<strong>Deine Lebensphase:</strong> Dein Hormonspiegel hat sich eingependelt. Jetzt lässt sich sehr gezielt arbeiten, mit dem, was ist, statt gegen das, was war.');
+    }
+    if (E.flags.has('stress') && abs.length < 5) {
+        abs.push('<strong>Dein Alltag:</strong> Dauerstress ist einer der stärksten Hautfaktoren überhaupt: Er stört die Regeneration, die nachts läuft, und die Haut wirkt schneller erschöpft. Eine Behandlung ersetzt keinen Schlaf, aber sie gibt deiner Haut die Erholung, die der Alltag ihr gerade verweigert.');
+    }
+    return abs;
 }
 
-function getResult() {
-    if (has(2, 'augen')) return results.der_blick_dahinter;
-    if (has(8, 'beides') && !has(3, 'basis')) return results.schlafende_kraft;
-    if (has(2, 'straff')) return results.verlorene_vitalitaet;
-    if ((has(1, 'vierzig') || has(1, 'wechsel') || has(1, 'post')) && has(8, 'tiefe')) return results.verlorene_vitalitaet;
-    if (has(2, 'muede')) return results.stille_erschoepfung;
-    if (has(2, 'unreine') && !has(8, 'sofort')) return results.stille_erschoepfung;
-    return results.erschoepfte_strahlkraft;
+/* =====================================================================
+   EMPFEHLUNGS-ENGINE
+   Routen werden gescort aus Achsenwerten + priorisierten Zielen,
+   die Variante innerhalb der Route wählt die Erwartungs-Antwort.
+   ===================================================================== */
+
+function zielBonus(E, ziel) {
+    const idx = E.ziele.indexOf(ziel);
+    return idx === 0 ? 30 : idx === 1 ? 20 : idx === 2 ? 10 : 0;
 }
 
-function updateProgress(step) {
-    document.querySelectorAll('.quiz__dot').forEach((dot, i) => {
-        dot.classList.remove('active', 'done');
-        if (i + 1 < step) dot.classList.add('done');
-        if (i + 1 === step) dot.classList.add('active');
+function empfehlung(E) {
+    const a = E.axen;
+    const erwartung = antworten.erwartung || 'beides';
+    const erfahren = E.flags.has('erfahren');
+    const neuling = E.flags.has('neuling');
+    const jungPraeventiv = E.flags.has('jung') && E.flags.has('prevent');
+
+    /* Routen-Scores */
+    const scores = {
+        barriere:     (E.barriereGestoert ? 28 : 0) + a.ba * 3 + zielBonus(E, 'ruhe') * 0.7,
+        sensibel:     (E.sensibel ? 22 : 0) + a.sr * 1.5 + zielBonus(E, 'ruhe'),
+        reife:        (E.flags.has('volumen') ? 26 : 0) + (a.wt >= 7 ? a.wt * 2 : 0) + ((E.flags.has('meno') || E.flags.has('postmeno')) ? 8 : 0) + zielBonus(E, 'festigkeit') * 0.8,
+        linien:       (a.wt >= 2.5 && a.wt < 8 ? a.wt * 2.6 : 0) + zielBonus(E, 'festigkeit'),
+        pigment:      a.pn * 2.8 + zielBonus(E, 'ton'),
+        feuchtigkeit: a.hyd * 3.6 + zielBonus(E, 'feuchtigkeit'),
+        clear:        (a.od >= 5.5 ? a.od * 3 : a.od * 0.8) + zielBonus(E, 'poren'),
+        glow:         9 + zielBonus(E, 'glow') + (E.flags.has('stress') ? 4 : 0),
+        blick:        zielBonus(E, 'blick') * 1.6
+    };
+    const sortiert = Object.entries(scores).sort((x, y) => y[1] - x[1]);
+    const primaerId = sortiert[0][0];
+    const sekundaerId = sortiert[1][0];
+
+    /* Achsen-Begründung je Route */
+    const gruende = {
+        barriere:     'deine Barriere-Achse den deutlichsten Handlungsbedarf zeigt',
+        sensibel:     'deine Haut fein reagiert und die Behandlungsintensität zu ihr passen muss',
+        reife:        'Festigkeit und Spannkraft bei dir die zentrale Achse sind',
+        linien:       'deine Festigkeits-Achse erste deutliche Zeichen zeigt',
+        pigment:      'deine Ebenmäßigkeits-Achse das klarste Thema ist',
+        feuchtigkeit: 'deine Feuchtigkeits-Achse den größten Bedarf zeigt',
+        clear:        'deine Lipid-Balance und die Poren das klarste Thema sind',
+        glow:         'deine Haut vor allem Frische und Ausstrahlung zurückholen soll',
+        blick:        'dir dein Blick am wichtigsten ist'
+    };
+    const erwartungText = {
+        sofort: 'ein sofort sichtbares Ergebnis',
+        tiefe: 'eine tiefe, bleibende Wirkung',
+        beides: 'beides, sofort sichtbar und langfristig',
+        erleben: 'echte Zeit für dich'
+    }[erwartung];
+
+    /* Routen-Inhalte */
+    function variante(route) {
+        switch (route) {
+            case 'feuchtigkeit':
+                if (erwartung === 'sofort' || erwartung === 'erleben' || jungPraeventiv) return {
+                    titel: 'HydraFacial Signature', preis: '159 € · 45 Minuten',
+                    desc: 'Porentiefe Reinigung, sanftes Peeling und eine intensive Feuchtigkeitsversorgung in einem Ablauf. Das Ergebnis siehst du direkt im Spiegel, ohne Ausfallzeit.',
+                    pfad: jungPraeventiv ? 'In deinem Alter ist das auch präventiv ein kluger Rhythmus: etwa alle vier Wochen als Frischekick.' : 'Wenn du danach tiefer einsteigen willst, ist die Infuzion Boozter-Kur der logische zweite Schritt.'
+                };
+                if (erwartung === 'beides') return {
+                    titel: 'Glow Combo: HydraFacial + Infuzion', preis: '329 € · ein Termin, zwei Ebenen',
+                    desc: 'Das HydraFacial reinigt porentief und bereitet deine Haut optimal vor. Direkt danach schleust der Infuzer hochkonzentrierte Hyaluronsäure in tiefere Hautschichten, ganz ohne Nadeln. Frisch gereinigte Haut nimmt Wirkstoffe besonders gut auf.',
+                    pfad: 'Sofort sichtbarer Glow plus Tiefenwirkung in einem Termin.'
+                };
+                return {
+                    titel: 'Infuzion Boozter-Kur', preis: '589 € · drei Behandlungen, eine Zone',
+                    desc: 'Hochmolekulare Hyaluronsäure plus Vitamine werden mit dem Infuzer dorthin gebracht, wo Cremes nicht ankommen: in tiefere Hautschichten, ganz ohne Nadeln, schmerzfrei und ohne Ausfallzeit. Drei Behandlungen im Abstand von 7 bis 10 Tagen bauen dein Feuchtigkeitsdepot von Grund auf.',
+                    pfad: erfahren ? 'Mit aufgebauter Grundlage genügt danach etwa alle 4 bis 6 Monate eine Auffrischung.' : 'Die Kur ist bewusst der Start: Eine Einzelbehandlung kann diese Grundlage am Anfang nicht schaffen. Danach genügt etwa alle 4 bis 6 Monate eine Auffrischung.'
+                };
+            case 'clear':
+                if (erwartung === 'tiefe') return {
+                    titel: 'Infuzion CBD Skin Balanz Kur', preis: '429 € · zwei Behandlungen',
+                    desc: 'CBD wirkt talgregulierend und beruhigend und bringt aus der Tiefe zurück ins Gleichgewicht, was an der Oberfläche als Glanz und Unreinheiten sichtbar wird. Ganz ohne Nadeln, ohne Ausfallzeit.',
+                    pfad: 'Wichtig: Das ist eine Behandlung für zu Unreinheiten neigende Haut in ruhigen Phasen. Bei akuten Entzündungen schauen wir zuerst gemeinsam auf deine Haut.'
+                };
+                if (erwartung === 'beides') return {
+                    titel: 'Pro Skin Combo: HydraFacial Deluxe + Infuzion', preis: '359 € · ein Termin, zwei Ebenen',
+                    desc: 'Das HydraFacial Deluxe reinigt porentief mit klärenden Wirkstoffen, direkt danach arbeitet die Infuzion in der Tiefe an der Balance. Ein Termin, der beides abdeckt.',
+                    pfad: ''
+                };
+                return {
+                    titel: 'HydraFacial Deluxe Clear', preis: '189 € · 60 Minuten',
+                    desc: 'Die porentiefe Ausreinigung ohne hartes Ausdrücken: Verstopfungen werden sanft gelöst und abgesaugt, klärende Wirkstoffe beruhigen das Hautbild. Du bist danach sofort gesellschaftsfähig.',
+                    pfad: 'Bei regelmäßigem Bedarf ist ein Rhythmus von etwa vier Wochen ideal, so bleibt das Hautbild dauerhaft klar.'
+                };
+            case 'glow':
+                if (erwartung === 'tiefe' || erwartung === 'beides') return {
+                    titel: 'Glow Combo: HydraFacial + Infuzion', preis: '329 € · ein Termin, zwei Ebenen',
+                    desc: 'Das HydraFacial holt den sofort sichtbaren Glow an die Oberfläche, die Infuzion füllt direkt danach die Feuchtigkeitsdepots in der Tiefe auf, ganz ohne Nadeln. So bleibt die Frische, statt nach Tagen zu verfliegen.',
+                    pfad: ''
+                };
+                return {
+                    titel: 'HydraFacial Deluxe Glow', preis: '189 € · 60 Minuten',
+                    desc: 'Tiefenreinigung, sanftes Peeling und ein Antioxidantien-Boost für genau das, was fahle Haut braucht: Licht von innen. Der Glow ist direkt nach der Behandlung sichtbar, ohne Ausfallzeit.',
+                    pfad: E.flags.has('stress') ? 'Deine Haut wirkt gerade eher erschöpft als krank. Wenn du tiefer ansetzen willst, sprich mich auf den Zalmon DNA Complex an, eine Repair-Kur für erschöpfte Haut (vorab klären wir, dass keine Fischallergie besteht).' : ''
+                };
+            case 'linien':
+                if (erwartung === 'sofort') return {
+                    titel: 'HydraFacial Deluxe Refine', preis: '189 € · 60 Minuten',
+                    desc: 'Tiefenreinigung plus Anti-Aging-Wirkstoffe, die feine Linien sichtbar mildern und die Haut praller wirken lassen. Direkt danach siehst du den Unterschied.',
+                    pfad: 'Für den nachhaltigen Aufbau ist die Infuzion-Kur der nächste Schritt, wenn du bereit bist.'
+                };
+                if (erwartung === 'beides') return {
+                    titel: 'Pro Skin Combo: HydraFacial Deluxe + Infuzion', preis: '359 € · ein Termin, zwei Ebenen',
+                    desc: 'Oben glättet und versorgt das HydraFacial Deluxe, darunter beginnt die Infuzion mit dem Feuchtigkeitsaufbau, der feine Linien von innen aufpolstert. Ganz ohne Nadeln.',
+                    pfad: ''
+                };
+                return {
+                    titel: 'Infuzion klassische Kur', preis: '589 € · drei Behandlungen, eine Zone',
+                    desc: 'Zwei Behandlungen mit dem Boozter bauen zuerst die Feuchtigkeitsgrundlage auf, dann polstert der Volymizer mit reiner, besonders hochmolekularer Hyaluronsäure gezielt auf, sanft und natürlich, ganz ohne Nadeln.',
+                    pfad: 'Die Reihenfolge ist Absicht: Erst wenn die Haut das Fundament gespeichert hat, kann das große Volumen-Molekül wirken. Danach genügt etwa alle 4 bis 6 Monate eine Auffrischung.'
+                };
+            case 'reife':
+                return {
+                    titel: 'Ultimate Skin Combo', preis: '777 € · HydraFacial Platinum + Infuzion-Kur',
+                    desc: 'Das intensivste Programm des Hauses: Das HydraFacial Platinum bereitet mit Lymphdrainage und LED maximal vor, danach baut eine Infuzion-Kur mit drei Behandlungen Feuchtigkeit und Volumen in der Tiefe wieder auf, ganz ohne Nadeln. Der erste Termin dauert 120 Minuten.',
+                    pfad: (E.flags.has('meno') || E.flags.has('postmeno'))
+                        ? 'In deiner Lebensphase stelle ich die Kur-Wirkstoffe individuell zusammen (mein VIP-Konzept für hormonell veränderte Haut). Das besprechen wir beim ersten Termin.'
+                        : 'Ergebnisse maximieren sich, wenn die erste Auffrischung etwa 6 bis 8 Wochen nach der Kur folgt.'
+                };
+            case 'pigment':
+                return {
+                    titel: 'Circadia Peel-Serie mit Brightening-Pflege', preis: 'ab 150 € je Behandlung, als Serie geplant',
+                    desc: 'Pigment ist über Jahre entstanden und braucht Zeit und Regelmäßigkeit. Eine Serie sanfter Peelings (zum Beispiel das Mandeliglow Peel Facial) mit abgestimmter aufhellender Wirkstoffpflege macht den Ton Schritt für Schritt sichtbar ausgeglichener. Ich verspreche dir keine Wunder in einer Sitzung, dafür einen realistischen Plan.',
+                    pfad: 'Zwei Dinge gehören fest dazu: täglicher Lichtschutz (er ist die halbe Behandlung) und eine Planung passend zur Jahreszeit, denn frisch gepeelte Haut braucht Sonnen-Vorsicht.'
+                };
+            case 'sensibel':
+                if (erwartung === 'tiefe') return {
+                    titel: 'Infuzion CBD Skin Balanz Kur', preis: '429 € · zwei Behandlungen',
+                    desc: 'CBD beruhigt, gleicht aus und stärkt die Barriere, eingeschleust ganz ohne Nadeln und ohne Reizung. Für feine, zu Rötungen neigende Haut in stabilen Phasen eine der sanftesten Arten, in der Tiefe zu arbeiten.',
+                    pfad: 'Vor dem Start schaue ich mir deine Haut persönlich an, damit die Behandlung wirklich zu ihrem aktuellen Zustand passt.'
+                };
+                return {
+                    titel: 'Circadia Calming Facial', preis: '185 € · 60 Minuten',
+                    desc: 'Der sanfteste Einstieg des Hauses: eine beruhigende Behandlung, die gezielt für feine, zu Rötungen neigende Haut entwickelt wurde. Keine aggressiven Peelings, keine Reizung, dafür spürbar mehr Ruhe im Hautbild.',
+                    pfad: 'Wenn deine Haut stabil ist, kann die Infuzion CBD-Kur der nächste Schritt in die Tiefe sein.'
+                };
+            case 'barriere':
+                if (erwartung === 'sofort' || erwartung === 'erleben') return {
+                    titel: 'Circadia Calming Facial', preis: '185 € · 60 Minuten',
+                    desc: 'Deine Haut braucht gerade keine weiteren Aktivstoffe, sondern eine Pause mit gezieltem Wiederaufbau. Das Calming Facial beruhigt, stärkt und gibt der Barriere Raum, sich zu erholen.',
+                    pfad: 'Deine bisherige Pflege ist nicht falsch. Deine Haut braucht nur gerade weniger Wirkung und mehr Aufbau. Das stellen wir gemeinsam um.'
+                };
+                return {
+                    titel: 'Infuzion CBD Skin Balanz Kur', preis: '429 € · zwei Behandlungen',
+                    desc: 'CBD beruhigt, reguliert und stärkt die Hautbarriere aus der Tiefe, ganz ohne Nadeln und ohne zusätzliche Reizung. Genau das richtige Programm für Haut, die von zu vielen Aktivstoffen gerade überfordert ist.',
+                    pfad: 'Während des Aufbaus gilt: keine Säuren, keine zusätzlichen Peelings. Deine bisherige Pflege ist nicht falsch, deine Haut braucht nur gerade eine Pause von zu viel Wirkung.'
+                };
+            case 'blick':
+                return {
+                    titel: 'Korean Lash Lift bei Emilia', preis: 'ab 55 €',
+                    desc: 'Deine eigenen Wimpern, geliftet und gefärbt, mit besonders sanften Lotionen und einem Schwung, der zu deiner Augenform passt. Hält bis zu 8 Wochen, ganz ohne Extensions und ohne tägliches Tuschen.',
+                    pfad: 'Ein müder wirkender Blick ist oft die Summe aus Augenpartie und Wimpern. Wenn du beides angehen willst, ergänzt ein Perk Eye Add-on (59 €) die Hautseite.'
+                };
+        }
+        return null;
+    }
+
+    const primaer = variante(primaerId);
+    let sekundaer = null;
+    if (scores[sekundaerId] > 12 && sekundaerId !== primaerId) {
+        const s = variante(sekundaerId);
+        if (s && s.titel !== primaer.titel) sekundaer = s;
+    }
+    // Blick als Zusatz, wenn Ziel gewählt aber nicht Hauptroute
+    let blickZusatz = null;
+    if (primaerId !== 'blick' && E.ziele.includes('blick')) {
+        blickZusatz = 'Du hast auch deinen Blick als Ziel gewählt: Dafür ist Emilias Korean Lash Lift (ab 55 €) die richtige Adresse, eigene Wimpern, geliftet und gefärbt, bis zu 8 Wochen.';
+    }
+
+    const heimpflege = {
+        feuchtigkeit: 'Zu Hause sichert eine abgestimmte Feuchtigkeitspflege (zum Beispiel die Circadia Hydrate-Linie) dein Ergebnis. Deine bisherige Pflege bleibt das Fundament, wir ergänzen gezielt.',
+        clear: 'Zu Hause hält eine abgestimmte, klärende Pflege (zum Beispiel aus der Circadia Acne-Linie) das Ergebnis stabil, ohne die Haut auszutrocknen.',
+        glow: 'Zu Hause verlängert ein Antioxidantien-Serum (zum Beispiel Circadia Vitamin C Reversal) die frische Ausstrahlung.',
+        linien: 'Zu Hause arbeitet eine abgestimmte Nachtpflege (zum Beispiel Circadia Nighttime Repair) im Regenerationsfenster deiner Haut weiter.',
+        reife: 'Zu Hause setzt eine höher dosierte Nachtpflege (zum Beispiel Circadia Nighttime Repair Plus) die Arbeit der Behandlung fort.',
+        pigment: 'Zu Hause sind aufhellende Wirkstoffpflege und täglicher Lichtschutz (zum Beispiel das Circadia Pigmentation-Programm) der Teil der Behandlung, der zwischen den Terminen wirkt.',
+        sensibel: 'Zu Hause beruhigt eine reduzierte, abgestimmte Pflege (zum Beispiel Circadia Chrono-Calm) die Haut weiter. Weniger, aber richtig.',
+        barriere: 'Zu Hause gilt für die Aufbauphase: weniger, aber richtig. Eine beruhigende Pflege (zum Beispiel Circadia Chrono-Calm) unterstützt den Wiederaufbau.',
+        blick: 'Für die Haut der Augenpartie gibt es abgestimmte Pflege (zum Beispiel Circadia Full Circle Eye Repair), die den Effekt unterstreicht.'
+    }[primaerId];
+
+    return {
+        primaerId, primaer, sekundaer, blickZusatz, heimpflege,
+        warum: 'Weil ' + gruende[primaerId] + ' und du dir ' + erwartungText + ' wünschst, ist das für deine Haut der logische erste Schritt.',
+        neuling
+    };
+}
+
+/* --- Gate-Routen --- */
+function gateRoute(E) {
+    const g = E.gate;
+    if (g.includes('onko')) return {
+        titel: 'Deine Haut verdient gerade besondere Sorgfalt',
+        text: [
+            'Danke für dein Vertrauen und deine Offenheit. Während einer Krebstherapie führe ich grundsätzlich keine apparativen Behandlungen durch. Das ist keine Vorsicht aus Angst, sondern Fürsorge: Deine Haut leistet gerade Außergewöhnliches und verdient Schutz statt Intensität.',
+            'Es gibt aber einen Weg, der genau für diese Zeit entwickelt wurde: das Oncology Facial von Circadia, eine sehr sanfte, beruhigende und feuchtigkeitsspendende Gesichtsbehandlung. Ob und wie sie für dich passt, klären wir vorab in einem persönlichen Gespräch, in Ruhe und ohne Verpflichtung zu einer Behandlung.',
+            'Schreib mir gern, ich nehme mir Zeit für dich.'
+        ],
+        wa: true
+    };
+    if (g.includes('schwanger')) return {
+        titel: 'Erst einmal: alles Gute!',
+        text: [
+            'Während Schwangerschaft und Stillzeit behandle ich grundsätzlich nicht, auch nicht mit den sanften Programmen. Das ist eine feste Regel aus Fürsorge für dich und dein Baby, und ich mache dabei keine Ausnahme, so gern ich dich verwöhnen würde.',
+            'Was ich dir anbieten kann: Melde dich, sobald die Stillzeit vorbei ist. Dann schauen wir gemeinsam, was deine Haut nach dieser besonderen Zeit wirklich braucht, sie verändert sich hormonell nämlich gleich zweimal.',
+            'Deine Analyse-Ergebnisse oben bleiben trotzdem interessant für dich, als ehrlicher Blick auf deine Haut.'
+        ],
+        wa: true
+    };
+    if (g.includes('derma')) return {
+        titel: 'Zuerst in ärztliche Hände, dann gern zu mir',
+        text: [
+            'Eine Hauterkrankung im akuten Stadium gehört zuerst in ärztliche Behandlung, und ein seriöses Institut sagt dir das auch so. Kosmetik ersetzt keine medizinische Therapie.',
+            'Das ist aber keine Absage: In stabilen, schubfreien Phasen begleite ich empfindliche Haut sehr gern kosmetisch, mit sanften, beruhigenden Programmen, die auf deine Situation abgestimmt sind.',
+            'Sprich mich einfach an, sobald es deiner Haut wieder besser geht. Dann schauen wir sie uns gemeinsam an.'
+        ],
+        wa: true
+    };
+    return null;
+}
+
+/* --- Reviews je Route --- */
+const REVIEWS = {
+    default: { text: 'Ich bin absolut begeistert von der Kosmetikbehandlung. Mein Gesicht sieht deutlich frischer, glatter und deutlich faltenfreier aus. Man merkt sofort, dass hier mit viel Erfahrung und Fachwissen gearbeitet wird.', name: 'Birgit Wolter · Google Rezension' },
+    beratung: { text: 'Besonders positiv fand ich die ehrliche Beratung. Mir wurde sogar von bestimmten Behandlungen abgeraten, weil sie in meinem Fall einfach nicht nötig gewesen wären. Genau das schafft für mich echtes Vertrauen.', name: 'Olga · Google Rezension' },
+    hf: { text: 'Ich war heute zum ersten Mal im Studio zum Hydrafacial. Es wurde sich Zeit genommen und das lässt sich am Ergebnis auch sehen. Alles ist wirklich sehr schön geworden.', name: 'Anja K. · Google Rezension' },
+    aging: { text: 'Sehr angenehme Behandlung und Behandelnde. Sofort sichtbare Faltenreduzierung. Sehr empfehlenswert, bin begeistert.', name: 'Ramona Jurkiewicz-Schmidt · Google Rezension' },
+    lash: { text: 'Das Korean Lash Lift sieht toll aus, noch nirgendwo besser erlebt!', name: 'Vanessa Schlüß · Google Rezension' }
+};
+function reviewFuer(routeId) {
+    if (routeId === 'blick') return REVIEWS.lash;
+    if (routeId === 'reife' || routeId === 'linien') return REVIEWS.aging;
+    if (routeId === 'sensibel' || routeId === 'barriere' || routeId === 'pigment') return REVIEWS.beratung;
+    if (routeId === 'glow' || routeId === 'clear' || routeId === 'feuchtigkeit') return REVIEWS.hf;
+    return REVIEWS.default;
+}
+
+/* =====================================================================
+   ERGEBNIS-SEITE
+   ===================================================================== */
+
+function zeigeErgebnis() {
+    const E = auswerten();
+    const achsen = achsenDarstellung(E);
+    const gate = gateRoute(E);
+    const name = profilName(E);
+
+    document.body.classList.remove('analyse-laeuft');
+    stepIndex = STEPS.length; // hinter die Fragen
+    progressWrap.classList.add('sichtbar');
+    progressLabel.innerHTML = '<em>Deine Analyse ist fertig</em>';
+    progressFill.style.width = '100%';
+    trackEvent('hauttest_ergebnis', { profil: gate ? 'beratungs_route' : name });
+    try { sessionStorage.removeItem(STORAGE_KEY); } catch (e) {}
+
+    let html = '<div class="quiz__result">';
+
+    /* Befund-Kopf + Achsen (immer, auch bei Gate-Routen) */
+    html += '<p class="quiz__section-label">Dein Haut-Profil</p>';
+    html += '<h3 class="quiz__hautbild-name">' + name + '</h3>';
+    html += '<p class="quiz__hautbild-kern">' + kernSatz(E) + '</p>';
+    html += '<div class="achsen">' + achsen.map(a =>
+        '<div class="achse"><div class="achse__kopf"><span class="achse__name">' + a.name + '</span>' +
+        '<span class="achse__wert">' + a.wort + '</span></div>' +
+        '<div class="achse__track"><div class="achse__fill" data-pct="' + a.pct + '"></div></div></div>'
+    ).join('') + '</div>';
+
+    if (gate) {
+        /* Beratungs-Route statt Behandlungsempfehlung */
+        html += '<div class="gate-result"><h3>' + gate.titel + '</h3>' +
+            gate.text.map(t => '<p>' + t + '</p>').join('') +
+            '<div class="quiz__result-actions" style="margin-top:28px;">' +
+            '<a class="btn--gold-glow" href="' + WA_LINK + '" target="_blank" rel="noopener">Schreib mir auf WhatsApp</a>' +
+            '<button class="quiz__restart" id="quiz-restart">Analyse wiederholen</button>' +
+            '</div></div>';
+        html += disclaimerHtml();
+        html += '</div>';
+        panels.innerHTML = html;
+        bindErgebnis(null, E, name, achsen);
+        return;
+    }
+
+    const emp = empfehlung(E);
+
+    /* Teaser zur dominanten Achse (die volle Deutung steht im Report) */
+    html += '<div class="befund"><p>' + domTeaser(E) + '</p></div>';
+
+    /* Empfehlung: Titel + Preis + 1 Warum-Satz + 3 Kurz-Fakten */
+    html += '<p class="quiz__section-label">Meine Empfehlung für dich</p>';
+    html += '<div class="empfehlung">';
+    html += '<h4 class="empfehlung__title">' + emp.primaer.titel + '</h4>';
+    html += '<p class="empfehlung__preis">' + emp.primaer.preis + '</p>';
+    html += '<p class="empfehlung__warum">' + emp.warum + '</p>';
+    const bullets = BULLETS[emp.primaer.titel];
+    if (bullets) html += '<p class="empfehlung__desc">' + bullets.join(' · ') + '</p>';
+    html += '</div>';
+
+    /* CTA 1 */
+    html += '<div class="quiz__result-actions">' +
+        '<a class="btn--gold-glow" href="' + TERMIN_LINK + '" target="_blank" rel="noopener">Meinen Termin buchen</a>' +
+        '</div>';
+
+    /* Sarah-Block */
+    html += '<div class="sarah-block">' +
+        '<img src="sarah.jpg" alt="Sarah Rabe, Inhaberin von beautifulista" loading="lazy">' +
+        '<p><strong>Ich bin Sarah</strong>, Fachkosmetikerin für apparative Kosmetik und Gründerin von beautifulista. Vor deiner ersten Behandlung schaue ich mir deine Haut immer persönlich an. Deine Analyse ist dafür der beste Startpunkt.</p>' +
+        '</div>';
+
+    /* Review */
+    const rev = reviewFuer(emp.primaerId);
+    html += '<div class="result-review">' +
+        '<div class="result-review__stars" aria-label="5 von 5 Sternen">★★★★★</div>' +
+        '<p class="result-review__text">„' + rev.text + '"</p>' +
+        '<p class="result-review__name">' + rev.name + '</p>' +
+        '</div>';
+
+    /* Zweifel-Block */
+    html += '<div class="zweifel">' +
+        '<div class="zweifel__item"><p class="zweifel__q">Passt die Empfehlung sicher zu mir?</p>' +
+        '<p class="zweifel__a">Diese Analyse ist ein sehr guter Startpunkt, aber keine Haut ist ein Fragebogen. Vor deiner ersten Behandlung schaue ich mir deine Haut persönlich an und passe das Programm an das an, was ich sehe.</p></div>' +
+        '<div class="zweifel__item"><p class="zweifel__q">Muss ich danach mit Ausfallzeit rechnen?</p>' +
+        '<p class="zweifel__a">Nein. Alle empfohlenen Behandlungen sind darauf ausgelegt, dass du direkt danach wieder unter Menschen kannst, oft mit dem besten Hautbild seit Langem.</p></div>' +
+        '<div class="zweifel__item"><p class="zweifel__q">Was kostet der Einstieg?</p>' +
+        '<p class="zweifel__a">Einzelbehandlungen starten je nach Programm bei 159 bis 189 €, Kuren bauen über mehrere Termine auf. Ich empfehle dir nur, was deine Haut wirklich braucht, und sage dir auch ehrlich, wenn weniger reicht.</p></div>' +
+        '</div>';
+
+    /* Report-Formular (gestuftes Gate): konkrete Inhalte benennen, das erzeugt die Lücke */
+    html += '<div class="report-box" id="report-box">' +
+        '<h4>Dein ausführlicher Haut-Report</h4>' +
+        '<p>Deine fünf Werte siehst du oben. Was sie im Zusammenspiel bedeuten, steht in deinem persönlichen Report:</p>' +
+        '<ul class="analyse-intro__list" style="margin-bottom:22px;">' +
+        '<li>Die Deutung aller fünf Werte: was deine Antworten zeigen und warum deine Haut gerade so reagiert</li>' +
+        '<li>Deine Empfehlung im Detail, mit Ablauf, deinem idealen Rhythmus und einer ehrlichen Alternative</li>' +
+        '<li>Worauf deine Haut bei der Pflege zu Hause wirklich anspricht</li>' +
+        '<li>Und: Ich sehe mir deine Analyse persönlich an</li>' +
+        '</ul>' +
+        '<form id="report-form">' +
+        '<input type="text" name="vorname" placeholder="Dein Vorname" required autocomplete="given-name">' +
+        '<input type="email" name="email" placeholder="deine@email.de" required autocomplete="email">' +
+        '<label class="quiz__optin"><input type="checkbox" name="optin" required>' +
+        '<span>Ich bin einverstanden, dass beautifulista meinen Haut-Report an diese E-Mail-Adresse sendet und mich zu meinem Ergebnis persönlich kontaktieren darf. <a href="datenschutz.html">Datenschutzerklärung</a></span></label>' +
+        '<label class="quiz__optin"><input type="checkbox" name="newsletter" id="report-newsletter">' +
+        '<span><em>Optional:</em> Ja, ich möchte gelegentlich Tipps und Angebote von beautifulista per E-Mail erhalten. Abmeldung jederzeit möglich.</span></label>' +
+        '<button type="submit" class="btn btn--primary">Report zusenden</button>' +
+        '</form></div>';
+
+    /* CTA 2 + WhatsApp + Restart */
+    html += '<div class="quiz__result-actions">' +
+        '<a class="btn--gold-glow" href="' + TERMIN_LINK + '" target="_blank" rel="noopener">Meinen Termin buchen</a>' +
+        '</div>';
+    html += '<div class="result-wa"><a href="' + WA_LINK + '" target="_blank" rel="noopener">Unsicher, welcher Termin passt? Schreib mir kurz auf WhatsApp.</a></div>';
+    html += '<div style="text-align:center;"><button class="quiz__restart" id="quiz-restart">Analyse wiederholen</button></div>';
+
+    html += disclaimerHtml();
+    html += '</div>';
+
+    panels.innerHTML = html;
+    bindErgebnis(emp, E, name, achsen);
+}
+
+function disclaimerHtml() {
+    return '<p class="result-disclaimer">Diese Online-Hautanalyse ist eine kosmetische Einschätzung deines Hautbilds auf Basis deiner Angaben. Sie ersetzt keine ärztliche Diagnose und keine persönliche Hautanalyse im Institut. Bei Verdacht auf eine Hauterkrankung gehört deine Haut zuerst in ärztliche Hände.</p>';
+}
+
+function bindErgebnis(emp, E, name, achsen) {
+    /* Balken animieren */
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            document.querySelectorAll('.achse__fill').forEach(el => { el.style.width = el.dataset.pct + '%'; });
+        }, 120);
     });
-    document.querySelectorAll('.quiz__line').forEach((line, i) => {
-        line.classList.toggle('done', i + 1 < step);
+
+    const restart = document.getElementById('quiz-restart');
+    if (restart) restart.addEventListener('click', () => {
+        antworten = {};
+        stepIndex = 0;
+        try { sessionStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        zeigeStep();
+    });
+
+    const form = document.getElementById('report-form');
+    if (form && emp) form.addEventListener('submit', e => {
+        e.preventDefault();
+        const vorname = form.vorname.value.trim();
+        const email = form.email.value.trim();
+        const newsletter = document.getElementById('report-newsletter').checked ? 'Ja' : 'Nein';
+        sendeReport(vorname, email, newsletter, emp, E, name, achsen);
+        const box = document.getElementById('report-box');
+        box.innerHTML = '<h4>Dein Report ist unterwegs' + (vorname ? ', ' + vorname : '') + '.</h4>' +
+            '<p class="report-erfolg">Schau in dein Postfach. Ich sehe mir deine Analyse persönlich an.</p>';
+        trackEvent('hauttest_report_mail');
     });
 }
 
-function showStep(n) {
-    document.querySelectorAll('.quiz__panel').forEach(p => p.classList.remove('active'));
-    const el = document.getElementById('quiz-step-' + n);
-    if (el) el.classList.add('active');
-    updateProgress(n);
-}
-
-function goBack() {
-    if (stepHistory.length === 0) return;
-    const prev = stepHistory.pop();
-    showStep(prev);
-}
-
-function showResult(res) {
-    document.querySelectorAll('.quiz__panel').forEach(p => p.classList.remove('active'));
-    const el = document.getElementById('quiz-result');
-    el.style.display = 'block'; el.style.opacity = '1';
-    el.style.visibility = 'visible'; el.style.pointerEvents = 'auto';
-    el.classList.add('active');
-    document.getElementById('quiz-hautbild-name').textContent = res.hautbild;
-    document.getElementById('quiz-hautbild-desc').textContent = buildHautbildDesc(res.hautbildBase);
-    document.getElementById('quiz-result-title').textContent  = res.title;
-    document.getElementById('quiz-result-desc').textContent   = res.desc;
-    document.getElementById('quiz-result-cta').href           = res.link;
-    updateProgress(10);
-}
-
-// Multi-Choice: Toggle-Auswahl, Weiter-Button freischalten
-document.querySelectorAll('.quiz__option').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const q = +btn.dataset.q;
-        btn.classList.toggle('selected');
-        quizData[q] = Array.from(
-            btn.closest('.quiz__options').querySelectorAll('.quiz__option.selected')
-        ).map(b => b.dataset.v);
-        // Weiter-Button aktivieren wenn mind. 1 Antwort gewählt
-        const weiter = btn.closest('.quiz__panel').querySelector('.quiz__weiter');
-        if (weiter) weiter.disabled = quizData[q].length === 0;
-    });
-});
-
-// Weiter-Buttons (Steps 1-6, 8)
-document.querySelectorAll('.quiz__weiter').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const next = +btn.dataset.next;
-        const currentStep = next - 1;
-        stepHistory.push(currentStep);
-        showStep(next);
-    });
-});
-
-// Step 7: Freitext Weiter
-document.getElementById('quiz-trigger-weiter').addEventListener('click', () => {
-    quizData.trigger = document.getElementById('quiz-trigger-text').value.trim();
-    stepHistory.push(7);
-    showStep(8);
-});
-
-document.getElementById('quiz-trigger-skip').addEventListener('click', () => {
-    quizData.trigger = '';
-    stepHistory.push(7);
-    showStep(8);
-});
-
+/* --- Report + Nachfass-Dossier per EmailJS (ohne Gate-Antworten) --- */
 const EMAILJS_PUBLIC_KEY  = 'RinEuFkYPZW7nzhl5';
 const EMAILJS_SERVICE_ID  = 'service_oiv3bki';
 const EMAILJS_TEMPLATE_ID = 'template_00thqnh';
+// Zweite Vorlage "Hauttest Dossier": schickt das interne Nachfass-Dossier an Sarah
+// (Empfänger fest info@beautifulista.com, Body: {{{dossier_html}}}). Eingerichtet 15.07.2026.
+const EMAILJS_DOSSIER_TEMPLATE_ID = 'template_6i4skbo';
 emailjs.init(EMAILJS_PUBLIC_KEY);
 
-document.getElementById('quiz-email-form').addEventListener('submit', e => {
-    e.preventDefault();
-    quizData.email = e.target.email.value;
-    const res = getResult();
-    showResult(res);
-    const newsletter = document.getElementById('quiz-newsletter')?.checked ? 'Ja' : 'Nein';
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-        user_email:            quizData.email,
-        result_hautbild:       res.hautbild,
-        result_hautbild_desc:  buildHautbildDesc(res.hautbildBase),
-        result_title:          res.title,
-        result_desc:           res.desc,
-        result_link:           'https://www.beautifulista.com/termin.html',
-        skin_triggers:         quizData.trigger || 'Keine Angabe',
-        newsletter:            newsletter
-    }).catch(() => {});
-});
+function antwortText(frageId) {
+    const wert = antworten[frageId];
+    for (const k of KAPITEL) for (const f of k.fragen) {
+        if (f.id !== frageId) continue;
+        if (Array.isArray(wert)) return wert.map((v, i) => (i + 1) + '. ' + (f.optionen.find(o => o.v === v) || {}).t).join(' · ');
+        const o = f.optionen.find(x => x.v === wert);
+        return o ? o.t : '';
+    }
+    return '';
+}
 
-document.getElementById('quiz-restart').addEventListener('click', () => {
-    [1,2,3,4,5,6,8].forEach(q => { quizData[q] = []; });
-    quizData.trigger = ''; quizData.email = null;
-    stepHistory.length = 0;
-    const el = document.getElementById('quiz-result');
-    el.style.display = 'none'; el.style.opacity = '0';
-    el.style.visibility = 'hidden'; el.classList.remove('active');
-    document.querySelectorAll('.quiz__option').forEach(b => b.classList.remove('selected'));
-    document.querySelectorAll('.quiz__weiter').forEach(b => { b.disabled = true; });
-    const textarea = document.getElementById('quiz-trigger-text');
-    if (textarea) textarea.value = '';
-    showStep(1);
-});
+/* "Dein erster Schritt": kleinerer Einstieg bei teuren Empfehlungen.
+   WICHTIG (Sarah-Regel): Erstkundinnen starten bei Infuzion IMMER mit der Kur,
+   deshalb ist der erste Schritt NIE eine Infuzion-Einzelbehandlung, sondern
+   ein HydraFacial bzw. Circadia passend zum Hautbild. Titan/Oliver-Regeln:
+   maximal 2 Optionen, Preis herleiten statt vergleichen, kein Rabatt-Vokabular. */
+function ersterSchritt(emp) {
+    const t = emp.primaer.titel;
+    if (t === 'Infuzion Boozter-Kur') return {
+        titel: 'HydraFacial Platinum', preis: '225 €',
+        text: 'Die intensivste Einzelbehandlung des Hauses, inklusive Lymphdrainage und LED. Sie versorgt deine Haut sofort sichtbar mit Feuchtigkeit. Was ein einzelner Termin nicht kann: das Depot in der Tiefe aufbauen. Genau dafür ist die Kur da, und ihr Preis entspricht drei aufeinander aufbauenden Terminen. Nach deinem Platinum-Termin sage ich dir ehrlich, ob die Kur für deine Haut der richtige nächste Schritt ist.'
+    };
+    if (t === 'Infuzion klassische Kur') return {
+        titel: 'HydraFacial Platinum', preis: '225 €',
+        text: 'Die intensivste Einzelbehandlung des Hauses, inklusive Lymphdrainage und LED. Sie glättet und versorgt sofort sichtbar. Das sanfte Aufpolstern in der Tiefe übernimmt nur die Kur, erst mit der Feuchtigkeitsgrundlage, dann mit dem Volumen. Ihr Preis entspricht drei aufeinander aufbauenden Terminen. Nach deinem Platinum-Termin sage ich dir ehrlich, ob die Kur für deine Haut der richtige nächste Schritt ist.'
+    };
+    if (t === 'Infuzion CBD Skin Balanz Kur') {
+        if (emp.primaerId === 'clear') return {
+            titel: 'HydraFacial Deluxe Clear', preis: '189 €',
+            text: 'Die porentiefe Ausreinigung mit klärenden Wirkstoffen, sofort sichtbar und ohne Ausfallzeit. Die Balance in der Tiefe, die Glanz und Unreinheiten dauerhaft beruhigt, stellt die Kur her; ihr Preis entspricht zwei aufeinander aufbauenden Terminen. Nach deinem ersten Termin sage ich dir ehrlich, ob deine Haut die Kur wirklich braucht.'
+        };
+        return {
+            titel: 'Circadia Calming Facial', preis: '185 €',
+            text: 'Der sanfteste Start des Hauses: Er beruhigt deine Haut spürbar und ohne jede Reizung. In der Tiefe an der Balance arbeitet danach die Kur; ihr Preis entspricht zwei aufeinander aufbauenden Terminen. Nach deinem ersten Termin sage ich dir ehrlich, ob deine Haut sie wirklich braucht.'
+        };
+    }
+    if (t === 'Ultimate Skin Combo') return {
+        titel: 'HydraFacial Platinum', preis: '225 €',
+        text: 'Das Platinum ist der erste Baustein der Combo: die intensivste HydraFacial-Stufe inklusive Lymphdrainage und LED. Die Combo ist der Plan dahinter, denn die Infuzion-Kur arbeitet danach in der Tiefe weiter, wo das HydraFacial nicht hinkommt. Der Preisunterschied ist genau diese Kur mit ihren drei Behandlungen. Nach dem ersten Termin sage ich dir ehrlich, ob deine Haut den ganzen Plan braucht.'
+    };
+    return null;
+}
+
+function reportAbsaetze(vorname, emp, E, achsen) {
+    /* Der volle Report: alles, was die freie Seite bewusst NICHT zeigt */
+    const abs = [];
+    abs.push('Hallo ' + vorname + ', hier ist dein ausführlicher Haut-Report zu deiner Analyse.');
+    abs.push('<strong>Dein Haut-Profil:</strong> ' + profilName(E) + '. ' + kernSatz(E));
+    abs.push('<strong>Deine fünf Werte:</strong><br>' + achsen.map(a => a.name + ': ' + a.wort).join('<br>'));
+    befundText(E, achsen).forEach(t => abs.push(t));
+    abs.push('<strong>Meine Empfehlung: ' + emp.primaer.titel + '</strong> (' + emp.primaer.preis + ')');
+    abs.push(emp.warum);
+    abs.push(emp.primaer.desc);
+    if (emp.primaer.pfad) abs.push('<strong>Dein Rhythmus:</strong> ' + emp.primaer.pfad);
+    /* Maximal 2 Behandlungen im Report: bei teuren Empfehlungen der erste Schritt,
+       sonst (falls vorhanden) die befund-nahe zweite Option */
+    const einstieg = ersterSchritt(emp);
+    if (einstieg) {
+        abs.push('<strong>Dein erster Schritt, wenn du kleiner starten willst:</strong> ' + einstieg.titel + ' (' + einstieg.preis + '). ' + einstieg.text);
+    } else if (emp.sekundaer) {
+        abs.push('<strong>Auch sinnvoll für deine Haut:</strong> ' + emp.sekundaer.titel + ' (' + emp.sekundaer.preis + '). ' + emp.sekundaer.desc);
+    }
+    if (emp.blickZusatz) abs.push(emp.blickZusatz);
+    if (emp.heimpflege) abs.push('<strong>Für zu Hause:</strong> ' + emp.heimpflege);
+    abs.push('Ich sehe mir deine Analyse persönlich an. Wenn mir etwas auffällt, das der Test nicht abbildet, melde ich mich mit einer ehrlichen Einschätzung. Deinen Termin buchst du hier: https://www.beautifulista.com/termin.html');
+    abs.push('Diese Analyse ist eine kosmetische Einschätzung deines Hautbilds auf Basis deiner Angaben. Sie ersetzt keine ärztliche Diagnose und keine persönliche Hautanalyse im Institut.');
+    return abs;
+}
+
+function sendeReport(vorname, email, newsletter, emp, E, name, achsen) {
+    const abs = reportAbsaetze(vorname, emp, E, achsen);
+    const reportHtml = abs.map(t => '<p>' + t + '</p>').join('');
+    const reportText = abs.map(t => t.replace(/<br>/g, '\n').replace(/<[^>]+>/g, '')).join('\n\n');
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        user_email:           email,
+        first_name:           vorname,
+        result_hautbild:      name,
+        result_hautbild_desc: 'Deine fünf Werte:\n' + achsen.map(a => a.name + ': ' + a.wort).join('\n'),
+        result_title:         emp.primaer.titel + ' (' + emp.primaer.preis + ')',
+        result_desc:          reportText,
+        report_html:          reportHtml,
+        result_link:          'https://www.beautifulista.com/termin.html',
+        skin_triggers:        '',
+        newsletter:           newsletter
+    }).catch(() => {});
+
+    /* Internes Nachfass-Dossier an Sarah (eigene Vorlage, geht NIE an die Kundin) */
+    if (EMAILJS_DOSSIER_TEMPLATE_ID) {
+        const prio = { woche: 'HEISS (will diese Woche starten)', wochen: 'WARM (nächste Wochen)', info: 'INFO (will erst verstehen)' }[antworten.zeitpunkt] || 'unbekannt';
+        const zeilen = [
+            '<strong>NACHFASS-DOSSIER HAUTANALYSE</strong>',
+            'Vorname: ' + vorname,
+            'E-Mail: ' + email,
+            'Prioritaet: ' + prio,
+            'Newsletter: ' + newsletter,
+            'Haut-Profil: ' + name,
+            'Achsen: ' + achsen.map(a => a.name + ' = ' + a.wort).join(' | '),
+            'Ziele: ' + (antwortText('ziele') || 'keine Angabe'),
+            'Empfehlung: ' + emp.primaer.titel + (emp.sekundaer ? ' (Alternative: ' + emp.sekundaer.titel + ')' : ''),
+            '',
+            '<strong>ANTWORTEN</strong>'
+        ];
+        for (const k of KAPITEL) for (const f of k.fragen) {
+            if (f.id === 'gate') continue; // Sicherheits-Frage wird nie übertragen
+            if (antworten[f.id] !== undefined) zeilen.push(f.frage + ' → ' + antwortText(f.id));
+        }
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_DOSSIER_TEMPLATE_ID, {
+            dossier_html: zeilen.join('<br>'),
+            first_name:   vorname,
+            user_email:   email
+        }).catch(() => {});
+    }
+}
+
+/* --- Start --- */
+wiederherstellen();
+zeigeStep();
 </script>
 
 <!-- Feste Termin-Buchen-Leiste (nur Handy sichtbar) -->
