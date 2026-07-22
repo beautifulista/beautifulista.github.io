@@ -183,6 +183,34 @@
             line-height: 1.6;
         }
 
+        /* Vertrauens-Hinweis an der Sicherheits-Frage.
+           Bewusst NICHT im blassen Sub-Stil: dort liegt der Kontrast bei 4,4:1
+           und damit unter der Lesbarkeitsschwelle. Hier 85 % Weiss = 12,5:1. */
+        .quiz__vertrauen {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            max-width: 520px;
+            margin: 0 auto 30px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.05);
+            border-left: 2px solid var(--gold);
+            border-radius: 0 4px 4px 0;
+            text-align: left;
+        }
+        .quiz__vertrauen svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--gold);
+        }
+        .quiz__vertrauen p {
+            margin: 0;
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: rgba(255,255,255,0.85);
+        }
+        .quiz__vertrauen strong { color: #fff; font-weight: 500; }
+
         .quiz__options { display: flex; flex-direction: column; gap: 12px; }
 
         .quiz__option {
@@ -1014,7 +1042,8 @@ const KAPITEL = [
             {
                 id: 'gate', typ: 'gate',
                 frage: 'Zum Schluss ein kurzer Sicherheits-Check: Trifft etwas davon gerade auf dich zu?',
-                sub: 'Er gehört zu jeder professionellen Hautanalyse. Deine Antwort wird nur hier im Browser ausgewertet und weder gespeichert noch übertragen.',
+                sub: 'Kontraindikationen abzuklären gehört zur apparativen Kosmetik. Deshalb frage ich hier, alles Weitere besprechen wir persönlich.',
+                vertrauen: '<strong>Diese Angabe bleibt auf deinem Gerät.</strong> Ich sehe sie nicht, sie wird nirgends gespeichert und an niemanden gesendet. Deine Gesundheit gehört nicht in ein Online-Formular.',
                 optionen: [
                     { v: 'schwanger', t: 'Ich bin schwanger oder stille' },
                     { v: 'onko',      t: 'Ich bin aktuell in einer Krebstherapie' },
@@ -1154,6 +1183,10 @@ function renderFrage(step) {
     div.className = 'quiz__panel';
     let html = '<p class="quiz__question">' + f.frage + '</p>';
     if (f.sub) html += '<p class="quiz__question-sub">' + f.sub + '</p>';
+    if (f.vertrauen) html += '<div class="quiz__vertrauen">' +
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' +
+        '<p>' + f.vertrauen + '</p></div>';
     html += '<div class="quiz__options">';
     f.optionen.forEach(o => {
         html += '<button class="quiz__option" data-v="' + o.v + '">' + optionHtml(f, o) + '</button>';
