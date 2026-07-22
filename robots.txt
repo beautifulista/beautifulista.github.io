@@ -1,12 +1,4 @@
 User-agent: *
 Allow: /
 
-# Backup- und Entwurfs-Dateien nicht indexieren (Duplicate Content vermeiden)
-Disallow: /index-backup.html
-Disallow: /index-backup-20260528.html
-Disallow: /index-redesign.html
-Disallow: /index-draft-flipcard.html
-Disallow: /ueber-mich-backup.html
-Disallow: /preview-definition.html
-
 Sitemap: https://www.beautifulista.com/sitemap.xml

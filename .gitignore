@@ -1,3 +1,11 @@
+# Backup- und Entwurfsdateien nie veroeffentlichen:
+# Was hier landet, waere sonst oeffentlich im Netz erreichbar.
+*-backup*.html
+*-draft*.html
+*-redesign*.html
+preview-*.html
+.claude/
+
 IMG_0270.jpeg
 IMG_0409.mov
 IMG_0445.PNG
