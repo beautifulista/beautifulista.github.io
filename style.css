@@ -211,10 +211,10 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     line-height: 1;
 }
 
-.logo__brand svg {
+.logo__brand img {
     display: inline-block;
     height: 1.222em;         /* Oberlänge bis Unterlänge, wie im Schriftsatz */
-    width: auto;
+    width: auto;             /* Seitenverhältnis 3.297 : 1.222 bleibt erhalten */
     margin-bottom: -0.392em; /* setzt die Grundlinie aufs Textniveau */
     vertical-align: baseline;
 }
