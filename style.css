@@ -4,13 +4,40 @@
    =========================== */
 
 /* ===========================
-   Custom Brand Font — Girl Boss Slant
+   Schriften — lokal ausgeliefert
+   -------------------------------------------------------------
+   Bewusst KEINE Einbindung über fonts.googleapis.com: dabei würde
+   die IP-Adresse jeder Besucherin an Google übertragen. Die
+   Schriften liegen als WOFF2 auf dem eigenen Server.
+
+   Cormorant Garamond und Raleway sind Variable Fonts, eine Datei
+   deckt daher alle Schriftstärken ab (Quelle: scripts/website_fonts_lokal.py).
+
+   Die Wortmarke „beautifulista" wird NICHT als Schrift geladen,
+   sondern als Vektor-SVG eingebunden (wortmarke.svg). Für
+   GirlBossSlant liegt nur eine Desktop-Lizenz vor, die das
+   Einbetten als Webfont nicht abdeckt, Logo-Design aber schon.
    =========================== */
 @font-face {
-    font-family: 'GirlBossSlant';
-    src: url('fonts/GirlBossSlant.ttf') format('truetype'),
-         url('fonts/GirlBossSlant.otf') format('opentype');
-    font-weight: normal;
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond-italic.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('fonts/raleway.woff2') format('woff2');
+    font-weight: 100 900;
     font-style: normal;
     font-display: swap;
 }
@@ -25,7 +52,6 @@
     --white:      #FFFFFF;
     --border:     rgba(28, 28, 28, 0.1);
 
-    --font-brand: 'GirlBossSlant', var(--font-serif);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Raleway', system-ui, sans-serif;
 
@@ -178,12 +204,19 @@ p strong { color: var(--anthrazit); font-weight: 500; }
     line-height: 1;
 }
 
+/* Wortmarke als Vektor. Die font-size bleibt der Maßstab: das SVG ist in
+   em bemaßt und wächst daher mit, currentColor erbt die Textfarbe. */
 .logo__brand {
-    font-family: var(--font-brand);
     font-size: 26px;
-    font-weight: normal;
-    letter-spacing: 0.01em;
-    text-transform: lowercase;
+    line-height: 1;
+}
+
+.logo__brand svg {
+    display: inline-block;
+    height: 1.222em;         /* Oberlänge bis Unterlänge, wie im Schriftsatz */
+    width: auto;
+    margin-bottom: -0.392em; /* setzt die Grundlinie aufs Textniveau */
+    vertical-align: baseline;
 }
 
 .logo__sub {
