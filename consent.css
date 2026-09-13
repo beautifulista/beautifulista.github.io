@@ -68,6 +68,13 @@
     flex-direction: column;
     text-align: center;
   }
+  /* In der Spalte wirkt flex-basis auf die HOEHE: der Absatz wurde auf 320px
+     aufgeblasen, obwohl sein Text nur 87px braucht. Der Banner belegte dadurch
+     51% des Handy-Bildschirms statt 23%. Gemessen + behoben 13.09.
+     Wortlaut und Buttons bleiben unveraendert. */
+  #bf-consent p {
+    flex: 0 1 auto;
+  }
   #bf-consent .bf-btns {
     width: 100%;
     justify-content: center;
