@@ -241,9 +241,16 @@
             /* Zweigeteilte Leiste: WhatsApp UND Selbst-buchen, Sarah 27.08. */
             .lp-sticky-bar { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 999;
                 box-shadow: 0 -6px 24px rgba(0,0,0,0.18); }
-            .lp-sticky-bar .lp-sticky-wa { position: static; flex: 1 1 60%; box-shadow: none; }
-            .lp-sticky-self { flex: 1 1 40%; display: flex; align-items: center; justify-content: center;
-                background: var(--dark-green, #4C5A47); color: #fff; text-decoration: none;
+            .lp-sticky-bar .lp-sticky-wa { position: static; flex: 1 1 65%; box-shadow: none; }
+            /* Hierarchie umgedreht (16.09.): Die Leiste sendete widerspruechliche
+               Signale. WhatsApp war breiter, "Selbst buchen" aber dunkler und zog
+               damit den Blick. Ergebnis in den Zahlen: 20 Klicks auf den Zweitweg
+               gegen 13 auf den Hauptweg. Jetzt traegt WhatsApp das satte Dunkelgruen
+               (Kontrast 7,34:1 statt 4,48:1, das alte Weiss-auf-Sage verfehlte AA),
+               "Selbst buchen" wird ruhig und klar zweitrangig. */
+            .lp-sticky-self { flex: 1 1 35%; display: flex; align-items: center; justify-content: center;
+                background: var(--ivory, #FAF7F0); color: var(--dark-green, #4C5A47);
+                border-left: 1px solid rgba(28,28,28,0.12); text-decoration: none;
                 font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 14px;
                 padding: 15px 10px; padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px)); }
         }
@@ -251,7 +258,7 @@
             .lp-sticky-wa {
                 display: flex; align-items: center; justify-content: center; gap: 10px;
                 position: fixed; left: 0; right: 0; bottom: 0; z-index: 999;
-                background: var(--sage); color: #fff;
+                background: var(--dark-green, #4C5A47); color: #fff;
                 font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 16px;
                 letter-spacing: 0.02em; text-decoration: none;
                 padding: 15px 16px;
